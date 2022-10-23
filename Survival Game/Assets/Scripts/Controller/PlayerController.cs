@@ -33,17 +33,27 @@ public class PlayerController : MonoBehaviour
     {
         playerAnim = characterBody.GetComponent<PlayerAnimator>();
 
+        // weapon 매니저에게 공격범위 지정시키기
+        Managers.Weapon.attackCollistion = Util.FindChild(gameObject, "AttackCollistion");
         Managers.Weapon.currentWeapon = currentWeapon;
 
-        Managers.Input.KeyAction -= KeyboradEvent;
-        Managers.Input.KeyAction += KeyboradEvent;
-        Managers.Input.MouseAction -= CameraLookAround;
-        Managers.Input.MouseAction += CameraLookAround;
+        // 키 입력 관련 메소드 등록
+        Managers.Input.KeyAction -= () => {
+            KeyboradEvent();
+            SlotChange();
+        };
+        Managers.Input.KeyAction += () => {
+            KeyboradEvent();
+            SlotChange();
+        };
+
+        // 마우스 입력 관련 메소드 등록
+        Managers.Input.MouseAction -= MouseEvent;
+        Managers.Input.MouseAction += MouseEvent;
     }
 
     void Update()
     {   
-        WeaponChange();
         TargetCheck();
 
         // State 패턴
@@ -54,7 +64,7 @@ public class PlayerController : MonoBehaviour
             case Define.State.Idle:      // 가만히 있기
                 UpdateIdle();
                 break;
-            case Define.State.Skill:     // 스킬
+            case Define.State.Skill:
                 UpdateSkill();
                 break;
             case Define.State.Die:       // 죽음
@@ -78,7 +88,7 @@ public class PlayerController : MonoBehaviour
     void UpdateDie() {}
 
     // 무기 체인지
-    private void WeaponChange()
+    private void SlotChange()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -139,18 +149,11 @@ public class PlayerController : MonoBehaviour
             State = Define.State.Idle;
     }
 
-    // TPS형 카메라 조작
-    private void CameraLookAround()
+    private void MouseEvent()
     {
-        Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        Vector3 camAngle = cameraArm.rotation.eulerAngles;
-
-        float x = camAngle.x - mouseDelta.y;
-        if (x < 180f)
-            x = Mathf.Clamp(x, -1f, 70f);
-        else
-            x = Mathf.Clamp(x, 335f, 361f);
-
-        cameraArm.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
+        if (Input.GetMouseButtonDown(0))
+        {
+            playerAnim.OnAttack();
+        }
     }
 }

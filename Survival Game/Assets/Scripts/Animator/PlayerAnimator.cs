@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour
     Animator anim;
 
     private Define.WeaponState checkWeapon; // 같은 무기를 또 들려고 하는지 체크
+
     private Define.WeaponState _state = Define.WeaponState.Hand;
     public Define.WeaponState State
     {
@@ -48,6 +49,12 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetFloat("Vertical", vertical);
     }
 
+    // 공격 애니메이션
+    public void OnAttack()
+    {
+        anim.SetTrigger("OnAttack");
+    }
+
     // 무기 체인지 애니메이션 이벤트
     public void OnChangeEvent()
     {
@@ -55,5 +62,10 @@ public class PlayerAnimator : MonoBehaviour
             Managers.Weapon.currentWeapon.SetActive(false);
         else if (State == Define.WeaponState.Sword)
             Managers.Weapon.currentWeapon.SetActive(true);
+    }
+
+    public void OnAttackCollistion()
+    {
+        Managers.Weapon.attackCollistion.SetActive(true);
     }
 }
