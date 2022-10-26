@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseController
 {
     [SerializeField]
     private Transform characterBody;    // Player 오브젝트
@@ -12,30 +12,28 @@ public class PlayerController : MonoBehaviour
     private GameObject currentWeapon;   // 현재 무기
 
     [SerializeField]
-    private float maxRadius = 2f;
+    private float maxRadius = 2f;   // 오브젝트 체크 반경
 
     [SerializeField]
-    private float _speed = 5f;          // 이동 속도
+    private float attackDelay = 0.8f;
+    [SerializeField]
+    private bool stopMoving = false;
 
-    Vector2 moveInput;
-    RaycastHit hit;
+    Vector2 moveInput;           // 이동 키 입력 확인
 
-    PlayerAnimator playerAnim;      // 플레이어 애니메이션
+    PlayerAnimator playerAnim;   // 플레이어 애니메이션
+    PlayerStat _stat;
 
-    private Define.State _state = Define.State.Idle;
-    public Define.State State
+    public override void Init()
     {
-        get { return _state; }
-        set { _state = value; }
-    }
-
-    void Start()
-    {
+        _stat = GetComponent<PlayerStat>();
         playerAnim = characterBody.GetComponent<PlayerAnimator>();
+        WorldObjectType = Define.WorldObject.Player;
 
         // weapon 매니저에게 공격범위 지정시키기
         Managers.Weapon.attackCollistion = Util.FindChild(gameObject, "AttackCollistion");
         Managers.Weapon.currentWeapon = currentWeapon;
+        Managers.Game._player = gameObject;
 
         // 키 입력 관련 메소드 등록
         Managers.Input.KeyAction -= () => {
@@ -52,40 +50,18 @@ public class PlayerController : MonoBehaviour
         Managers.Input.MouseAction += MouseEvent;
     }
 
-    void Update()
-    {   
-        TargetCheck();
-
-        // State 패턴
-        switch (State){
-            case Define.State.Moving:    // 움직임
-                UpdateMoving();
-                break;
-            case Define.State.Idle:      // 가만히 있기
-                UpdateIdle();
-                break;
-            case Define.State.Skill:
-                UpdateSkill();
-                break;
-            case Define.State.Die:       // 죽음
-                UpdateDie();
-                break;
-        }
-    }
-
-    void UpdateMoving()
+    protected override void UpdateMoving()
     {
+        if (stopMoving)
+            return;
+
         Vector3 lookForward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
         Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
         Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
 
         characterBody.forward = lookForward;
-        transform.position += moveDir.normalized * Time.deltaTime * _speed;
+        transform.position += moveDir.normalized * Time.deltaTime * _stat.MoveSpeed;
     }
-
-    void UpdateIdle() {}
-    void UpdateSkill() {}
-    void UpdateDie() {}
 
     // 무기 체인지
     private void SlotChange()
@@ -149,11 +125,18 @@ public class PlayerController : MonoBehaviour
             State = Define.State.Idle;
     }
 
-    private void MouseEvent()
+    private void MouseEvent(Define.MouseEvent evt)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            playerAnim.OnAttack();
-        }
+        playerAnim.OnAttack();
+        StartCoroutine(AttackDelay());
+    }
+
+    IEnumerator AttackDelay()
+    {
+        stopMoving = true;
+        
+        yield return new WaitForSeconds(attackDelay);
+
+        stopMoving = false;
     }
 }

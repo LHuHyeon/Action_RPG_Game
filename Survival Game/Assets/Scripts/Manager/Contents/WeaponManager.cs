@@ -29,9 +29,4 @@ public class WeaponManager
             }
         }
     }
-
-    public void WeaponChange()
-    {
-        
-    }
 }

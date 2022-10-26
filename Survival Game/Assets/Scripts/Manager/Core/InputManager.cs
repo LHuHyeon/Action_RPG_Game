@@ -7,7 +7,9 @@ public class InputManager
 {
     // 키 입력 메소드들을 한번에 실행하기 위한 변수
     public Action KeyAction = null;     // 키 대리자
-    public Action MouseAction = null;    // 마우스 대리자
+    public Action<Define.MouseEvent> MouseAction = null;    // 마우스 대리자
+
+    
 
     public void OnUpdate()
     {
@@ -21,7 +23,10 @@ public class InputManager
         }
         if (MouseAction != null)
         {
-            MouseAction.Invoke();
+            if (Input.GetMouseButtonDown(0))
+                MouseAction.Invoke(Define.MouseEvent.PointDown);
+            else if (Input.GetMouseButtonUp(0))
+                MouseAction.Invoke(Define.MouseEvent.PointUp);
         }
     }
 

@@ -64,6 +64,7 @@ public class PlayerAnimator : MonoBehaviour
             Managers.Weapon.currentWeapon.SetActive(true);
     }
 
+    // 공격 시 충돌 여부 체크하는 애니메이션 이벤트
     public void OnAttackCollistion()
     {
         Managers.Weapon.attackCollistion.SetActive(true);
