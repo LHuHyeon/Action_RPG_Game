@@ -55,6 +55,8 @@ public class MonsterController : BaseController
         _stat = GetComponent<Stat>();
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+
+        Managers.UI.MakeWorldSpaceUI<UI_HPBar>(transform);
     }
 
     // 주변 플레이어 탐색

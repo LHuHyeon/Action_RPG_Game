@@ -9,8 +9,6 @@ public class InputManager
     public Action KeyAction = null;     // 키 대리자
     public Action<Define.MouseEvent> MouseAction = null;    // 마우스 대리자
 
-    
-
     public void OnUpdate()
     {
         // UI 클릭 확인
