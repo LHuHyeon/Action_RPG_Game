@@ -550,9 +550,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3755699982268981548, guid: f295e370269be6e4c905b025911e5917, type: 3}
+      propertyPath: itemCount
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5133822282634275084, guid: f295e370269be6e4c905b025911e5917, type: 3}
       propertyPath: m_Name
-      value: Apple Item
+      value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 8170754522422991647, guid: f295e370269be6e4c905b025911e5917, type: 3}
       propertyPath: m_RootOrder
@@ -564,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170754522422991647, guid: f295e370269be6e4c905b025911e5917, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.147
+      value: 0.693
       objectReference: {fileID: 0}
     - target: {fileID: 8170754522422991647, guid: f295e370269be6e4c905b025911e5917, type: 3}
       propertyPath: m_LocalPosition.z

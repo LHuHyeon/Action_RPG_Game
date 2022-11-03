@@ -8,7 +8,7 @@ public class GameScene : BaseScene
     {
         SceneType = Define.Scene.Game;
 
-        
+        Managers.Item.baseInventory = Managers.UI.ShowSceneUI<UI_Inven>();
     }
 
     public override void Clear()

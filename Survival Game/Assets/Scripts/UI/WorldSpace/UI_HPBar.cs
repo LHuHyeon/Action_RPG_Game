@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 오브젝트 위에 표실될 체력바 클래스
 public class UI_HPBar : UI_Base
 {
     Stat _stat;

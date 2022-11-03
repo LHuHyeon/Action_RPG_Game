@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputManager
 {
@@ -11,20 +12,19 @@ public class InputManager
 
     public void OnUpdate()
     {
-        // UI 클릭 확인
-        // if (EventSystem.current.IsPointerOverGameObject())
-        //     return;
-
         if (KeyAction != null)
         {  
             KeyAction.Invoke();
         }
+
+        // UI 클릭 확인
+        if (EventSystem.current.IsPointerOverGameObject() && Managers.Game.isInventory)
+            return;
+
         if (MouseAction != null)
         {
             if (Input.GetMouseButtonDown(0))
                 MouseAction.Invoke(Define.MouseEvent.PointDown);
-            else if (Input.GetMouseButtonUp(0))
-                MouseAction.Invoke(Define.MouseEvent.PointUp);
         }
     }
 

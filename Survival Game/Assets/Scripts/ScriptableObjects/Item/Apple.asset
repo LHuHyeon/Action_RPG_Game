@@ -17,3 +17,5 @@ MonoBehaviour:
   itemCoin: 5
   itemImage: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
   itemPrefab: {fileID: 5133822282634275084, guid: f295e370269be6e4c905b025911e5917, type: 3}
+  itemCount: 1
+  itemDesc: "\uC544\uC0AD\uC544\uC0AD\uD55C \uACFC\uC77C\uC774\uB2E4."

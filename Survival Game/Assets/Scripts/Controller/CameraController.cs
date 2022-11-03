@@ -6,7 +6,8 @@ public class CameraController : MonoBehaviour
 {
     void Update()
     {
-        CameraLookAround();
+        if (!Managers.Game.isInventory)
+            CameraLookAround();
     }
 
     // TPS형 카메라 조작

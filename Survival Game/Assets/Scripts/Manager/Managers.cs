@@ -10,9 +10,11 @@ public class Managers : MonoBehaviour
     private static Managers Instance { get { Init(); return s_instance; } }  // 유일한 매니저를 갖고 온다.
 
     private GameManager _game = new GameManager();
+    private ItemManager _item = new ItemManager();
     private WeaponManager _weapon = new WeaponManager();
 
     public static GameManager Game { get { return Instance._game; } }
+    public static ItemManager Item { get { return Instance._item; } }
     public static WeaponManager Weapon { get { return Instance._weapon; } }
 
     private DataManager _data = new DataManager();

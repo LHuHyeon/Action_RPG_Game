@@ -18,4 +18,7 @@ public class Item : ScriptableObject
     public int itemCoin;            // 코인
     public Sprite itemImage;        // 이미지
     public GameObject itemPrefab;   // 프리팹
+
+    [TextArea]
+    public string itemDesc;
 }

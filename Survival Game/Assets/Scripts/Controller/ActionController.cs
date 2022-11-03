@@ -7,14 +7,7 @@ public class ActionController : MonoBehaviour
     [SerializeField]
     private float maxRadius = 2f;   // 오브젝트 체크 반경
 
-    UI_Inven inventory;
-
     RaycastHit hit;
-
-    void Start()
-    {
-        inventory = Managers.UI.ShowSceneUI<UI_Inven>();
-    }
 
     void Update()
     {
@@ -26,17 +19,18 @@ public class ActionController : MonoBehaviour
     {
         // 주변 콜라이더 탐색
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, maxRadius, LayerMask.GetMask("Item"));
-
-        for(int i=0; i<hitCollider.Length; i++)
-            Debug.Log($"item 발견!! : {hitCollider[i]}");
         
         if (Input.GetKeyDown(KeyCode.F))
         {
             for(int i=0; i<hitCollider.Length; i++)
             {
-                Item item = hitCollider[i].GetComponent<ItemPickUp>().item;
-                if (item != null)
-                    inventory.AcquireItem(item);
+                ItemPickUp _item = hitCollider[i].GetComponent<ItemPickUp>();
+                if (_item != null)
+                {
+                    Managers.Item.baseInventory.AcquireItem(_item.item, _item.itemCount);
+                    Destroy(hitCollider[i].gameObject);
+                    return;
+                }
             }
         }
         
