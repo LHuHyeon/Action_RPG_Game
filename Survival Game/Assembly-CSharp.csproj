@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\UI\Scene\UI_Scene.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\ResourceManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\DataManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\Contents\ItemEffectDatabase.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_DumpCount.cs" />
      <Compile Include="Assets\Scripts\Controller\BaseController.cs" />
      <Compile Include="Assets\Scripts\Utils\Define.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\InputManager.cs" />
@@ -68,15 +70,13 @@
      <Compile Include="Assets\Scripts\Manager\Contents\GameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Managers.cs" />
      <Compile Include="Assets\Scripts\UI\UI_Base.cs" />
+     <Compile Include="Assets\Scripts\UI\WorldSpace\UI_NameBar.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\Poolable.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_SlotItemTip.cs" />
      <Compile Include="Assets\Scripts\Controller\ActionController.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_DragSlot.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\WeaponManager.cs" />
      <Compile Include="Assets\Scripts\Contetns\Item.cs" />
-     <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_SlotItemTip.cs" />
-     <Compile Include="Assets\Scripts\Manager\Contents\ItemManager.cs" />
-     <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_DragSlot.cs" />
-     <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_DumpCount.cs" />
-     <Compile Include="Assets\Scripts\UI\WorldSpace\UI_NameBar.cs" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />

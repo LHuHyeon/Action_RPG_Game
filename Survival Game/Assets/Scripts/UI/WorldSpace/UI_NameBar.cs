@@ -17,12 +17,16 @@ public class UI_NameBar : UI_Base
     {
         itemObj = transform.parent.GetComponent<ItemPickUp>();
         Bind<Text>(typeof(Texts));
+
+        Transform parent = transform.parent;
+        transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y + 0.07f);
+        transform.rotation = Camera.main.transform.rotation;
     }
 
     void OnEnable()
     {
         // Init 보다 먼저 실행되기 때문에 딜레이
-        Invoke("SetName", 0.0001f);
+        Invoke("SetName", 0.000001f);
     }
 
     void Update()

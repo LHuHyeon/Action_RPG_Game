@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297876743e2dbcd4ba2c78643b8d0ead, type: 3}
+  m_Name: Ham
+  m_EditorClassIdentifier: 
+  itemName: "\uD584"
+  itemType: 1
+  itemCoin: 15
+  itemImage: {fileID: 21300000, guid: 4a39cb4b272639541b7bd5ac0649acf7, type: 3}
+  itemPrefab: {fileID: 3212478708692083092, guid: 998e8244aa179fb438be40b50ae70571, type: 3}
+  itemDesc: "\uBC25\uC774\uB791 \uBA39\uC73C\uBA74 \uBC25\uB3C4\uB451\uC774\uB2E4."

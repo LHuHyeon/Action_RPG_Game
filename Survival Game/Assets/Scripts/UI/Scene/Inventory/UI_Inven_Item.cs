@@ -14,10 +14,25 @@ public class UI_Inven_Item : UI_Base
     public override void Init()
     {
         // 커서가 닿을 시 아이템 정보 UI 활성화
-        gameObject.BindEvent((PointerEventData)=>{Managers.Item.baseInventory.ShowItemTip(item);}, Define.UIEvent.Enter);
+        gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.ShowItemTip(item);}, Define.UIEvent.Enter);
         
         // 커서가 때어지면 아이템 정보 UI 비활성화
-        gameObject.BindEvent((PointerEventData)=>{Managers.Item.baseInventory.HideItemTip();}, Define.UIEvent.Exit);
+        gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.HideItemTip();}, Define.UIEvent.Exit);
+
+        ItemEffectDatabase obj = GameObject.Find("ItemEffectDatabase").GetComponent<ItemEffectDatabase>();
+        gameObject.BindEvent((PointerEventData)=>{
+            if (Input.GetMouseButtonUp(1))
+            {
+                if (item != null)
+                {
+                    if (itemCount > 0)
+                    {
+                        obj.UseItem(item);
+                        SetCount(-1);
+                    }
+                }
+            }
+        }, Define.UIEvent.Click);
         
         // 아이템이 존재할 시 마우스로 들 수 있다.
         gameObject.BindEvent((PointerEventData eventData)=>
@@ -45,8 +60,17 @@ public class UI_Inven_Item : UI_Base
             // 아이템을 버린 위치가 UI가 아니라면
             if (item != null && !EventSystem.current.IsPointerOverGameObject())
             {
-                UI_Inven baseInven = Managers.Item.baseInventory.GetComponent<UI_Inven>();
-                baseInven.ItemDump(GetComponent<UI_Inven_Item>(), itemCount);
+                if (itemCount > 1)  // 버릴 아이템 개수 설정
+                {
+                    UI_Inven baseInven = Managers.Game.baseInventory.GetComponent<UI_Inven>();
+                    baseInven.ItemDump(GetComponent<UI_Inven_Item>(), itemCount);
+                }
+                else                // 1개라면 바로 버리기 
+                {
+                    GameObject _item = Managers.Resource.Instantiate($"Item/{item.itemName}");
+                    _item.transform.position = Managers.Game._player.transform.position;
+                    ClearSlot();
+                }
             }
 
             // 들고 있는 임시 아이템 초기화
@@ -117,7 +141,7 @@ public class UI_Inven_Item : UI_Base
             ClearSlot();
     }
 
-    // 아이템 버리기
+    // 슬롯 초기화
     public void ClearSlot()
     {
         item = null;
@@ -126,5 +150,6 @@ public class UI_Inven_Item : UI_Base
         itemCountText.text = "0";
 
         SetColor(0);
+        Managers.Game.baseInventory.HideItemTip();
     }
 }

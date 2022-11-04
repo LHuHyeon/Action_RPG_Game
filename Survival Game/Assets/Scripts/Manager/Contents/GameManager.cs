@@ -7,6 +7,8 @@ using UnityEngine;
 public class GameManager
 {
     public GameObject _player;
+
+    public UI_Inven baseInventory;
     public bool isInventory = false;    // 인벤토리 비활성화/활성화 여부
 
     HashSet<GameObject> _monsters = new HashSet<GameObject>();

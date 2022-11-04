@@ -27,7 +27,7 @@ public class ActionController : MonoBehaviour
                 ItemPickUp _item = hitCollider[i].GetComponent<ItemPickUp>();
                 if (_item != null)
                 {
-                    Managers.Item.baseInventory.AcquireItem(_item.item, _item.itemCount);
+                    Managers.Game.baseInventory.AcquireItem(_item.item, _item.itemCount);
                     Destroy(hitCollider[i].gameObject);
                     return;
                 }

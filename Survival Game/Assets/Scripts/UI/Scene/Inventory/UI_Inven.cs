@@ -80,6 +80,7 @@ public class UI_Inven : UI_Scene
             {
                 baseInventory.SetActive(false);
                 GetObject((int)GameObjects.CountCheck).SetActive(false);
+                baseInventory.transform.position = new Vector3(1920, 540, 0);
             }
         }
     }
