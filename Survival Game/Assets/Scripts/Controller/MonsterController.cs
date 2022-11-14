@@ -31,15 +31,12 @@ public class MonsterController : BaseController
 
             switch (_state){
                 case Define.State.Moving:
-                    // anim.CrossFade("Walk", 0.1f);    // CrossFade는 애니메이션의 부드러움, 반복도 등 설정이 가능하다.
                     anim.SetTrigger("OnWalk");
                     break;
                 case Define.State.Idle:
-                    // anim.CrossFade("Idle", 0.1f);
                     anim.SetTrigger("OnIdle");
                     break;
                 case Define.State.Skill:
-                    // anim.CrossFade("Attack", 0.1f, -1, 0);
                     anim.SetTrigger("OnAttack");
                     break;
                 case Define.State.Die:
@@ -102,7 +99,6 @@ public class MonsterController : BaseController
             // nav.speed = _stat.MoveSpeed;
             nav.speed = 2f;
             nav.SetDestination(_destPos);   // 타겟에 접근
-            
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 20f * Time.deltaTime);
         }
     }
@@ -113,17 +109,18 @@ public class MonsterController : BaseController
         // 스킬 사용 중에 타겟 바라보기
         if (_lockTarget != null){
             Vector3 dir = _lockTarget.transform.position - transform.position;
+            dir.y = 0f;
             Quaternion quat = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Lerp(transform.rotation, quat, 20 * Time.deltaTime);
+            transform.rotation = quat;
         }
     }
 
-    // 애니메이션 event
+    // 공격 애니메이션 event
     void OnHitEvent()
     {
         if (_lockTarget != null){
+            // 공격 거리 안에 있으면 상태 Skill로 변경
             distance = TargetDistance(_lockTarget);
-
             if (distance <= _attackRange)
                 State = Define.State.Skill;
             else
@@ -131,8 +128,12 @@ public class MonsterController : BaseController
 
             Stat targetStat = _lockTarget.GetComponent<Stat>();
 
-            targetStat.OnAttacked(_stat);
+            // 공격 중 공격 거리에서 안에 있을 시
+            distance = TargetDistance(_lockTarget);
+            if (distance <= _attackRange)
+                targetStat.OnAttacked(_stat);
 
+            // 상대 체력 확인
             if (targetStat.Hp > 0){
                 distance = TargetDistance(_lockTarget);
                 if (distance <= _attackRange)
@@ -155,6 +156,7 @@ public class MonsterController : BaseController
         return (_destPos - transform.position).magnitude;
     }
 
+    // 공격 받았을 때
     public void TakeDamage(Stat attacker)
     {
         anim.SetTrigger("OnHit");
@@ -162,6 +164,7 @@ public class MonsterController : BaseController
         StartCoroutine(DelayHit());
     }
 
+    // 공격 딜레이
     IEnumerator DelayHit()
     {
         stopMoving = true;

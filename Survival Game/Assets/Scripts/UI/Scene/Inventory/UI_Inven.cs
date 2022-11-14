@@ -29,6 +29,8 @@ public class UI_Inven : UI_Scene
     public override void Init()
     {
         slots = new List<UI_Inven_Item>();
+
+        gameObject.GetComponent<Canvas>().sortingOrder = 1;
         
         Bind<Text>(typeof(Texts));
         GetText((int)Texts.Coin_Text).text = "0";

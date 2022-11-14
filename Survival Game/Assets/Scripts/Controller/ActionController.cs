@@ -4,14 +4,62 @@ using UnityEngine;
 
 public class ActionController : MonoBehaviour
 {
+    UI_BaseSlot currentSlot;
+    public UI_BaseSlot CurrentSlot{
+        get { return currentSlot; }
+        set{
+            if (currentSlot != null)
+                currentSlot.currentEffect.SetActive(false);
+
+            currentSlot = value;
+
+            currentSlot.currentEffect.SetActive(true);
+        }
+    }
+    
+    List<UI_BaseSlot> slots;
+
     [SerializeField]
     private float maxRadius = 2f;   // 오브젝트 체크 반경
 
-    RaycastHit hit;
+    void Start()
+    {
+        Invoke("DelayInit", 0.000001f);
+    }
+
+    // Start 보다 늦게 Start 되는 오브젝트를 위해 딜레이를 준다.
+    void DelayInit()
+    {
+        slots = Managers.Game.playerInfo.GetSlot();
+        CurrentSlot = slots[0];
+    }
 
     void Update()
     {
         TargetCheck();
+        SlotKeyInput();
+    }
+
+    void SlotKeyInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            CurrentSlot = slots[0];
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            CurrentSlot = slots[1];
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            CurrentSlot = slots[2];
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+            CurrentSlot = slots[3];
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+            CurrentSlot = slots[4];
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+            CurrentSlot = slots[5];
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+            CurrentSlot = slots[6];
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+            CurrentSlot = slots[7];
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+            CurrentSlot = slots[8];
     }
 
     // 주변 오브젝트 체크
@@ -33,18 +81,5 @@ public class ActionController : MonoBehaviour
                 }
             }
         }
-        
-    }
-
-    // 커서에 닿는 오브젝트 확인 ( TODO : 인벤토리에 쓸 코드 )
-    private Collider CursorTarget(int _mask)
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out hit, 100f, _mask);
-
-        if (hit.collider == null)
-            return null;
-
-        return hit.collider;
     }
 }

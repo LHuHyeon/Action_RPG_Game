@@ -77,6 +77,8 @@
      <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_DragSlot.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\WeaponManager.cs" />
      <Compile Include="Assets\Scripts\Contetns\Item.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Information\UI_BaseSlot.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Information\UI_PlayerInfo.cs" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />
@@ -684,6 +686,9 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:\Users\82103\OneDrive\문서\Git_SourceTree\My_Survival\Survival Game\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>C:\Users\82103\OneDrive\문서\Git_SourceTree\My_Survival\Survival Game\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@ public class GameScene : BaseScene
         SceneType = Define.Scene.Game;
 
         Managers.Game.baseInventory = Managers.UI.ShowSceneUI<UI_Inven>();
+        Managers.Game.playerInfo = Managers.UI.ShowSceneUI<UI_PlayerInfo>("UI_Info");
     }
 
     public override void Clear()

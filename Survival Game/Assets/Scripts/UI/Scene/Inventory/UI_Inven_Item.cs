@@ -25,7 +25,7 @@ public class UI_Inven_Item : UI_Base
             {
                 if (item != null)
                 {
-                    if (itemCount > 0)
+                    if (item.itemType == Item.ItemType.Used && itemCount > 0)
                     {
                         obj.UseItem(item);
                         SetCount(-1);
@@ -67,7 +67,7 @@ public class UI_Inven_Item : UI_Base
                 }
                 else                // 1개라면 바로 버리기 
                 {
-                    GameObject _item = Managers.Resource.Instantiate($"Item/{item.itemName}");
+                    GameObject _item = Managers.Resource.Instantiate($"Item/{item.itemType}/{item.itemName}");
                     _item.transform.position = Managers.Game._player.transform.position;
                     ClearSlot();
                 }

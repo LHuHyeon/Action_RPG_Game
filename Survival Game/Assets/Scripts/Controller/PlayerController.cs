@@ -8,12 +8,17 @@ public class PlayerController : BaseController
     Transform cameraArm;        // 카메라 회전 중심 객체
 
     [SerializeField]
+    Transform weaponPos;        // 무기 장착 위치
+
+    [SerializeField]
     private GameObject currentWeapon;   // 현재 무기
 
     Vector2 moveInput;           // 이동 키 입력 확인
 
     PlayerAnimator playerAnim;   // 플레이어 애니메이션
     PlayerStat _stat;
+
+    public bool stopMoving = false;
 
     public override void Init()
     {
@@ -71,6 +76,12 @@ public class PlayerController : BaseController
     // 키 입력
     private void KeyboradEvent()
     {
+        if (stopMoving)
+        {
+            State = Define.State.Idle;
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical   = Input.GetAxisRaw("Vertical");
 

@@ -11,6 +11,8 @@ public class GameManager
     public UI_Inven baseInventory;
     public bool isInventory = false;    // 인벤토리 비활성화/활성화 여부
 
+    public UI_PlayerInfo playerInfo;
+
     HashSet<GameObject> _monsters = new HashSet<GameObject>();
 
     public Action<int> OnSpawnEvent;

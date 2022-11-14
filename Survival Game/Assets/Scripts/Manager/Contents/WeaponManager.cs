@@ -24,9 +24,13 @@ public class WeaponManager
                     break;
                 case Define.WeaponState.Sword:
                     break;
-                case Define.WeaponState.Total:
-                    break;
             }
         }
+    }
+
+    // 무기 장착
+    public void EquipWeapon(Transform pos, ItemPickUp _item)
+    {
+        
     }
 }

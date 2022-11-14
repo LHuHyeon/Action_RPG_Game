@@ -41,7 +41,7 @@ public class UI_DumpCount : MonoBehaviour
         itemPrefab.itemCount = itemCount;
 
         // 프리팹 생성 및 버릴 위치 설정
-        GameObject _item = Managers.Resource.Instantiate($"Item/{invenSlot.item.itemName}");
+        GameObject _item = Managers.Resource.Instantiate($"Item/{invenSlot.item.itemType}/{invenSlot.item.itemName}");
         _item.transform.position = Managers.Game._player.transform.position;
 
         // 아이템 개수가 최대 개수보다 작을 때

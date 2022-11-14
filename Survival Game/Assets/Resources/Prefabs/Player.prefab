@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _state: 1
+  weaponPos: {fileID: 3708961399518233867}
   currentWeapon: {fileID: 2257332546695463026}
+  stopMoving: 0
 --- !u!114 &3708961397948892484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +600,10 @@ PrefabInstance:
     - target: {fileID: 100072, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
+      propertyPath: m_Name
+      value: RightHand
       objectReference: {fileID: 0}
     - target: {fileID: 100074, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_Layer
