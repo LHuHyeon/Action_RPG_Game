@@ -17,14 +17,16 @@ public class InputManager
             KeyAction.Invoke();
         }
 
-        // UI 클릭 확인
-        if (EventSystem.current.IsPointerOverGameObject() && Managers.Game.isInventory)
+        // UI를 클릭했거나, 인벤토리가 활성화 됐을 경우
+        if (EventSystem.current.IsPointerOverGameObject() || Managers.Game.isInventory)
             return;
 
         if (MouseAction != null)
         {
             if (Input.GetMouseButtonDown(0))
-                MouseAction.Invoke(Define.MouseEvent.PointDown);
+                MouseAction.Invoke(Define.MouseEvent.LeftDown);
+            if (Input.GetMouseButtonDown(1))
+                MouseAction.Invoke(Define.MouseEvent.RightDown);
         }
     }
 

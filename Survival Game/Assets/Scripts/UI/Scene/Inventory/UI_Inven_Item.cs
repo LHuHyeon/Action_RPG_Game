@@ -19,18 +19,11 @@ public class UI_Inven_Item : UI_Base
         // 커서가 때어지면 아이템 정보 UI 비활성화
         gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.HideItemTip();}, Define.UIEvent.Exit);
 
-        ItemEffectDatabase obj = GameObject.Find("ItemEffectDatabase").GetComponent<ItemEffectDatabase>();
+        // 아이템에 커서를 올리고 오른쪽 클릭 시 아이템 사용
         gameObject.BindEvent((PointerEventData)=>{
             if (Input.GetMouseButtonUp(1))
             {
-                if (item != null)
-                {
-                    if (item.itemType == Item.ItemType.Used && itemCount > 0)
-                    {
-                        obj.UseItem(item);
-                        SetCount(-1);
-                    }
-                }
+                Managers.Game.baseInventory.UsingItem(item);    // 아이템 사용
             }
         }, Define.UIEvent.Click);
         
@@ -63,7 +56,7 @@ public class UI_Inven_Item : UI_Base
                 if (itemCount > 1)  // 버릴 아이템 개수 설정
                 {
                     UI_Inven baseInven = Managers.Game.baseInventory.GetComponent<UI_Inven>();
-                    baseInven.ItemDump(GetComponent<UI_Inven_Item>(), itemCount);
+                    baseInven.ItemDump(this, itemCount);
                 }
                 else                // 1개라면 바로 버리기 
                 {
@@ -82,8 +75,10 @@ public class UI_Inven_Item : UI_Base
         // 이 슬롯에 마우스 클릭이 끝나면 아이템 받기
         gameObject.BindEvent((PointerEventData eventData)=>
         {
-            if (UI_DragSlot.instance.dragSlot != null)
+            if (UI_DragSlot.instance.dragSlot != null)      // 인벤 슬롯을 받을 때
                 ChangeSlot();
+            else if (UI_DragSlot.instance.baseSlot != null) // 메인 슬롯을 받을 때
+                UI_DragSlot.instance.baseSlot.ClearSlot();
 
         }, Define.UIEvent.Drop);
     }
@@ -137,6 +132,8 @@ public class UI_Inven_Item : UI_Base
         itemCount += count;
         itemCountText.text = itemCount.ToString();
 
+        Managers.Game.playerInfo.SetItemCount(this);    // 메인 슬롯에 있는 아이템도 수정
+
         if (itemCount <= 0)
             ClearSlot();
     }
@@ -144,6 +141,8 @@ public class UI_Inven_Item : UI_Base
     // 슬롯 초기화
     public void ClearSlot()
     {
+        Managers.Game.playerInfo.ClearSlot(item);   // 메인 슬롯에 등록된 같은 아이템도 Clear
+
         item = null;
         itemImage.sprite = null;
         itemCount = 0;

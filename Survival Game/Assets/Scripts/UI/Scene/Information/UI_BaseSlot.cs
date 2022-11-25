@@ -10,14 +10,10 @@ public class UI_BaseSlot : UI_Base
     public Image itemImage;     // UI 이미지
     public Text itemCountText;  // UI 개수
     public int itemCount;       // 아이템 개수
-    public GameObject currentEffect;
-
-    UI_PlayerInfo playerInfo;
+    public GameObject currentEffect;    // 플레이어가 들고 있다면
 
     public override void Init()
     {
-        playerInfo = Util.FindChild<UI_PlayerInfo>(transform.root.gameObject, "UI_Info");
-
         // 아이템이 존재할 시 마우스로 들 수 있다.
         gameObject.BindEvent((PointerEventData eventData)=>
         {
@@ -68,9 +64,10 @@ public class UI_BaseSlot : UI_Base
         }, Define.UIEvent.Drop);
     }
 
+    // 인벤토리에서 대표 슬롯에 등록할 때
     private void ConnectionSlot()
     {
-        playerInfo.OverlabCheck(UI_DragSlot.instance.dragSlot.item);
+        Managers.Game.playerInfo.ClearSlot(UI_DragSlot.instance.dragSlot.item);
         AddItem(UI_DragSlot.instance.dragSlot.item, UI_DragSlot.instance.dragSlot.itemCount);
         UI_DragSlot.instance.dragSlot = null;
     }
@@ -119,9 +116,9 @@ public class UI_BaseSlot : UI_Base
     }
 
     // 아이템 개수 업데이트
-    public void SetCount(int count = 1)
+    public void SetCount(int count)
     {
-        itemCount += count;
+        itemCount = count;
         itemCountText.text = itemCount.ToString();
 
         if (itemCount <= 0)

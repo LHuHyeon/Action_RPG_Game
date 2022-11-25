@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ActionController : MonoBehaviour
 {
-    UI_BaseSlot currentSlot;
-    public UI_BaseSlot CurrentSlot{
+    UI_BaseSlot currentSlot;            // 선택 슬롯
+    public UI_BaseSlot CurrentSlot{     // 선택 슬롯 프로퍼티
         get { return currentSlot; }
         set{
             if (currentSlot != null)
@@ -25,21 +25,31 @@ public class ActionController : MonoBehaviour
     void Start()
     {
         Invoke("DelayInit", 0.000001f);
+
+        Managers.Input.MouseAction -= UsingSlot;
+        Managers.Input.MouseAction += UsingSlot;
     }
 
     // Start 보다 늦게 Start 되는 오브젝트를 위해 딜레이를 준다.
     void DelayInit()
     {
-        slots = Managers.Game.playerInfo.GetSlot();
-        CurrentSlot = slots[0];
+        slots = Managers.Game.playerInfo.GetSlot(); // 슬롯 UI 가져오기
+        CurrentSlot = slots[0];     // 현재 선택한 슬롯
     }
 
     void Update()
     {
-        TargetCheck();
         SlotKeyInput();
+        TargetCheck();
     }
 
+    void UsingSlot(Define.MouseEvent evt)
+    {
+        if (evt == Define.MouseEvent.RightDown)
+            Managers.Game.baseInventory.UsingItem(currentSlot.item);
+    }
+
+    // 슬롯 선택
     void SlotKeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

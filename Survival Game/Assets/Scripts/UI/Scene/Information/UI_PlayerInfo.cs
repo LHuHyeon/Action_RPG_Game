@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class UI_PlayerInfo : UI_Scene
 {
-    // 체력, 마나, 1~9 아이템 관리 UI
-    List<UI_BaseSlot> slots;
+    // TODO : 체력, 마나 관리 예정
+    // 1~9 아이템 관리 UI
+    List<UI_BaseSlot> slots;    // BaseSlot(메인 슬롯) 저장
 
     public List<UI_BaseSlot> GetSlot() { return slots; }
     
@@ -22,8 +23,37 @@ public class UI_PlayerInfo : UI_Scene
         SlotReset();
     }
 
-    // BaseSlot에 똑같은 아이템이 존재할 시
-    public void OverlabCheck(Item _item)
+    // 메인 슬롯 아이템 등록
+    public void ItemRegistration(Item _item, int count = 1)
+    {
+        for(int i=0; i<slots.Count; i++)
+        {
+            if (slots[i].item == null)
+            {
+                slots[i].AddItem(_item, count);
+                return;
+            }
+        }
+    }
+
+    // 메인 슬롯의 아이템 개수 수정
+    public void SetItemCount(UI_Inven_Item invenSlot)
+    {
+        for(int i=0; i<slots.Count; i++)
+        {
+            if (slots[i].item != null)
+            {
+                if (slots[i].item.itemName == invenSlot.item.itemName)
+                {
+                    slots[i].SetCount(invenSlot.itemCount);
+                    return;
+                }
+            }
+        }
+    }
+
+    // 메인 슬롯의 _item을 모두 제거
+    public void ClearSlot(Item _item)
     {
         for(int i=0; i<9; i++)
         {
@@ -35,6 +65,7 @@ public class UI_PlayerInfo : UI_Scene
         }
     }
 
+    // 1~9의 슬롯 초기화
     void SlotReset()
     {
         GameObject parentSlot = Get<GameObject>((int)GameObjects.UsingSlot);

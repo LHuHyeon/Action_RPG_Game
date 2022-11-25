@@ -98,6 +98,7 @@ public class PlayerController : BaseController
 
     private void MouseEvent(Define.MouseEvent evt)
     {
-        playerAnim.OnAttack();
+        if (evt == Define.MouseEvent.LeftDown)
+            playerAnim.OnAttack();
     }
 }

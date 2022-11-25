@@ -654,6 +654,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1657972115}
     m_Modifications:
+    - target: {fileID: 2790109484127646629, guid: 18baf2868848b5f43b6ab6f88e5f18c9, type: 3}
+      propertyPath: itemCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6168129241292417680, guid: 18baf2868848b5f43b6ab6f88e5f18c9, type: 3}
       propertyPath: m_Name
       value: Onigiri
@@ -1109,7 +1113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6896393438113544321, guid: 998e8244aa179fb438be40b50ae70571, type: 3}
       propertyPath: itemCount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 998e8244aa179fb438be40b50ae70571, type: 3}
