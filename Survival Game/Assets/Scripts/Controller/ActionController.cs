@@ -12,11 +12,24 @@ public class ActionController : MonoBehaviour
                 currentSlot.currentEffect.SetActive(false);
 
             currentSlot = value;
-
             currentSlot.currentEffect.SetActive(true);
+
+            if (currentSlot.item != null)
+            {
+                if (currentSlot.item.itemType == Item.ItemType.Equipment)   // 무기 체크
+                {
+                    Managers.Weapon.EquipWeapon(currentSlot.item);
+                    playerAnim.State = Define.WeaponState.Sword;
+                }
+                else
+                    playerAnim.State = Define.WeaponState.Hand;
+            }
+            else
+                playerAnim.State = Define.WeaponState.Hand;
         }
     }
     
+    PlayerAnimator playerAnim;
     List<UI_BaseSlot> slots;
 
     [SerializeField]
@@ -28,6 +41,8 @@ public class ActionController : MonoBehaviour
 
         Managers.Input.MouseAction -= UsingSlot;
         Managers.Input.MouseAction += UsingSlot;
+
+        playerAnim = GetComponent<PlayerAnimator>();
     }
 
     // Start 보다 늦게 Start 되는 오브젝트를 위해 딜레이를 준다.
@@ -43,10 +58,14 @@ public class ActionController : MonoBehaviour
         TargetCheck();
     }
 
+    // 슬롯의 아이템 사용
     void UsingSlot(Define.MouseEvent evt)
     {
-        if (evt == Define.MouseEvent.RightDown)
-            Managers.Game.baseInventory.UsingItem(currentSlot.item);
+        if (currentSlot.item != null && evt == Define.MouseEvent.RightDown)
+        {
+            if (currentSlot.item.itemType == Item.ItemType.Used)
+                Managers.Game.baseInventory.UsingItem(currentSlot.item);
+        }
     }
 
     // 슬롯 선택
@@ -87,6 +106,9 @@ public class ActionController : MonoBehaviour
                 {
                     Managers.Game.baseInventory.AcquireItem(_item.item, _item.itemCount);
                     Destroy(hitCollider[i].gameObject);
+                    
+                    CurrentSlot = currentSlot;  // 현재 슬롯 선택
+
                     return;
                 }
             }

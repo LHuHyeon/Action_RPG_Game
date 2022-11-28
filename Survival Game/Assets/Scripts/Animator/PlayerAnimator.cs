@@ -6,6 +6,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     Animator anim;
     PlayerController playerObj;
+    ActionController playerAction;
 
     private Define.WeaponState checkWeapon; // 같은 무기를 또 들려고 하는지 체크
     
@@ -13,7 +14,6 @@ public class PlayerAnimator : MonoBehaviour
     bool onAttack = false;      // 공격 여부
     float attackTime;           // 공격 시간
     float animTime = 0.81f;     // 최대 공격 시간
-    // float attackDelay = -0.3f;  // 공격 타이밍
 
     private Define.WeaponState _state = Define.WeaponState.Hand;
     public Define.WeaponState State
@@ -32,12 +32,10 @@ public class PlayerAnimator : MonoBehaviour
                 case Define.WeaponState.Hand:
                     anim.SetTrigger("OnHand");
                     animTime = 0.81f;
-                    // attackDelay = -0.3f;
                     break;
                 case Define.WeaponState.Sword:
                     anim.SetTrigger("OnSword");
                     animTime = 1.2f;
-                    // attackDelay = -0.65f;
                     break;
             }
 
@@ -49,6 +47,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         playerObj = transform.parent.GetComponent<PlayerController>();
+        playerAction = GetComponent<ActionController>();
     }
     
     void Update()
@@ -119,7 +118,10 @@ public class PlayerAnimator : MonoBehaviour
     public void OnChangeEvent()
     {
         if (State == Define.WeaponState.Hand)
+        {
             Managers.Weapon.currentWeapon.SetActive(false);
+            Managers.Weapon.currentWeapon = null;
+        }
         else if (State == Define.WeaponState.Sword)
             Managers.Weapon.currentWeapon.SetActive(true);
     }
@@ -130,6 +132,7 @@ public class PlayerAnimator : MonoBehaviour
         Managers.Weapon.attackCollistion.SetActive(true);
     }
 
+    // 공격이 끝나면
     public void ExitAttack()
     {
         anim.ResetTrigger("OnAttack");

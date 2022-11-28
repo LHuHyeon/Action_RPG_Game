@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
+    public List<GameObject> weaponList = new List<GameObject>();
+
     public Transform playerBody { get; private set; }   // 플레이어 몸통
     Transform cameraArm;        // 카메라 회전 중심 객체
-
-    [SerializeField]
-    Transform weaponPos;        // 무기 장착 위치
-
-    [SerializeField]
-    private GameObject currentWeapon;   // 현재 무기
 
     Vector2 moveInput;           // 이동 키 입력 확인
 
@@ -24,25 +20,22 @@ public class PlayerController : BaseController
     {
         WorldObjectType = Define.WorldObject.Player;
 
-        playerBody = Util.FindChild<Transform>(gameObject, "Charector");
-        cameraArm = Util.FindChild<Transform>(gameObject, "CameraArm");
+        playerBody = Util.FindChild<Transform>(gameObject, "Charector");    // 캐릭터 오브젝트
+        cameraArm = Util.FindChild<Transform>(gameObject, "CameraArm");     // 카메라 오브젝트
 
-        playerAnim = playerBody.GetComponent<PlayerAnimator>();
-        _stat = GetComponent<PlayerStat>();
+        playerAnim = playerBody.GetComponent<PlayerAnimator>();             // 캐릭터 애니메이션
+        _stat = GetComponent<PlayerStat>();                                 // 스탯
         
-        // weapon 매니저에게 공격범위 지정시키기 ( TODO : 플레이어 말고 다른데서 주기 )
+        // weapon 매니저에게 공격범위 지정시키기
         Managers.Weapon.attackCollistion = Util.FindChild(gameObject, "AttackCollistion");
-        Managers.Weapon.currentWeapon = currentWeapon;
         Managers.Game._player = gameObject;
 
         // 키 입력 관련 메소드 등록
         Managers.Input.KeyAction -= () => {
             KeyboradEvent();
-            SlotChange();
         };
         Managers.Input.KeyAction += () => {
             KeyboradEvent();
-            SlotChange();
         };
 
         // 마우스 입력 관련 메소드 등록
@@ -50,6 +43,7 @@ public class PlayerController : BaseController
         Managers.Input.MouseAction += MouseEvent;
     }
 
+    // 움직임
     protected override void UpdateMoving()
     {
         Vector3 lookForward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
@@ -58,19 +52,6 @@ public class PlayerController : BaseController
 
         playerBody.forward = lookForward;
         transform.position += moveDir.normalized * Time.deltaTime * _stat.MoveSpeed;
-    }
-
-    // 무기 체인지
-    private void SlotChange()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            playerAnim.State = Define.WeaponState.Hand;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            playerAnim.State = Define.WeaponState.Sword;
-        }
     }
 
     // 키 입력
