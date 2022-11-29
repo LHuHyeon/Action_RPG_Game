@@ -50,7 +50,8 @@ public class PlayerStat : Stat
 
         SetStat(_level);
     }
-
+    
+    // 스텟 새로 설정
     public void SetStat(int level)
     {
         Dictionary<int, Data.Stat> dict = Managers.Data.StatDict;
@@ -58,6 +59,8 @@ public class PlayerStat : Stat
 
         _hp = stat.maxHp;
         _maxHp = stat.maxHp;
+        _sp = stat.maxSp;
+        _maxSp = stat.maxSp;
         _attack = stat.attack;
     }
 

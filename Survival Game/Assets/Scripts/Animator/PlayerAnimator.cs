@@ -81,6 +81,27 @@ public class PlayerAnimator : MonoBehaviour
         hasAttack = true;
     }
 
+    // 구르기가 끝났을 때 (Event)
+    public void ExitDiveRoll()
+    {
+        anim.SetBool("HasRoll", false);
+
+        if (_state == Define.WeaponState.Hand)
+            anim.SetTrigger("OnRollHand");
+        else if (_state == Define.WeaponState.Sword)
+            anim.SetTrigger("OnRollSword");
+        
+        Managers.Game.isDiveRoll = false;
+        playerObj.GetComponent<PlayerStat>().AddSpeed = 0;
+    }
+
+    // 트리거가 계속 켜지는 것을 방지 (Event)
+    public void ExitDiveTrigger()
+    {
+        anim.ResetTrigger("OnRollHand");
+        anim.ResetTrigger("OnRollSword");
+    }
+
     // 블랜드 트리는 모두 같은 Moving 파라메터를 가지고 있음.
     public void OnAnimMoving(float horizontal, float vertical)
     {
@@ -104,7 +125,6 @@ public class PlayerAnimator : MonoBehaviour
 
             if (!onAttack)
             {
-                Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
                 playerObj.stopMoving = true;
                 anim.SetTrigger("OnAttack");
                 
@@ -112,27 +132,42 @@ public class PlayerAnimator : MonoBehaviour
                 onAttack = true;
             }
         }
+        // -----------------------------------------------------------------------
+        // 1. 마우스 클릭 시 SetTrigger은 한번만 눌러지도록 만들기
+        // 2. 으아ㅏ엉렬우렁ㄹ
+
+        if (!onAttack)
+        {
+            anim.SetTrigger("OnAttack");
+            onAttack = true;
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack") &&
+            anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+        {
+            
+        }
     }
 
-    // 무기 체인지 애니메이션 이벤트
+    // 무기 체인지 애니메이션 이벤트 (Event)
     public void OnChangeEvent()
     {
         if (State == Define.WeaponState.Hand)
         {
-            Managers.Weapon.currentWeapon.SetActive(false);
-            Managers.Weapon.currentWeapon = null;
+            Managers.Weapon.currentWeapon.SetActive(false);     // 무기 비활성화
+            Managers.Weapon.currentWeapon = null;               // 들고 있는 무기 초기화
         }
         else if (State == Define.WeaponState.Sword)
-            Managers.Weapon.currentWeapon.SetActive(true);
+            Managers.Weapon.currentWeapon.SetActive(true);      // 무기 활성화
     }
 
-    // 공격 시 충돌 여부 체크하는 애니메이션 이벤트
+    // 공격 시 충돌 여부 체크하는 애니메이션 이벤트 (Event)
     public void OnAttackCollistion()
     {
         Managers.Weapon.attackCollistion.SetActive(true);
     }
 
-    // 공격이 끝나면
+    // 공격이 끝나면 (Event)
     public void ExitAttack()
     {
         anim.ResetTrigger("OnAttack");

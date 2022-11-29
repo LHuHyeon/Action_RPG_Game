@@ -6,17 +6,38 @@ public class Stat : MonoBehaviour
 {
     [SerializeField] protected int _level;
     [SerializeField] protected int _hp;
+    [SerializeField] protected int _sp;
     [SerializeField] protected int _maxHp;
+    [SerializeField] protected int _maxSp;
     [SerializeField] protected int _attack;
     [SerializeField] protected int _defense;
     [SerializeField] protected float _movespeed;
+    [SerializeField] protected float _addspeed;
 
     public int Level { get { return _level; } set { _level = value; } }
     public int Hp { get { return _hp; } set { _hp = value; } }
+    public int Sp { get { return _sp; } set { _sp = value; } }
     public int MaxHp { get { return _maxHp; } set { _maxHp = value; } }
+    public int MaxSp { get { return _maxSp; } set { _maxSp = value; } }
     public int Attack { get { return _attack; } set { _attack = value; } }
     public int Defense { get { return _defense; } set { _defense = value; } }
     public float MoveSpeed { get { return _movespeed; } set { _movespeed = value; } }
+    
+    float tempSpeed;
+    public float AddSpeed {
+        get { return _addspeed; }
+        set {
+            _addspeed = value;
+
+            if (_addspeed == 0)
+                _movespeed = tempSpeed;
+            else
+            {
+                tempSpeed = _movespeed;
+                _movespeed = _movespeed + _addspeed;
+            }
+        }
+    }
 
     void Start()
     {
@@ -26,6 +47,7 @@ public class Stat : MonoBehaviour
         _attack = 10;
         _defense = 5;
         _movespeed = 2.0f;
+        tempSpeed = _movespeed;
     }
 
     // 공격을 받았을 때

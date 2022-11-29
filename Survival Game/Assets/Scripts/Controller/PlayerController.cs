@@ -16,6 +16,9 @@ public class PlayerController : BaseController
 
     public bool stopMoving = false;
 
+    float maxCurrentTime = 2f;      // 스테미나 재생 대기 시간
+    float currentTime = 0f;         // 스테미나 재생 가능 시간 체크
+
     public override void Init()
     {
         WorldObjectType = Define.WorldObject.Player;
@@ -32,10 +35,15 @@ public class PlayerController : BaseController
 
         // 키 입력 관련 메소드 등록
         Managers.Input.KeyAction -= () => {
+            DiveRoll();
             KeyboradEvent();
+            // ↓ 키 입력 메소드가 아니지만 업데이트가 필요한 메소드기 때문에 임시 방편으로 나둠
+            Stamina();
         };
         Managers.Input.KeyAction += () => {
+            DiveRoll();
             KeyboradEvent();
+            Stamina();
         };
 
         // 마우스 입력 관련 메소드 등록
@@ -54,9 +62,50 @@ public class PlayerController : BaseController
         transform.position += moveDir.normalized * Time.deltaTime * _stat.MoveSpeed;
     }
 
+    // 스테미나 재생
+    private void Stamina()
+    {
+        if (_stat.Sp < _stat.MaxSp)
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime >= maxCurrentTime)
+            {
+                _stat.Sp += 1;
+                if (_stat.Sp == _stat.MaxSp)
+                {
+                    _stat.Sp = _stat.MaxSp;
+                }
+            }
+        }
+        if (_stat.Sp < 0)
+            _stat.Sp = 0;
+    }
+
+    // 스테미나 +/-
+    public void SetStamina(int value)
+    {
+        _stat.Sp += value;
+        currentTime = 0f;
+    }
+
+    // 구르기
+    private void DiveRoll()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !Managers.Game.isDiveRoll && _stat.Sp >= 30)
+        {
+            Managers.Game.isDiveRoll = true;
+            playerAnim.GetComponent<Animator>().SetBool("HasRoll", true);
+            _stat.AddSpeed = 2f;
+            SetStamina(-30);
+        }
+    }
+
     // 키 입력
     private void KeyboradEvent()
     {
+        if (Managers.Game.isDiveRoll)
+            return;
+
         if (stopMoving)
         {
             State = Define.State.Idle;
@@ -79,7 +128,9 @@ public class PlayerController : BaseController
 
     private void MouseEvent(Define.MouseEvent evt)
     {
-        if (evt == Define.MouseEvent.LeftDown)
+        if (!Managers.Game.isDiveRoll && evt == Define.MouseEvent.LeftDown && _stat.Sp >= 10)
+        {
             playerAnim.OnAttack();
+        }
     }
 }

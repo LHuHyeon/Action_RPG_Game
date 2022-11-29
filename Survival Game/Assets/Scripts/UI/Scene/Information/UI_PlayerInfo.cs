@@ -1,26 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_PlayerInfo : UI_Scene
 {
-    // TODO : 체력, 마나 관리 예정
+    // TODO : 체력, 스테미너 관리 예정
     // 1~9 아이템 관리 UI
     List<UI_BaseSlot> slots;    // BaseSlot(메인 슬롯) 저장
+    PlayerStat _stat;
 
     public List<UI_BaseSlot> GetSlot() { return slots; }
     
     enum GameObjects
     {
         UsingSlot,
+        HPBar,
+        SPBar,
     }
 
     public override void Init()
     {
         slots = new List<UI_BaseSlot>();
+        _stat = Managers.Game._player.GetComponent<PlayerStat>();
 
         Bind<GameObject>(typeof(GameObjects));
         SlotReset();
+    }
+
+    void Update()
+    {
+        float ratioHP = (float)_stat.Hp / _stat.MaxHp;
+        float ratioSP = (float)_stat.Sp / _stat.MaxSp;
+        GetObject((int)GameObjects.HPBar).GetComponent<Slider>().value = ratioHP;
+        GetObject((int)GameObjects.SPBar).GetComponent<Slider>().value = ratioSP;
     }
 
     // 메인 슬롯 아이템 등록

@@ -11,6 +11,7 @@ public class GameManager
 
     public UI_Inven baseInventory;      // 인벤토리 관리
     public bool isInventory = false;    // 인벤토리 비활성화/활성화 여부
+    public bool isDiveRoll = false;     // 현재 구르기 중인가?
     
     HashSet<GameObject> _monsters = new HashSet<GameObject>();
 
