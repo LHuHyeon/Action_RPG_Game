@@ -43,6 +43,8 @@ public class UI_BaseSlot : UI_Base
                 if (item != null && !EventSystem.current.IsPointerOverGameObject())
                     ClearSlot();
 
+                Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
+
                 // 들고 있는 임시 아이템 초기화
                 UI_DragSlot.instance.SetColor(0);
                 UI_DragSlot.instance.baseSlot = null;

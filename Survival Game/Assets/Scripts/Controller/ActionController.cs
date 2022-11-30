@@ -58,6 +58,12 @@ public class ActionController : MonoBehaviour
         TargetCheck();
     }
 
+    // 현재 슬롯 다시 들기
+    public void TakeUpSlot()
+    {
+        CurrentSlot = currentSlot;
+    }
+
     // 슬롯의 아이템 사용
     void UsingSlot(Define.MouseEvent evt)
     {
@@ -107,7 +113,7 @@ public class ActionController : MonoBehaviour
                     Managers.Game.baseInventory.AcquireItem(_item.item, _item.itemCount);
                     Destroy(hitCollider[i].gameObject);
                     
-                    CurrentSlot = currentSlot;  // 현재 슬롯 선택
+                    TakeUpSlot(); // 현재 슬롯 선택
 
                     return;
                 }

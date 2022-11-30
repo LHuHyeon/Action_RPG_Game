@@ -44,8 +44,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemEffects:
-  - itemName: Apple
+  - itemName: "\uC0AC\uACFC"
+    part:
+    - HP
+    num: 14000000
+  - itemName: "\uBE68\uAC04\uBB3C\uC57D"
+    part:
+    - HP
+    num: 32000000
+  - itemName: "\uD30C\uB780\uBB3C\uC57D"
+    part:
+    - SPEED
+    num: 01000000
+  - itemName: "\uC0BC\uAC01\uAE40\uBC25"
+    part:
+    - HP
+    num: 28000000
+  - itemName: "\uD584"
     part:
     - ATTACK
-    num: 0a000000
+    num: 05000000
   playerStat: {fileID: 0}

@@ -19,12 +19,19 @@ public class UI_PlayerInfo : UI_Scene
         SPBar,
     }
 
+    enum Texts
+    {
+        HP_Text,
+        SP_Text,
+    }
+
     public override void Init()
     {
         slots = new List<UI_BaseSlot>();
         _stat = Managers.Game._player.GetComponent<PlayerStat>();
 
         Bind<GameObject>(typeof(GameObjects));
+        Bind<Text>(typeof(Texts));
         SlotReset();
     }
 
@@ -32,8 +39,14 @@ public class UI_PlayerInfo : UI_Scene
     {
         float ratioHP = (float)_stat.Hp / _stat.MaxHp;
         float ratioSP = (float)_stat.Sp / _stat.MaxSp;
+
+        // 체력, 스테미나 게이지
         GetObject((int)GameObjects.HPBar).GetComponent<Slider>().value = ratioHP;
         GetObject((int)GameObjects.SPBar).GetComponent<Slider>().value = ratioSP;
+
+        // 체력, 스테미나 텍스트
+        GetText((int)Texts.HP_Text).text = _stat.Hp + " / " + _stat.MaxHp;
+        GetText((int)Texts.SP_Text).text = _stat.Sp + " / " + _stat.MaxSp;
     }
 
     // 메인 슬롯 아이템 등록

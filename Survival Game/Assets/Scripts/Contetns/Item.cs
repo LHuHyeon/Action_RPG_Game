@@ -16,6 +16,7 @@ public class Item : ScriptableObject
     public string itemName;         // 이름
     public ItemType itemType;       // 아이템 타입
     public int itemCoin;            // 코인
+    public int damage=0;         // 데미지
     public Sprite itemImage;        // 이미지
     public GameObject itemPrefab;   // 프리팹
 

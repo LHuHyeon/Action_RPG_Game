@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public float y_Value;
+    Transform playerPos;
+
+    void Start()
+    {
+        playerPos = transform.root.GetChild(1);
+    }
+
     void Update()
     {
         if (!Managers.Game.isInventory)
@@ -22,6 +30,7 @@ public class CameraController : MonoBehaviour
         else
             x = Mathf.Clamp(x, 335f, 361f);
 
+        transform.position = playerPos.position + Vector3.up*y_Value;
         transform.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
     }
 }

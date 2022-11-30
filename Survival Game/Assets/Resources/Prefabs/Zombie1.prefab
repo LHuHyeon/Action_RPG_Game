@@ -2324,7 +2324,6 @@ MonoBehaviour:
   _state: 1
   _scanRange: 10
   _attackRange: 1
-  _destPos: {x: 0, y: 0, z: 0}
   _lockTarget: {fileID: 0}
 --- !u!114 &8296172668809734597
 MonoBehaviour:
@@ -2340,10 +2339,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _hp: 0
+  _sp: 0
   _maxHp: 0
+  _maxSp: 0
   _attack: 0
   _defense: 0
   _movespeed: 0
+  _addspeed: 0
 --- !u!1 &7356886941181622690
 GameObject:
   m_ObjectHideFlags: 0

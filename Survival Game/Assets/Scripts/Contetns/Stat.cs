@@ -51,9 +51,9 @@ public class Stat : MonoBehaviour
     }
 
     // 공격을 받았을 때
-    public virtual void OnAttacked(Stat attacker)
+    public virtual void OnAttacked(Stat attacker, int addDamage=0)
     {
-        int damage = Mathf.Max(0, attacker.Attack - Defense);
+        int damage = Mathf.Max(0, (attacker.Attack + addDamage) - Defense);
         Hp -= damage;
 
         if (Hp <= 0){

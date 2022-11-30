@@ -6,7 +6,6 @@ public class PlayerController : BaseController
 {
     public List<GameObject> weaponList = new List<GameObject>();
 
-    public Transform playerBody { get; private set; }   // 플레이어 몸통
     Transform cameraArm;        // 카메라 회전 중심 객체
 
     Vector2 moveInput;           // 이동 키 입력 확인
@@ -22,26 +21,23 @@ public class PlayerController : BaseController
     public override void Init()
     {
         WorldObjectType = Define.WorldObject.Player;
-
-        playerBody = Util.FindChild<Transform>(gameObject, "Charector");    // 캐릭터 오브젝트
-        cameraArm = Util.FindChild<Transform>(gameObject, "CameraArm");     // 카메라 오브젝트
-
-        playerAnim = playerBody.GetComponent<PlayerAnimator>();             // 캐릭터 애니메이션
-        _stat = GetComponent<PlayerStat>();                                 // 스탯
-        
-        // weapon 매니저에게 공격범위 지정시키기
-        Managers.Weapon.attackCollistion = Util.FindChild(gameObject, "AttackCollistion");
         Managers.Game._player = gameObject;
 
+        // weapon 매니저에게 공격범위 지정시키기
+        Managers.Weapon.attackCollistion = Util.FindChild(gameObject, "AttackCollistion");
+
+        // 카메라 오브젝트
+        cameraArm = Util.FindChild<Transform>(transform.root.gameObject, "CameraArm");
+
+        playerAnim = GetComponent<PlayerAnimator>();  // 캐릭터 애니메이션
+        _stat = GetComponent<PlayerStat>();           // 스탯
+        
         // 키 입력 관련 메소드 등록
         Managers.Input.KeyAction -= () => {
-            DiveRoll();
             KeyboradEvent();
-            // ↓ 키 입력 메소드가 아니지만 업데이트가 필요한 메소드기 때문에 임시 방편으로 나둠
             Stamina();
         };
         Managers.Input.KeyAction += () => {
-            DiveRoll();
             KeyboradEvent();
             Stamina();
         };
@@ -58,7 +54,7 @@ public class PlayerController : BaseController
         Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
         Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
 
-        playerBody.forward = lookForward;
+        transform.forward = lookForward;
         transform.position += moveDir.normalized * Time.deltaTime * _stat.MoveSpeed;
     }
 
@@ -88,30 +84,24 @@ public class PlayerController : BaseController
         currentTime = 0f;
     }
 
-    // 구르기
+    // 구르기 메소드
     private void DiveRoll()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !Managers.Game.isDiveRoll && _stat.Sp >= 30)
         {
-            Managers.Game.isDiveRoll = true;
-            playerAnim.GetComponent<Animator>().SetBool("HasRoll", true);
-            _stat.AddSpeed = 2f;
-            SetStamina(-30);
+            if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("DiveRoll"))
+            {
+                Managers.Game.isDiveRoll = true;
+                GetComponent<Animator>().SetBool("HasRoll", true);
+                SetStamina(-30);
+                _stat.AddSpeed = 2f;
+            }
         }
     }
 
-    // 키 입력
-    private void KeyboradEvent()
+    // w, a, s, d 움직임 메소드
+    private void Moving()
     {
-        if (Managers.Game.isDiveRoll)
-            return;
-
-        if (stopMoving)
-        {
-            State = Define.State.Idle;
-            return;
-        }
-
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical   = Input.GetAxisRaw("Vertical");
 
@@ -126,6 +116,25 @@ public class PlayerController : BaseController
             State = Define.State.Idle;
     }
 
+    // 키 입력
+    private void KeyboradEvent()
+    {
+        // 구르기 중인가?
+        if (Managers.Game.isDiveRoll)
+            return;
+
+        // 멈추기
+        if (stopMoving)
+        {
+            State = Define.State.Idle;
+            return;
+        }
+
+        DiveRoll();
+        Moving();
+    }
+
+    // 마우스 입력
     private void MouseEvent(Define.MouseEvent evt)
     {
         if (!Managers.Game.isDiveRoll && evt == Define.MouseEvent.LeftDown && _stat.Sp >= 10)

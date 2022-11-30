@@ -17,7 +17,7 @@ public class ItemPickUp : MonoBehaviour
     void Update()
     {
         // 주변 플레이어 확인 후 이름 활성화
-        Vector3 playerPos = Managers.Game._player.GetComponent<PlayerController>().playerBody.position;
+        Vector3 playerPos = Managers.Game._player.transform.position;
         float distance = Vector3.Distance(transform.position, playerPos);
         
         if (distance >= 3f)

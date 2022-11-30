@@ -66,6 +66,8 @@ public class UI_Inven_Item : UI_Base
                 }
             }
 
+            Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
+
             // 들고 있는 임시 아이템 초기화
             UI_DragSlot.instance.SetColor(0);
             UI_DragSlot.instance.dragSlot = null;
