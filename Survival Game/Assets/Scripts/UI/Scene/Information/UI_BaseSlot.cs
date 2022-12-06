@@ -11,6 +11,7 @@ public class UI_BaseSlot : UI_Base
     public Text itemCountText;  // UI 개수
     public int itemCount;       // 아이템 개수
     public GameObject currentEffect;    // 플레이어가 들고 있다면
+    public Text slotNumber;
 
     public override void Init()
     {

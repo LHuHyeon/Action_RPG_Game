@@ -15,8 +15,22 @@ public class Stat : MonoBehaviour
     [SerializeField] protected float _addspeed;
 
     public int Level { get { return _level; } set { _level = value; } }
-    public int Hp { get { return _hp; } set { _hp = value; } }
-    public int Sp { get { return _sp; } set { _sp = value; } }
+    public int Hp {
+        get { return _hp; }
+        set {
+            _hp = value;
+            if (_hp > _maxHp)
+                _hp = _maxHp;
+        }
+    }
+    public int Sp {
+        get { return _sp; }
+        set {
+            _sp = value;
+            if (_sp > _maxSp)
+                _sp = _maxSp;
+        }
+    }
     public int MaxHp { get { return _maxHp; } set { _maxHp = value; } }
     public int MaxSp { get { return _maxSp; } set { _maxSp = value; } }
     public int Attack { get { return _attack; } set { _attack = value; } }
@@ -24,7 +38,7 @@ public class Stat : MonoBehaviour
     public float MoveSpeed { get { return _movespeed; } set { _movespeed = value; } }
     
     float tempSpeed;
-    public float AddSpeed {
+    public float AddSpeed { // 추가 속도 증가
         get { return _addspeed; }
         set {
             _addspeed = value;

@@ -8,6 +8,7 @@ public class WeaponManager
     public GameObject weaponActive;        // 현재 무기 오브젝트 (활성화/비활성화 용도)
     public Item currentWeapon;             // 현재 무기 아이템
     public GameObject attackCollistion;    // 공격 시 충돌처리 해줄 객체
+    public TrailRenderer weaponEffect;     // 무기 이팩트
 
     // 무기 장착
     public void EquipWeapon(Item _item)
@@ -21,6 +22,7 @@ public class WeaponManager
             if (_item.itemName == Managers.Game._player.GetComponent<PlayerController>().weaponList[i].name)
             {
                 weaponActive = Managers.Game._player.GetComponent<PlayerController>().weaponList[i];
+                weaponEffect = weaponActive.GetComponentInChildren<TrailRenderer>();
                 return;
             }
         }

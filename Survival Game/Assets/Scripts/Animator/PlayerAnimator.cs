@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    public float maxAnimTime;   // 0.91f
+    public float maxAnimTime;       // 최대 공격 애니메이션 시간 
+    public float animTime = 0.9f;   // 애니메이션 공격 시간
 
     Animator anim;
     PlayerController playerObj;
@@ -14,7 +15,6 @@ public class PlayerAnimator : MonoBehaviour
     
     bool onAttack = false;      // 공격 여부
     float attackTime;           // 공격 시간
-    float animTime;             // 최대 공격 시간
 
     private Define.WeaponState _state = Define.WeaponState.Hand;
     public Define.WeaponState State
@@ -60,7 +60,7 @@ public class PlayerAnimator : MonoBehaviour
             if (attackTime > animTime)
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack") &&
-                    anim.GetCurrentAnimatorStateInfo(0).normalizedTime > maxAnimTime)
+                    anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= maxAnimTime)
                 {
                     // 공격 중단
                     anim.ResetTrigger("OnAttack");
@@ -68,6 +68,7 @@ public class PlayerAnimator : MonoBehaviour
                     onAttack = false;
                     playerObj.stopMoving = false;
                 }
+                Managers.Weapon.weaponEffect.enabled = false;
             }
         }
     }
@@ -106,7 +107,7 @@ public class PlayerAnimator : MonoBehaviour
         // 0.5f ~ maxAnimTime 사이에 공격키를 누를 시 공격 가능
         if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack") &&
             anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= maxAnimTime &&
-            anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f && onAttack)
         {
             onAttack = false;
         }
@@ -119,8 +120,9 @@ public class PlayerAnimator : MonoBehaviour
 
             onAttack = true;
 
-            animTime = anim.GetCurrentAnimatorStateInfo(0).length;
             attackTime = 0;
+
+            Managers.Weapon.weaponEffect.enabled = true;
         }
     }
 

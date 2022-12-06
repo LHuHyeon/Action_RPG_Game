@@ -16,7 +16,7 @@ public class ItemEffectDatabase : MonoBehaviour
     [SerializeField]
     private ItemEffect[] itemEffects;
 
-    private const string HP = "HP", ATTACK = "ATTACK", DEFENSE = "DEFENSE", SPEED = "SPEED";
+    private const string HP = "HP", SP = "SP", ATTACK = "ATTACK", DEFENSE = "DEFENSE", SPEED = "SPEED";
 
     [SerializeField]
     private PlayerStat playerStat;
@@ -61,5 +61,35 @@ public class ItemEffectDatabase : MonoBehaviour
             }
             Debug.Log("itemEffectDatabase에 일치하는 itemName이 없습니다.");
         }
+    }
+
+    // 아이템 스탯 확인
+    public string GetStat(Item _item)
+    {
+        if (_item.itemType == Item.ItemType.Used)
+        {
+            for (int i = 0; i < itemEffects.Length; i++)
+            {
+                if (itemEffects[i].itemName == _item.itemName)
+                {
+                    switch(itemEffects[i].part[0])
+                    {
+                        case HP:
+                            return $"{itemEffects[i].part[0]} {itemEffects[i].num[0]} 회복";
+                        case SP:
+                            return $"{itemEffects[i].part[0]} {itemEffects[i].num[0]} 회복";
+                        case ATTACK:
+                            return $"공격력 {itemEffects[i].num[0]} 증가";
+                        case DEFENSE:
+                            return $"방어력 {itemEffects[i].num[0]} 증가";
+                        case SPEED:
+                            return $"이동속도 {itemEffects[i].num[0]} 증가";
+                        default:
+                            return null;
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

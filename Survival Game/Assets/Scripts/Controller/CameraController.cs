@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour
     {
         if (!Managers.Game.isInventory)
             CameraLookAround();
+        
+        transform.position = playerPos.position + Vector3.up*y_Value;
     }
 
     // TPS형 카메라 조작
@@ -30,7 +32,6 @@ public class CameraController : MonoBehaviour
         else
             x = Mathf.Clamp(x, 335f, 361f);
 
-        transform.position = playerPos.position + Vector3.up*y_Value;
         transform.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
     }
 }

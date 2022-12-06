@@ -102,6 +102,9 @@ public class UI_PlayerInfo : UI_Scene
 
         // 실제 인벤토리 정보를 참고해서 자식을 다시 채움
         for(int i=0; i<9; i++)
+        {
             slots.Add(Managers.UI.MakeSubItem<UI_BaseSlot>(parent: parentSlot.transform, name: "ItemSlot"));
+            slots[i].slotNumber.text = (i+1).ToString();
+        }
     }
 }

@@ -10,6 +10,7 @@ public class GameScene : BaseScene
 
         Managers.Game.baseInventory = Managers.UI.ShowSceneUI<UI_Inven>();
         Managers.Game.playerInfo = Managers.UI.ShowSceneUI<UI_PlayerInfo>("UI_Info");
+        Managers.Game.itemDatabase = GameObject.Find("ItemEffectDatabase").GetComponent<ItemEffectDatabase>();
     }
 
     public override void Clear()
