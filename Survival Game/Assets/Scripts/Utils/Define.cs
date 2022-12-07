@@ -18,6 +18,7 @@ public class Define : MonoBehaviour
     {
         Hand,
         Sword,
+        Gun,
     }
 
     public enum WorldObject

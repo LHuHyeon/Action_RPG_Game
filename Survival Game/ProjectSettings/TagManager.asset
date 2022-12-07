@@ -8,6 +8,8 @@ TagManager:
   - Weapon
   - Monster
   - Item
+  - Sword
+  - Gun
   layers:
   - Default
   - TransparentFX

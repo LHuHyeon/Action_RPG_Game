@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5526825874468031560}
   m_Layer: 0
   m_Name: "\uC591\uC190\uAC80"
-  m_TagString: Weapon
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

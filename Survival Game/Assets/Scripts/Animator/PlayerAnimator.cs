@@ -36,6 +36,9 @@ public class PlayerAnimator : MonoBehaviour
                 case Define.WeaponState.Sword:
                     anim.SetTrigger("OnSword");
                     break;
+                case Define.WeaponState.Gun:
+                    anim.SetTrigger("OnGun");
+                    break;
             }
 
             checkWeapon = _state;
@@ -68,7 +71,7 @@ public class PlayerAnimator : MonoBehaviour
                     onAttack = false;
                     playerObj.stopMoving = false;
                 }
-                Managers.Weapon.weaponEffect.enabled = false;
+                Managers.Weapon.EnabledEffect(false);
             }
         }
     }
@@ -82,6 +85,8 @@ public class PlayerAnimator : MonoBehaviour
             anim.SetTrigger("OnRollHand");
         else if (_state == Define.WeaponState.Sword)
             anim.SetTrigger("OnRollSword");
+        else if (_state == Define.WeaponState.Gun)
+            anim.SetTrigger("OnRollGun");
         
         Managers.Game.isDiveRoll = false;
         playerObj.GetComponent<PlayerStat>().AddSpeed = 0;
@@ -92,6 +97,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         anim.ResetTrigger("OnRollHand");
         anim.ResetTrigger("OnRollSword");
+        anim.ResetTrigger("OnRollGun");
     }
 
     // 블랜드 트리는 모두 같은 Moving 파라메터를 가지고 있음.
@@ -122,7 +128,7 @@ public class PlayerAnimator : MonoBehaviour
 
             attackTime = 0;
 
-            Managers.Weapon.weaponEffect.enabled = true;
+            Managers.Weapon.EnabledEffect(true);
         }
     }
 
@@ -137,7 +143,7 @@ public class PlayerAnimator : MonoBehaviour
             Managers.Weapon.weaponActive.SetActive(false);     // 무기 비활성화
             Managers.Weapon.weaponActive = null;               // 들고 있는 무기 초기화
         }
-        else if (State == Define.WeaponState.Sword)
+        else if (State == Define.WeaponState.Sword || State == Define.WeaponState.Gun)
             Managers.Weapon.weaponActive.SetActive(true);      // 무기 활성화
     }
 

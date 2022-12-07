@@ -9,7 +9,9 @@ public class ActionController : MonoBehaviour
         get { return currentSlot; }
         set{
             if (currentSlot != null)
+            {
                 currentSlot.currentEffect.SetActive(false);
+            }
 
             currentSlot = value;
             currentSlot.currentEffect.SetActive(true);
@@ -18,8 +20,7 @@ public class ActionController : MonoBehaviour
             {
                 if (currentSlot.item.itemType == Item.ItemType.Equipment)   // 무기 체크
                 {
-                    Managers.Weapon.EquipWeapon(currentSlot.item);
-                    playerAnim.State = Define.WeaponState.Sword;
+                    playerAnim.State = Managers.Weapon.EquipWeapon(currentSlot.item);
                 }
                 else
                     playerAnim.State = Define.WeaponState.Hand;

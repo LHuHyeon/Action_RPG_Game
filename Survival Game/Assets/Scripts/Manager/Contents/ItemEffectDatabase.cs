@@ -66,6 +66,9 @@ public class ItemEffectDatabase : MonoBehaviour
     // 아이템 스탯 확인
     public string GetStat(Item _item)
     {
+        if (_item.itemType == Item.ItemType.Equipment)
+            return $"공격력 {_item.damage}";
+
         if (_item.itemType == Item.ItemType.Used)
         {
             for (int i = 0; i < itemEffects.Length; i++)
