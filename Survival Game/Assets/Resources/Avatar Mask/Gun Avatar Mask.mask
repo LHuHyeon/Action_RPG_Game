@@ -7,7 +7,7 @@ AvatarMask:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Gun Avatar Mask
-  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000000000000000000000000000000000000
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
@@ -324,9 +324,9 @@ AvatarMask:
   - m_Path: mesh_root/hairband
     m_Weight: 1
   - m_Path: mesh_root/Leg
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: mesh_root/Shirts
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: mesh_root/shirts_sode
     m_Weight: 1
   - m_Path: mesh_root/shirts_sode_BK
@@ -338,6 +338,6 @@ AvatarMask:
   - m_Path: mesh_root/tail_bottom
     m_Weight: 1
   - m_Path: mesh_root/uwagi
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: mesh_root/uwagi_BK
-    m_Weight: 1
+    m_Weight: 0

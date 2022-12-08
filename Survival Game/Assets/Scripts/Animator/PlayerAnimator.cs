@@ -132,6 +132,12 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
+    // 총 발사 애니메이션
+    public void OnShot()
+    {
+        anim.SetTrigger("OnShot");
+    }
+
     // 무기 체인지 애니메이션 이벤트 (Event)
     public void OnChangeEvent()
     {

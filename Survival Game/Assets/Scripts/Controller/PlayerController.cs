@@ -139,8 +139,11 @@ public class PlayerController : BaseController
     {
         if (!Managers.Game.isDiveRoll && evt == Define.MouseEvent.LeftDown && _stat.Sp >= 10)
         {
-            if (playerAnim.State != Define.WeaponState.Gun)
+            if (playerAnim.State == Define.WeaponState.Gun)
+                playerAnim.OnShot();
+            else
                 playerAnim.OnAttack();
+            
         }
     }
 }
