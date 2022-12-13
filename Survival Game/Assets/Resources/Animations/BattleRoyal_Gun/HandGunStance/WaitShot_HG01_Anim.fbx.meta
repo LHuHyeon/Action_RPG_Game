@@ -320,7 +320,7 @@ ModelImporter:
       name: ShootSingleshot_HG01
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
+      firstFrame: 14.9
       lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0

@@ -157,10 +157,10 @@ public class MonsterController : BaseController
     }
 
     // 공격 받았을 때
-    public void TakeDamage(Stat attacker, int addDamage=0)
+    public void TakeDamage(Stat attacker, int addDamage=0, bool isStat=true)
     {
         anim.SetTrigger("OnHit");
-        _stat.OnAttacked(attacker.GetComponent<Stat>(), addDamage);
+        _stat.OnAttacked(attacker, addDamage, isStat);
         StartCoroutine(DelayHit());
     }
 

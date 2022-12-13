@@ -54,7 +54,6 @@ public class PlayerController : BaseController
         Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
         Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
 
-        transform.forward = lookForward;
         transform.position += moveDir.normalized * Time.deltaTime * _stat.MoveSpeed;
     }
 
@@ -95,6 +94,10 @@ public class PlayerController : BaseController
                 GetComponent<Animator>().SetBool("HasRoll", true);
                 SetStamina(-30);
                 _stat.AddSpeed = 2f;
+
+                // 조준점 변화
+                if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
+                    Managers.Weapon.crossHair.DiveRollAnim(true);
             }
         }
     }
@@ -114,6 +117,12 @@ public class PlayerController : BaseController
             State = Define.State.Moving;
         else
             State = Define.State.Idle;
+
+        // 총을 들었을 때 움직임에 따른 조준점 변화
+        if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
+        {
+            Managers.Weapon.crossHair.MovingAnim(isMove);
+        }
     }
 
     // 키 입력
@@ -130,6 +139,9 @@ public class PlayerController : BaseController
             return;
         }
 
+        // 캐릭터의 방향은 카메라 기준
+        transform.forward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
+
         DiveRoll();
         Moving();
     }
@@ -143,7 +155,6 @@ public class PlayerController : BaseController
                 playerAnim.OnShot();
             else
                 playerAnim.OnAttack();
-            
         }
     }
 }

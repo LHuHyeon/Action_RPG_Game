@@ -67,10 +67,12 @@
      <Compile Include="Assets\Scripts\Controller\BaseController.cs" />
      <Compile Include="Assets\Scripts\Utils\Define.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\InputManager.cs" />
+     <Compile Include="Assets\Scripts\Controller\Gun\GunController.cs" />
      <Compile Include="Assets\Scripts\Contetns\ItemPickUp.cs" />
      <Compile Include="Assets\Scripts\Contetns\Stat.cs" />
      <Compile Include="Assets\Scripts\Controller\AttackCollistion.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Controller\Gun\Bullet.cs" />
      <Compile Include="Assets\Scripts\Manager\Managers.cs" />
      <Compile Include="Assets\Scripts\UI\UI_Base.cs" />
      <Compile Include="Assets\Scripts\UI\WorldSpace\UI_NameBar.cs" />
@@ -81,8 +83,7 @@
      <Compile Include="Assets\Resources\Art\Guns\Scripts\GunView.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\WeaponManager.cs" />
      <Compile Include="Assets\Scripts\Contetns\Item.cs" />
-     <Compile Include="Assets\Scripts\Controller\Gun\GunController.cs" />
-     <Compile Include="Assets\Scripts\Controller\Gun\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Animator\CrossHair.cs" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />

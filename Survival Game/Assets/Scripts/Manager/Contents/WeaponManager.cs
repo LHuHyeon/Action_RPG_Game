@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class WeaponManager
 {
+    public Define.WeaponState weaponState = Define.WeaponState.Hand;
+
     // 현재 들고있는 무기를 여기서 확인
     public GameObject weaponActive;        // 현재 무기 오브젝트 (활성화/비활성화 용도)
     public Item currentWeapon;             // 현재 무기 아이템
     public GameObject attackCollistion;    // 공격 시 충돌처리 해줄 객체
     public TrailRenderer weaponEffect;     // 무기 이팩트
 
+    public CrossHair crossHair;            // 크로스 헤어 애니메이션
+
+    List<GameObject> weaponList;
+
     // 무기 오브젝트 장착
     public Define.WeaponState EquipWeapon(Item _item)
     {
-        List<GameObject> weaponList = Managers.Game._player.GetComponent<PlayerController>().weaponList;
+        weaponList = Managers.Game._player.GetComponent<PlayerController>().weaponList;
         int count = weaponList.Count;
 
         // 모든 무기 비활성화 ( 무기 교체 시 다시 활성화됨. )
@@ -35,25 +41,40 @@ public class WeaponManager
                 if (weaponActive.CompareTag("Sword"))
                 {
                     weaponEffect = weaponActive.GetComponentInChildren<TrailRenderer>();
-                    return Define.WeaponState.Sword;
+                    weaponState = Define.WeaponState.Sword;
+                    return weaponState;
                 }
                 else if (weaponActive.CompareTag("Gun"))
                 {
-                    return Define.WeaponState.Gun;
+                    weaponState = Define.WeaponState.Gun;
+                    return weaponState;
                 }
             }
         }
 
-        return Define.WeaponState.Hand;
+        weaponState = Define.WeaponState.Hand;
+        return weaponState;
     }
 
     // 무기 이팩트 
     public void EnabledEffect(bool has)
     {
-        if (weaponActive != null)
+        if (weaponState == Define.WeaponState.Sword)
         {
-            if (weaponActive.CompareTag("Sword"))
-                weaponEffect.enabled = has;  
+            weaponEffect.enabled = has;  
         }
+    }
+
+    // 무기를 안들고 있을 시
+    public Define.WeaponState NoneWeapon()
+    {
+        if (weaponList != null)
+        {
+            for(int i=0; i<weaponList.Count; i++)
+                weaponList[i].SetActive(false); 
+        }
+
+        weaponState = Define.WeaponState.Hand;
+        return weaponState;
     }
 }

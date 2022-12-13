@@ -79,6 +79,9 @@ public class PlayerAnimator : MonoBehaviour
     // 구르기가 끝났을 때 (Event)
     public void ExitDiveRoll()
     {
+        if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
+            Managers.Weapon.crossHair.DiveRollAnim(false);
+
         anim.SetBool("HasRoll", false);
 
         if (_state == Define.WeaponState.Hand)

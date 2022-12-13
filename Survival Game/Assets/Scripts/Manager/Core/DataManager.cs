@@ -15,6 +15,7 @@ public class DataManager
 
     public void Init()
     {
+        // 캐릭터 스탯 불러오기
         StatDict = LoadJson<Data.StatData, int, Data.Stat>("StatData").MakeDict();
     }
 

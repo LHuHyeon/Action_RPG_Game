@@ -65,12 +65,21 @@ public class Stat : MonoBehaviour
     }
 
     // 공격을 받았을 때
-    public virtual void OnAttacked(Stat attacker, int addDamage=0)
+    public virtual void OnAttacked(Stat attacker, int addDamage=0, bool isStat=true)
     {
-        int damage = Mathf.Max(0, (attacker.Attack + addDamage) - Defense);
-        Hp -= damage;
+        if (isStat) // 스탯 공격력과 함께 공격
+        {
+            int damage = Mathf.Max(0, (attacker.Attack + addDamage) - Defense);
+            Hp -= damage;
+        }
+        else    // 스탯에 영향받지 않는 공격
+        {
+            int damage = Mathf.Max(0, addDamage - Defense);
+            Hp -= damage;
+        }
 
-        if (Hp <= 0){
+        if (Hp <= 0)
+        {
             Hp = 0;
             OnDead(attacker);
         }

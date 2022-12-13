@@ -20,7 +20,7 @@ public class ItemPickUp : MonoBehaviour
         Vector3 playerPos = Managers.Game._player.transform.position;
         float distance = Vector3.Distance(transform.position, playerPos);
         
-        if (distance >= 3f)
+        if (distance >= 2f)
             obj.SetActive(false);
         else
             obj.SetActive(true);

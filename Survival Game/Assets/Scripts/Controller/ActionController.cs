@@ -18,15 +18,14 @@ public class ActionController : MonoBehaviour
 
             if (currentSlot.item != null)
             {
-                if (currentSlot.item.itemType == Item.ItemType.Equipment)   // 무기 체크
-                {
+                // 장비 체크
+                if (currentSlot.item.itemType == Item.ItemType.Equipment)
                     playerAnim.State = Managers.Weapon.EquipWeapon(currentSlot.item);
-                }
                 else
-                    playerAnim.State = Define.WeaponState.Hand;
+                    playerAnim.State = Managers.Weapon.NoneWeapon();
             }
             else
-                playerAnim.State = Define.WeaponState.Hand;
+                playerAnim.State = Managers.Weapon.NoneWeapon();
         }
     }
     
