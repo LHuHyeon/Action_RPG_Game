@@ -11,6 +11,7 @@ public class CrossHair : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         Managers.Weapon.crossHair = this;
+        gameObject.SetActive(false);
     }
 
     public void MovingAnim(bool _flag)
@@ -34,11 +35,11 @@ public class CrossHair : MonoBehaviour
     public float GetAccuracy()
     {
         if (anim.GetBool("Moving"))             // 움직일 때
-            gunAccuracy = 0.04f;
+            gunAccuracy = 0.005f;
         else if (anim.GetBool("DiveRoll"))      // 구를 때
-            gunAccuracy = 0.08f;
+            gunAccuracy = 0.01f;
         else
-            gunAccuracy = 0.02f;                // 멈출 때
+            gunAccuracy = 0.001f;                // 멈출 때
 
         return gunAccuracy;
     }

@@ -81,10 +81,15 @@ public class UI_Inven : UI_Scene
             Managers.Game.isInventory = !Managers.Game.isInventory;
 
             if (Managers.Game.isInventory)
+            {
                 baseInventory.SetActive(true);
+                Cursor.visible = true;
+            }
             else
             {
                 baseInventory.SetActive(false);
+                Cursor.visible = false;
+                
                 GetObject((int)GameObjects.CountCheck).SetActive(false);        // 아이템 개수 설정 UI 비활성화
                 baseInventory.transform.position = new Vector3(1920, 540, 0);   // 위치 초기화
             }
@@ -98,13 +103,21 @@ public class UI_Inven : UI_Scene
         {
             for(int i=0; i<slots.Count; i++)            // 인벤토리 슬롯 확인
             {
-                if (slots[i].item != null)
+                if (slots[i].item != null)              // 아이템이 존재 한다면
                 {
-                    if (slots[i].item == _item)
+                    if (slots[i].item == _item)         // 아이템이 같다면
                     {
-                        slots[i].SetCount(count);                           // 인벤 아이템 개수 증가
-                        Managers.Game.playerInfo.SetItemCount(slots[i]);    // 메인 슬롯 개수 수정
-                        return;
+                        // 개수가 최대 개수보다 크면
+                        if (slots[i].itemCount+count > _item.maxCount)
+                        {
+                            break;  // 패스하고 다음 반복문에서 남은 슬롯에 넣기
+                        }
+                        else    // 개수가 최대 개수보다 작으면
+                        {
+                            slots[i].SetCount(count);                           // 인벤 아이템 개수 증가
+                            Managers.Game.playerInfo.SetItemCount(slots[i]);    // 메인 슬롯 개수 수정
+                            return;
+                        }
                     }
                 }
             }
@@ -119,6 +132,41 @@ public class UI_Inven : UI_Scene
                 return;
             }
         }
+    }
+
+    // 아이템 가져오기
+    public int ImportItem(Item _item, int count)
+    {
+        if (_item != null)
+        {
+            int itemCount = GetItem(_item, count);
+            SetItemCount(_item.itemName, itemCount);    // 인벤토리 차감
+            return itemCount;
+        }
+
+        return 0;
+    }
+
+    // 아이템 필요한 만큼 찾기
+    public int GetItem(Item _item, int itemCount)
+    {
+        for(int i=0; i<slots.Count; i++)
+        {
+            if (slots[i].item != null)
+            {
+                if (slots[i].item == _item)
+                {
+                    if (slots[i].itemCount >= itemCount)    // 개수가 있으면 그대로 반환
+                    {
+                        return itemCount;
+                    }
+                    else                                    // 없으면 있는 만큼 반환
+                        return slots[i].itemCount;
+                }         
+            }
+        }
+
+        return 0;
     }
 
     // 아이템 사용 ( 메인 슬롯에서 아이템 사용 시 )

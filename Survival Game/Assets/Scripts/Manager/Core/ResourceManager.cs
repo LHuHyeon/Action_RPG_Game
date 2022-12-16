@@ -49,7 +49,7 @@ public class ResourceManager
     }
 
     // 오브젝트 삭제
-    public void Destroy(GameObject go)
+    public void Destroy(GameObject go, float time=0)
     {
         if (go == null)
             return;
@@ -61,6 +61,6 @@ public class ResourceManager
             return;
         }
 
-        Object.Destroy(go);
+        Object.Destroy(go, time);
     }
 }

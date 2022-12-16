@@ -66,6 +66,7 @@ public class UI_Inven_Item : UI_Base
                 }
             }
 
+            // 플레이어가 들고 있는 칸에 넣을 수 있으므로 다시 들기 요청
             Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
 
             // 들고 있는 임시 아이템 초기화
@@ -78,11 +79,35 @@ public class UI_Inven_Item : UI_Base
         gameObject.BindEvent((PointerEventData eventData)=>
         {
             if (UI_DragSlot.instance.dragSlot != null)      // 인벤 슬롯을 받을 때
-                ChangeSlot();
+            {
+                // 두 슬롯의 아이템이 같은 아이템일 경우 최대 개수 체크
+                if (item == UI_DragSlot.instance.dragSlot.item)
+                    ItemCountCheck();
+                else
+                    ChangeSlot();
+            }
             else if (UI_DragSlot.instance.baseSlot != null) // 메인 슬롯을 받을 때
                 UI_DragSlot.instance.baseSlot.ClearSlot();
 
         }, Define.UIEvent.Drop);
+    }
+
+    // 최대 개수 체크
+    private void ItemCountCheck()
+    {
+        int checkCount = itemCount + UI_DragSlot.instance.dragSlot.itemCount;
+        // 개수가 최대 개수보다 같거나 작으면 합치기
+        if (checkCount <= item.maxCount)
+        {
+            itemCount = checkCount;
+            UI_DragSlot.instance.baseSlot.ClearSlot();  // 들고 있었던 슬롯은 초기화
+        }
+        else    // 개수가 초과된다면 슬롯마다 최대개수, 남은개수 나눠주기
+        {
+            checkCount -= item.maxCount;
+            itemCount = item.maxCount;
+            UI_DragSlot.instance.dragSlot.itemCount = checkCount;
+        }
     }
 
     // 현재 슬롯을 다른 슬롯과 바꿀 때 사용하는 메소드

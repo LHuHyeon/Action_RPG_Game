@@ -26,6 +26,15 @@ public class ActionController : MonoBehaviour
             }
             else
                 playerAnim.State = Managers.Weapon.NoneWeapon();
+
+            // 조준점 활성화 여부
+            if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
+            {
+                Managers.Weapon.crossHair.gameObject.SetActive(true);
+                Managers.Weapon.weaponActive.GetComponent<GunController>().SetGun(currentSlot.item.gun);
+            }
+            else
+                Managers.Weapon.crossHair.gameObject.SetActive(false);
         }
     }
     

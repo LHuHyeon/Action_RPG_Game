@@ -156,7 +156,7 @@ public class MonsterController : BaseController
         return (_destPos - transform.position).magnitude;
     }
 
-    // 공격 받았을 때
+    // 공격 받았을 때 [매개변수](공격자 스탯, 추가 데미지, 스탯 공격 여부)
     public void TakeDamage(Stat attacker, int addDamage=0, bool isStat=true)
     {
         anim.SetTrigger("OnHit");

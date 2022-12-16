@@ -127,3 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: a417d4ddc0a03b848a25ab7190a593e4, type: 2}
   itemCount: 1
+  gun: {fileID: 11400000, guid: 6b72eca4135be5c47b1830c1f4758570, type: 2}
