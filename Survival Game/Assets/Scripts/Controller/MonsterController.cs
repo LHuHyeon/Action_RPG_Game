@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class MonsterController : BaseController
 {
     [SerializeField]
-    float _scanRange = 10f;     // 주변 탐색 거리
+    float _scanRange = 7f;     // 주변 탐색 거리
 
     [SerializeField]
     float _attackRange = 2f;    // 공격 거리
@@ -91,13 +91,16 @@ public class MonsterController : BaseController
 
         // 도착 위치 벡터에서 플레이어 위치 벡터를 뺀다.
         Vector3 dir = _destPos - transform.position;
-
+        
         // Vector3.magnitude = 벡터값의 길이
-        if (dir.magnitude < 0.1f)
+        if (dir.magnitude >= _scanRange)
+        {
             State = Define.State.Idle;
-        else{
-            // nav.speed = _stat.MoveSpeed;
-            nav.speed = 2f;
+            nav.SetDestination(transform.position);
+        }
+        else
+        {
+            nav.speed = _stat.MoveSpeed;
             nav.SetDestination(_destPos);   // 타겟에 접근
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 20f * Time.deltaTime);
         }
@@ -170,5 +173,7 @@ public class MonsterController : BaseController
         stopMoving = true;
         yield return new WaitForSeconds(0.7f);
         stopMoving = false;
+
+        State = Define.State.Moving;
     }
 }

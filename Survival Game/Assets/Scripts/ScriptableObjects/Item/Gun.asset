@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   itemName: "\uAD8C\uCD1D"
+  maxCount: 1
   itemType: 0
   itemCoin: 300
   damage: 10

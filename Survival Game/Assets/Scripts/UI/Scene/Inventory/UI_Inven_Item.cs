@@ -168,8 +168,6 @@ public class UI_Inven_Item : UI_Base
     // 슬롯 초기화
     public void ClearSlot()
     {
-        Managers.Game.playerInfo.ClearSlot(item);   // 메인 슬롯에 등록된 같은 아이템도 Clear
-
         item = null;
         itemImage.sprite = null;
         itemCount = 0;

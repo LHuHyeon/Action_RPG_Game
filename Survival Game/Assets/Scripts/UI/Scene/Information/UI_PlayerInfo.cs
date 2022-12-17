@@ -69,7 +69,7 @@ public class UI_PlayerInfo : UI_Scene
         {
             if (slots[i].item != null)
             {
-                if (slots[i].item.itemName == invenSlot.item.itemName)
+                if (slots[i].item == invenSlot.item)
                 {
                     slots[i].SetCount(invenSlot.itemCount);
                     return;
@@ -85,8 +85,11 @@ public class UI_PlayerInfo : UI_Scene
         {
             if (slots[i].item != null)
             {
-                if (slots[i].item.itemName == _item.itemName)
+                if (slots[i].item == _item)
+                {
                     slots[i].ClearSlot();
+                    return;
+                }
             }
         }
     }

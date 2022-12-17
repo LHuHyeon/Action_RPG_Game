@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4434fee75aac6c4bbada1e96b0be37c, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
-  bullt: {fileID: 0}
+  bullt: {fileID: 11400000, guid: 71a0d0f1d85364e4ca9bbeac1e3eec33, type: 2}
   damage: 30
   maxBulletCount: 7
-  currentBulletCount: 7
+  currentBulletCount: 0
   reloadTime: 2
-  accuracy: 0.1
+  accuracy: 0.01
   fireRange: 150
   fireTime: 0.3
   fireAudio: {fileID: 0}

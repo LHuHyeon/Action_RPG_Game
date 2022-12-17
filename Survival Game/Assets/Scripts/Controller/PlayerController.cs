@@ -21,16 +21,18 @@ public class PlayerController : BaseController
     public override void Init()
     {
         WorldObjectType = Define.WorldObject.Player;
+
+        playerAnim = GetComponent<PlayerAnimator>();  // 캐릭터 애니메이션
+        _stat = GetComponent<PlayerStat>();           // 스탯
+        
         Managers.Game._player = gameObject;
+        Managers.Game.playerStat = _stat;
 
         // weapon 매니저에게 공격범위 지정시키기
         Managers.Weapon.attackCollistion = Util.FindChild(gameObject, "AttackCollistion");
 
         // 카메라 오브젝트
         cameraArm = Util.FindChild<Transform>(transform.root.gameObject, "CameraArm");
-
-        playerAnim = GetComponent<PlayerAnimator>();  // 캐릭터 애니메이션
-        _stat = GetComponent<PlayerStat>();           // 스탯
         
         // 키 입력 관련 메소드 등록
         Managers.Input.KeyAction -= () => {
@@ -151,9 +153,7 @@ public class PlayerController : BaseController
     {
         if (!Managers.Game.isDiveRoll && evt == Define.MouseEvent.LeftDown && _stat.Sp >= 10)
         {
-            if (playerAnim.State == Define.WeaponState.Gun)
-                playerAnim.OnShot();
-            else
+            if (playerAnim.State != Define.WeaponState.Gun)
                 playerAnim.OnAttack();
         }
     }

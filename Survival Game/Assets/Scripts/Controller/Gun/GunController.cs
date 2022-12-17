@@ -41,8 +41,6 @@ public class GunController : MonoBehaviour
                     Shot();
                 else
                     Reload();
-                
-                Debug.Log("총 발사!");
             }
             
             if (Input.GetKeyDown(KeyCode.R))
@@ -56,8 +54,9 @@ public class GunController : MonoBehaviour
         if (currentGun.currentBulletCount < currentGun.maxBulletCount)
         {
             // 인벤토리 총알 개수 확인
-            int bulltCount = Managers.Game.baseInventory.GetItem(currentGun.bullt, currentGun.maxBulletCount);
-            if (bulltCount > 0 && !isReload)
+            int bulletCount = Managers.Game.baseInventory.GetItem(currentGun.bullt, currentGun.maxBulletCount);
+            Debug.Log($"장전! : {bulletCount}");
+            if (bulletCount > 0 && !isReload)
             {
                 StartCoroutine(ReloadTime());
             }
@@ -72,8 +71,9 @@ public class GunController : MonoBehaviour
 
         yield return new WaitForSeconds(currentGun.reloadTime);
 
-        // 인벤토리에서 총알 가져오기
-        int bulltCount = Managers.Game.baseInventory.ImportItem(currentGun.bullt, currentGun.maxBulletCount-currentGun.currentBulletCount);
+        // 인벤토리에서 총알 가져오기 (아이템, 감소할 개수)
+        // 반환 값이 마이너스 값으로 오므로 한번더 - 곱해주기
+        int bulltCount = -(Managers.Game.baseInventory.ImportItem(currentGun.bullt, -(currentGun.maxBulletCount-currentGun.currentBulletCount)));
         currentGun.currentBulletCount += bulltCount;
 
         isReload = false;
@@ -85,19 +85,32 @@ public class GunController : MonoBehaviour
     {
         if (!isReload)
         {
+            // 총 발사 애니메이션
+            anim.GetComponent<PlayerAnimator>().OnShot();
+
+            // 반동 설정
             CrossHair crossHair = Managers.Weapon.crossHair;
-            if (Physics.Raycast(theCam.transform.position, theCam.transform.forward + 
+            Vector3 direction = (crossHair.transform.position-theCam.transform.position).normalized;
+            if (Physics.Raycast(theCam.transform.position, direction + 
                     new Vector3 (Random.Range(-crossHair.GetAccuracy() - currentGun.accuracy, -crossHair.GetAccuracy() + currentGun.accuracy),
                                 Random.Range(-crossHair.GetAccuracy() - currentGun.accuracy, -crossHair.GetAccuracy() + currentGun.accuracy),
                                 0), 
                 out hitInfo, 
-                currentGun.fireRange))
+                currentGun.fireRange, ((-1) - (1 << 9))))   // (-1) - (1 << 9) LayerMask 대신 비트 연산자를 사용하여 조금이라도 최적화
             {
-                // GameObject clone = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-                GameObject clone = Managers.Resource.Instantiate(prefabPath+"BulletEffect", hitInfo.transform);
+                if (hitInfo.collider.CompareTag("Monster"))
+                {
+                    hitInfo.collider.GetComponent<MonsterController>().TakeDamage(Managers.Game.playerStat, currentGun.damage, false);
+                }
+
+                // 피격 이팩트 생성
+                GameObject clone = Managers.Resource.Instantiate(prefabPath+"BulletEffect");
+                clone.transform.position = hitInfo.point+(Vector3.up*0.3f);
+                clone.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
                 Managers.Resource.Destroy(clone, 2f);
             }
 
+            // 총알 개수 차감 
             currentGun.currentBulletCount--;
             crossHair.FireAnim();
         }

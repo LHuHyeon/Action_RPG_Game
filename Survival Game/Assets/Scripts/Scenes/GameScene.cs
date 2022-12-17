@@ -11,6 +11,8 @@ public class GameScene : BaseScene
         Managers.Game.baseInventory = Managers.UI.ShowSceneUI<UI_Inven>();
         Managers.Game.playerInfo = Managers.UI.ShowSceneUI<UI_PlayerInfo>("UI_Info");
         Managers.Game.itemDatabase = GameObject.Find("ItemEffectDatabase").GetComponent<ItemEffectDatabase>();
+
+        // Managers.Game.Spawn(Define.WorldObject.Monster, "Zombie1");
     }
 
     public override void Clear()

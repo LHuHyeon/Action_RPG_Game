@@ -22,10 +22,9 @@ public class AttackCollistion : MonoBehaviour
             else
                 damage = 0;
 
-            Stat playerStat = Managers.Game._player.GetComponent<Stat>();
-            other.GetComponent<MonsterController>().TakeDamage(playerStat, damage);
+            other.GetComponent<MonsterController>().TakeDamage(Managers.Game.playerStat, damage);
 
-            Debug.Log($"공격 데미지 : {playerStat.Attack + damage}");
+            Debug.Log($"공격 데미지 : {Managers.Game.playerStat.Attack + damage}");
         }
     }
 
