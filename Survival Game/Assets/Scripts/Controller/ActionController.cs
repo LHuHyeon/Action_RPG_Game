@@ -79,7 +79,7 @@ public class ActionController : MonoBehaviour
         if (currentSlot.item != null && evt == Define.MouseEvent.RightDown)
         {
             if (currentSlot.item.itemType == Item.ItemType.Used)
-                Managers.Game.baseInventory.UsingItem(currentSlot.item);
+                Managers.Game.baseInventory.UsingItem(currentSlot, null);
         }
     }
 

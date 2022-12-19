@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UI_PlayerInfo : UI_Scene
 {
-    // TODO : 체력, 스테미너 관리 예정
-    // 1~9 아이템 관리 UI
     List<UI_BaseSlot> slots;    // BaseSlot(메인 슬롯) 저장
     PlayerStat _stat;
 
@@ -50,46 +48,14 @@ public class UI_PlayerInfo : UI_Scene
     }
 
     // 메인 슬롯 아이템 등록
-    public void ItemRegistration(Item _item, int count = 1)
+    public void ItemRegistration(Item _item, int count = 1, UI_Inven_Item _invenSlot=null)
     {
         for(int i=0; i<slots.Count; i++)
         {
             if (slots[i].item == null)
             {
-                slots[i].AddItem(_item, count);
+                slots[i].AddItem(_item, count, _invenSlot);
                 return;
-            }
-        }
-    }
-
-    // 메인 슬롯의 아이템 개수 수정
-    public void SetItemCount(UI_Inven_Item invenSlot)
-    {
-        for(int i=0; i<slots.Count; i++)
-        {
-            if (slots[i].item != null)
-            {
-                if (slots[i].item == invenSlot.item)
-                {
-                    slots[i].SetCount(invenSlot.itemCount);
-                    return;
-                }
-            }
-        }
-    }
-
-    // 메인 슬롯의 _item을 모두 제거
-    public void ClearSlot(Item _item)
-    {
-        for(int i=0; i<9; i++)
-        {
-            if (slots[i].item != null)
-            {
-                if (slots[i].item == _item)
-                {
-                    slots[i].ClearSlot();
-                    return;
-                }
             }
         }
     }

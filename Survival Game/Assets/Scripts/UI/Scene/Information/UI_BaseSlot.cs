@@ -13,6 +13,8 @@ public class UI_BaseSlot : UI_Base
     public GameObject currentEffect;    // 플레이어가 들고 있다면
     public Text slotNumber;
 
+    public UI_Inven_Item haveinvenSlot; // 인벤 슬롯에 있는 슬롯과 연결
+    
     public override void Init()
     {
         // 아이템이 존재할 시 마우스로 들 수 있다.
@@ -44,6 +46,7 @@ public class UI_BaseSlot : UI_Base
                 if (item != null && !EventSystem.current.IsPointerOverGameObject())
                     ClearSlot();
 
+                // 더블 체크
                 Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
 
                 // 들고 있는 임시 아이템 초기화
@@ -70,8 +73,8 @@ public class UI_BaseSlot : UI_Base
     // 인벤토리에서 대표 슬롯에 등록할 때
     private void ConnectionSlot()
     {
-        Managers.Game.playerInfo.ClearSlot(UI_DragSlot.instance.dragSlot.item);
-        AddItem(UI_DragSlot.instance.dragSlot.item, UI_DragSlot.instance.dragSlot.itemCount);
+        UI_DragSlot.instance.dragSlot.havebaseSlot.ClearSlot();
+        AddItem(UI_DragSlot.instance.dragSlot.item, UI_DragSlot.instance.dragSlot.itemCount, UI_DragSlot.instance.dragSlot);
         UI_DragSlot.instance.dragSlot = null;
     }
 
@@ -80,20 +83,29 @@ public class UI_BaseSlot : UI_Base
     {
         Item _tempItem = item;
         int _tempItemCount = itemCount;
+        UI_Inven_Item _tempSlot = haveinvenSlot;
 
-        AddItem(UI_DragSlot.instance.baseSlot.item, UI_DragSlot.instance.baseSlot.itemCount);
+        UI_BaseSlot baseSlot = UI_DragSlot.instance.baseSlot;
+        AddItem(baseSlot.item, baseSlot.itemCount, baseSlot.haveinvenSlot);
 
         if (_tempItem != null)
-            UI_DragSlot.instance.baseSlot.AddItem(_tempItem, _tempItemCount);
+            UI_DragSlot.instance.baseSlot.AddItem(_tempItem, _tempItemCount, _tempSlot);
         else
             UI_DragSlot.instance.baseSlot.ClearSlot();
     }
 
     // 아이템 등록
-    public void AddItem(Item _item, int count = 1)
+    public void AddItem(Item _item, int count = 1, UI_Inven_Item _invenSlot=null)
     {
         item = _item;
         itemImage.sprite = item.itemImage;
+        
+        // 인벤 슬롯 연결
+        if (_invenSlot != null)
+        {
+            haveinvenSlot = _invenSlot;
+            haveinvenSlot.havebaseSlot = this;
+        }
 
         if (Item.ItemType.Equipment != _item.itemType)
         {
@@ -135,6 +147,7 @@ public class UI_BaseSlot : UI_Base
         itemImage.sprite = null;
         itemCount = 0;
         itemCountText.text = "0";
+        haveinvenSlot = null;
 
         SetColor(0);
     }

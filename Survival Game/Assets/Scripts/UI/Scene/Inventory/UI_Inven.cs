@@ -114,8 +114,7 @@ public class UI_Inven : UI_Scene
                         }
                         else    // 개수가 최대 개수보다 작으면
                         {
-                            slots[i].SetCount(count);                           // 인벤 아이템 개수 증가
-                            Managers.Game.playerInfo.SetItemCount(slots[i]);    // 메인 슬롯 개수 수정
+                            slots[i].SetCount(count);   // 인벤 아이템 개수 증가
                             return;
                         }
                     }
@@ -127,8 +126,8 @@ public class UI_Inven : UI_Scene
         {
             if (slots[i].item == null)
             {
-                slots[i].AddItem(_item, count);                             // 인벤 슬롯에 넣기
-                Managers.Game.playerInfo.ItemRegistration(_item, count);    // 메인 슬롯에 넣기
+                slots[i].AddItem(_item, count);                                       // 인벤 슬롯에 넣기
+                Managers.Game.playerInfo.ItemRegistration(_item, count, slots[i]);    // 메인 슬롯에 넣기
                 return;
             }
         }
@@ -169,17 +168,33 @@ public class UI_Inven : UI_Scene
         return 0;
     }
 
-    // 아이템 사용 ( 메인 슬롯에서 아이템 사용 시 )
-    public void UsingItem(Item _item)
+    // 아이템 사용
+    public void UsingItem(UI_BaseSlot baseSlot, UI_Inven_Item invenSlot)
     {
-        // 사용 시 호출된 클래스에서 차감시켜주기
+        if (baseSlot == null && invenSlot == null)
+            return;
+        
+        Item _item = null;
+        UI_Inven_Item _slot = null;
+
+        if (baseSlot != null)
+        {
+            _item = baseSlot.item;
+            _slot = baseSlot.haveinvenSlot;
+        }
+        else if (invenSlot != null)
+        {
+            _item = invenSlot.item;
+            _slot = invenSlot;
+        }
+
         if (_item != null)
         {
             if (_item.itemType == Item.ItemType.Used)
             {
                 itemStat.UseItem(_item);
-                SetItemCount(_item.itemName, -1);
-            }
+                _slot.SetCount(-1);
+            }            
         }
         else
             Debug.Log("사용 가능한 아이템이 없습니다.");

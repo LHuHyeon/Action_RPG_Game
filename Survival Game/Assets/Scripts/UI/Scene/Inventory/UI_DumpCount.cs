@@ -46,19 +46,9 @@ public class UI_DumpCount : MonoBehaviour
 
         // 아이템 개수가 최대 개수보다 작을 때
         if (itemCount < invenSlot.itemCount)
-        {
-            // 슬롯 아이템 개수 차감
-            invenSlot.itemCount -= itemCount;
-            invenSlot.itemCountText.text = invenSlot.itemCount.ToString();
-            
-            // 아이템 버린 개수가 확인 되면 BaseSlot도 똑같이 해주기
-            Managers.Game.playerInfo.SetItemCount(invenSlot);
-        }
+            invenSlot.SetCount(-itemCount);
         else
-        {
-            Managers.Game.playerInfo.ClearSlot(invenSlot.item);
             invenSlot.ClearSlot();  // 슬롯 초기화
-        }
 
         CancelButton();             // 종료
     }
