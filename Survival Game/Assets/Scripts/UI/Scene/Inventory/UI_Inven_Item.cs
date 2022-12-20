@@ -84,8 +84,17 @@ public class UI_Inven_Item : UI_Base
                 // 두 슬롯의 아이템이 같은 아이템일 경우 개수 체크
                 if (item == UI_DragSlot.instance.dragSlot.item)
                 {
-                    SetCount(UI_DragSlot.instance.dragSlot.itemCount);
-                    UI_DragSlot.instance.dragSlot.ClearSlot();  // 들고 있었던 슬롯은 초기화
+                    int addValue = itemCount + UI_DragSlot.instance.dragSlot.itemCount;
+                    if (addValue > item.maxCount)
+                    {
+                        UI_DragSlot.instance.dragSlot.SetCount(-(item.maxCount-itemCount));
+                        SetCount(item.maxCount - itemCount);
+                    }
+                    else
+                    {
+                        SetCount(UI_DragSlot.instance.dragSlot.itemCount);
+                        UI_DragSlot.instance.dragSlot.ClearSlot();  // 들고 있었던 슬롯은 초기화
+                    }
                 }
                 else
                     ChangeSlot();
@@ -151,14 +160,6 @@ public class UI_Inven_Item : UI_Base
     public void SetCount(int count = 1)
     {
         itemCount += count;
-
-        // 아이템 최대개수보다 크면 다른 칸에 남은 개수 넣어주기
-        if (itemCount > item.maxCount)
-        {
-            Managers.Game.baseInventory.AcquireItem(item, itemCount - item.maxCount);
-            itemCount = item.maxCount;
-        }
-
         itemCountText.text = itemCount.ToString();
 
         // 메인 슬롯을 들고 있으면 똑같이 수정

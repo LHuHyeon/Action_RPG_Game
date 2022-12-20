@@ -203,9 +203,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.108688064, y: 3.11693, z: -3.2070436}
+    m_Target: {x: -2.0280151, y: 0.25769043, z: 2.395996}
     speed: 2
-    m_Value: {x: 0.108688064, y: 3.11693, z: -3.2070436}
+    m_Value: {x: -2.0280151, y: 0.25769043, z: 2.395996}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -252,13 +252,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.17222004, y: 0.018021561, z: -0.00314297, w: 0.9849021}
+    m_Target: {x: 0.17621277, y: -0.34844932, z: 0.06688099, w: 0.91819686}
     speed: 2
-    m_Value: {x: 0.17221776, y: 0.018021323, z: -0.0031429282, w: 0.98488903}
+    m_Value: {x: 0.17621046, y: -0.34844476, z: 0.066880114, w: 0.9181848}
   m_Size:
-    m_Target: 0.75807136
+    m_Target: 1220.5363
     speed: 2
-    m_Value: 0.75807136
+    m_Value: 1220.5363
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -2380
+  m_LastSelectedObjectID: -1594
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 3634
+  controlID: 3550
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -650,7 +650,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c6f9ffff72fbffff
+      m_ExpandedIDs: c2f9ffffc6f9ffff72fbffff383e0000483e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -738,22 +738,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Animator
+    - Assets/Scripts/Controller
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Animator
+  - Assets/Scripts/Controller
   m_LastFoldersGridSize: 16
   m_LastProjectPath: "C:\\Users\\82103\\OneDrive\\\uBB38\uC11C\\Git_SourceTree\\My_Survival\\Survival
     Game"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 415}
-    m_SelectedIDs: 2e490000
-    m_LastClickedID: 18734
+    scrollPos: {x: 0, y: 295}
+    m_SelectedIDs: 0c490000
+    m_LastClickedID: 18700
     m_ExpandedIDs: 00000000e0480000e2480000e4480000e6480000e8480000ea480000ec480000ee480000f0480000f2480000f4480000f6480000f8480000fa480000fc480000fe48000000490000024900000449000006490000084900000a4900000c4900000e49000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 192}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 3793
+  controlID: 3623
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52

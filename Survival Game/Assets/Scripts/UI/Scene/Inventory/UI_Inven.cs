@@ -99,6 +99,8 @@ public class UI_Inven : UI_Scene
     // 아이템을 흭득한 경우
     public void AcquireItem(Item _item, int count = 1)
     {
+        int tempCount=count;
+
         if (Item.ItemType.Equipment != _item.itemType)  // 장비가 아닐 때
         {
             for(int i=0; i<slots.Count; i++)            // 인벤토리 슬롯 확인
@@ -107,30 +109,71 @@ public class UI_Inven : UI_Scene
                 {
                     if (slots[i].item == _item)         // 아이템이 같다면
                     {
-                        // 개수가 최대 개수보다 크면
-                        if (slots[i].itemCount+count > _item.maxCount)
-                        {
-                            break;  // 패스하고 다음 반복문에서 남은 슬롯에 넣기
-                        }
-                        else    // 개수가 최대 개수보다 작으면
-                        {
-                            slots[i].SetCount(count);   // 인벤 아이템 개수 증가
+                        // 인벤토리안에 같은 아이템 찾아서 넣기
+                        Debug.Log($"FillSlot({_item}, {count})");
+                        tempCount = FillSlot(_item, count);
+                        if (tempCount == 0)
                             return;
-                        }
+                        else
+                            break;
                     }
                 }
             }
         }
 
+        // 개수 확인 후 빈 슬롯에 넣기
         for(int i=0; i<slots.Count; i++)
         {
             if (slots[i].item == null)
             {
-                slots[i].AddItem(_item, count);                                       // 인벤 슬롯에 넣기
-                Managers.Game.playerInfo.ItemRegistration(_item, count, slots[i]);    // 메인 슬롯에 넣기
-                return;
+                if (tempCount > _item.maxCount)
+                {
+                    slots[i].AddItem(_item, _item.maxCount);
+                    Managers.Game.playerInfo.ItemRegistration(_item, _item.maxCount, slots[i]);
+                    tempCount -= _item.maxCount;
+                }
+                else
+                {
+                    slots[i].AddItem(_item, tempCount);
+                    Managers.Game.playerInfo.ItemRegistration(_item, tempCount, slots[i]);
+                    return;
+                }
             }
         }
+        Debug.Log("인벤토리가 가득찼습니다!");
+    }
+
+    // 슬롯의 아이템 개수가 초과되어 다른 슬롯에 넣어야할 때
+    public int FillSlot(Item _item, int _count)
+    {
+        if (_item != null)
+        {
+            for(int i=0; i<slots.Count; i++)
+            {
+                if (slots[i].item != null)
+                {
+                    if (slots[i].item == _item)
+                    {
+                        // 개수를 더했을 때 최대 개수보다 작다면
+                        if (_count+slots[i].itemCount <= _item.maxCount)
+                        {
+                            // 현재 슬롯에 채우기
+                            slots[i].SetCount(_count);
+                            return 0;
+                        }
+                        else    // 크다면
+                        {
+                            // 남은 개수 빼주기
+                            _count -= (_item.maxCount - slots[i].itemCount);
+
+                            // 현재 슬롯에 최대 개수만큼 채우기
+                            slots[i].SetCount(_item.maxCount - slots[i].itemCount);
+                        }
+                    }
+                }
+            }
+        }
+        return _count;
     }
 
     // 아이템 가져오기

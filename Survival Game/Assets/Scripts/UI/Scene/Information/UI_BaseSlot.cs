@@ -73,7 +73,9 @@ public class UI_BaseSlot : UI_Base
     // 인벤토리에서 대표 슬롯에 등록할 때
     private void ConnectionSlot()
     {
-        UI_DragSlot.instance.dragSlot.havebaseSlot.ClearSlot();
+        if (haveinvenSlot != null)
+            UI_DragSlot.instance.dragSlot.havebaseSlot.ClearSlot();
+            
         AddItem(UI_DragSlot.instance.dragSlot.item, UI_DragSlot.instance.dragSlot.itemCount, UI_DragSlot.instance.dragSlot);
         UI_DragSlot.instance.dragSlot = null;
     }
