@@ -22,7 +22,9 @@ public class UI_NameBar : UI_Base
     public override void Init()
     {
         itemObj = transform.parent.GetComponent<ItemPickUp>();
-        itemType = itemObj.item.itemType;
+        if (itemObj != null)
+            itemType = itemObj.item.itemType;
+            
         Bind<Text>(typeof(Texts));
         Bind<RectTransform>(typeof(RectTransforms));
 
@@ -51,7 +53,11 @@ public class UI_NameBar : UI_Base
 
     void SetName()
     {
-        GetText((int)Texts.NameText).text = itemObj.item.itemName + $" ({itemObj.itemCount})";
+        if (itemObj != null)
+            GetText((int)Texts.NameText).text = itemObj.item.itemName + $" ({itemObj.itemCount})";
+        else 
+            GetText((int)Texts.NameText).text = transform.root.name;
+
         Vector2 pos = new Vector2(50*GetText((int)Texts.NameText).text.Length, Get<RectTransform>((int)RectTransforms.Background).sizeDelta.y);
         Get<RectTransform>((int)RectTransforms.Background).sizeDelta = pos;
     }

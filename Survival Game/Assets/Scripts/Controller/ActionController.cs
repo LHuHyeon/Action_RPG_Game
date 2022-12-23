@@ -48,6 +48,17 @@ public class ActionController : MonoBehaviour
     {
         Invoke("DelayInit", 0.000001f);
 
+        Managers.Input.KeyAction -= () => {
+            Interaction();
+            SlotKeyInput();
+            TargetCheck();
+        };
+        Managers.Input.KeyAction += () => {
+            Interaction();
+            SlotKeyInput();
+            TargetCheck();
+        };
+
         Managers.Input.MouseAction -= UsingSlot;
         Managers.Input.MouseAction += UsingSlot;
 
@@ -61,16 +72,31 @@ public class ActionController : MonoBehaviour
         CurrentSlot = slots[0];     // 현재 선택한 슬롯
     }
 
-    void Update()
-    {
-        SlotKeyInput();
-        TargetCheck();
-    }
-
-    // 현재 슬롯 다시 들기
+    // 현재 슬롯 다시 들기 (더블 체크)
     public void TakeUpSlot()
     {
         CurrentSlot = currentSlot;
+    }
+
+    // 주변 상호작용
+    void Interaction()
+    {
+        // 11 Layer : NPC
+        Collider[] hitCollider = Physics.OverlapSphere(transform.position, maxRadius, (1 << 11));
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            // NPC와 대화
+            if (hitCollider != null)
+            {
+                for(int i=0; i<hitCollider.Length; i++)
+                {
+                    Debug.Log($"NPC[{i}] {hitCollider[i].name} 발견!");
+                    if (TalkManager.instance.talkUI.isDialouge == false)
+                        hitCollider[i].GetComponent<NpcController>().Interaction();
+                }
+            }
+        }
     }
 
     // 슬롯의 아이템 사용
