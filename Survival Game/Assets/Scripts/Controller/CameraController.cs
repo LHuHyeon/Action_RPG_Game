@@ -24,11 +24,14 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (!Managers.Game.isInventory)
-            CameraLookAround();
-        
-        CameraUpdate();
-        transform.position = playerPos.position + Vector3.up*y_Value;
+        if (TalkManager.instance.isDialouge == false)
+        {
+            if (Managers.Game.isInventory == false)
+                CameraLookAround();
+            
+            CameraUpdate();
+            transform.position = playerPos.position + Vector3.up*y_Value;
+        }
     }
 
     // 카메라 위치

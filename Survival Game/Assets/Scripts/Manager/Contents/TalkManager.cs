@@ -11,8 +11,10 @@ public class TalkManager : MonoBehaviour
 
     Dictionary<int, Dialogue> dialogueDic = new Dictionary<int, Dialogue>();
 
+    public bool isDialouge = false; // 현재 대화 중인지
     public bool isFinish = false;
     public UI_Talk talkUI;
+    public NPC_TalkState npc_talkState;
 
     void Awake()
     {
@@ -22,20 +24,17 @@ public class TalkManager : MonoBehaviour
 
             Dialogue[] dialogues = Parse(csv_FileName);
             for(int i=0; i<dialogues.Length; i++)
-            {
                 dialogueDic.Add(i+1, dialogues[i]);
-                Debug.Log(dialogueDic[i+1].name);
-            }
 
             isFinish = true;
         }
     }
 
     // 대화 시작
-    public void StartDialogue(Dialogue[] dialogues)
+    public void StartDialogue(Dialogue[] dialogues, Quest _quest=null)
     {
         talkUI.gameObject.SetActive(true);
-        talkUI.SetDialogue(dialogues);
+        talkUI.SetDialogue(dialogues, _quest);
     }
 
     // 대본 가져오기
@@ -46,10 +45,7 @@ public class TalkManager : MonoBehaviour
         if (_StartNum != _EndNum)
         {
             for(int i=0; i<(int)_EndNum-_StartNum; i++)
-            {
                 dialogues.Add(dialogueDic[(int)_StartNum + i]);
-                Debug.Log("dialogueDic : " + _StartNum + " " + _EndNum);
-            }
         }
         else
             dialogues.Add(dialogueDic[(int)_StartNum]);

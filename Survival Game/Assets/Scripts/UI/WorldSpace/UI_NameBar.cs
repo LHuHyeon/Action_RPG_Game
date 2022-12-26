@@ -21,16 +21,20 @@ public class UI_NameBar : UI_Base
 
     public override void Init()
     {
-        itemObj = transform.parent.GetComponent<ItemPickUp>();
-        if (itemObj != null)
-            itemType = itemObj.item.itemType;
-            
         Bind<Text>(typeof(Texts));
         Bind<RectTransform>(typeof(RectTransforms));
 
+        itemObj = transform.parent.GetComponent<ItemPickUp>();
         Transform parent = transform.parent;
-        transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y + 0.07f);
         transform.rotation = Camera.main.transform.rotation;
+    
+        if (itemObj != null)
+        {
+            itemType = itemObj.item.itemType;
+            transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y + 0.07f);
+        }
+        else
+            transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y + 0.15f);
     }
 
     void OnEnable()
@@ -43,22 +47,33 @@ public class UI_NameBar : UI_Base
     {
         Transform parent = transform.parent;   
 
-        if (itemType == Item.ItemType.Used)
-            transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y + 0.07f);
-        else if (itemType == Item.ItemType.Equipment)
-            transform.position = parent.position + (Vector3.up * 0.5f);
+        if (itemObj != null)
+        {
+            if (itemType == Item.ItemType.Used)
+                transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y + 0.07f);
+            else if (itemType == Item.ItemType.Equipment)
+                transform.position = parent.position + (Vector3.up * 0.5f);
+        }
             
         transform.rotation = Camera.main.transform.rotation;
     }
 
     void SetName()
     {
-        if (itemObj != null)
-            GetText((int)Texts.NameText).text = itemObj.item.itemName + $" ({itemObj.itemCount})";
-        else 
-            GetText((int)Texts.NameText).text = transform.root.name;
+        Vector2 pos;
 
-        Vector2 pos = new Vector2(50*GetText((int)Texts.NameText).text.Length, Get<RectTransform>((int)RectTransforms.Background).sizeDelta.y);
+        // 아이템일 경우
+        if (itemObj != null)
+        {
+            GetText((int)Texts.NameText).text = itemObj.item.itemName + $" ({itemObj.itemCount})";
+            pos = new Vector2(50*GetText((int)Texts.NameText).text.Length, Get<RectTransform>((int)RectTransforms.Background).sizeDelta.y);
+        }
+        else 
+        {
+            GetText((int)Texts.NameText).text = transform.root.name;
+            pos = new Vector2(100*GetText((int)Texts.NameText).text.Length, Get<RectTransform>((int)RectTransforms.Background).sizeDelta.y);
+        }
+
         Get<RectTransform>((int)RectTransforms.Background).sizeDelta = pos;
     }
 }

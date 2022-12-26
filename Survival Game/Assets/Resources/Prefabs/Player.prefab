@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3708961397948892482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1015
+    m_Bits: 3063
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -497,9 +497,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 3708961399518233867}
     m_Modifications:
     - target: {fileID: -8498726281317862891, guid: 5af8992e209904d45a0ce552e243f43f, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 3708961399511018145}
+    - target: {fileID: -8498726281317862891, guid: 5af8992e209904d45a0ce552e243f43f, type: 3}
       propertyPath: damage
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: -8498726281317862891, guid: 5af8992e209904d45a0ce552e243f43f, type: 3}
+      propertyPath: theCam
+      value: 
+      objectReference: {fileID: 3708961398029270069}
     - target: {fileID: -8498726281317862891, guid: 5af8992e209904d45a0ce552e243f43f, type: 3}
       propertyPath: firePos
       value: 
@@ -1417,6 +1425,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400074, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
   m_PrefabInstance: {fileID: 3708961399518371777}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &3708961399511018145 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
+  m_PrefabInstance: {fileID: 3708961399518371777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3708961399518233607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
@@ -1557,11 +1570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960217697340028003, guid: 81f9e387daa592c459f6cb758659dad6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8960217697340028003, guid: 81f9e387daa592c459f6cb758659dad6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960217697725070898, guid: 81f9e387daa592c459f6cb758659dad6, type: 3}
       propertyPath: m_Layer
@@ -1602,7 +1615,7 @@ PrefabInstance:
     - target: {fileID: 8960217698069263650, guid: 81f9e387daa592c459f6cb758659dad6, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3708961398029270066}
     - target: {fileID: 8960217698069263651, guid: 81f9e387daa592c459f6cb758659dad6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1649,7 +1662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960217698069263651, guid: 81f9e387daa592c459f6cb758659dad6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 8960217698069263651, guid: 81f9e387daa592c459f6cb758659dad6, type: 3}
       propertyPath: m_LocalRotation.w

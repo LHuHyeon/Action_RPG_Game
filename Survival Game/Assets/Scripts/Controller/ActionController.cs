@@ -92,7 +92,7 @@ public class ActionController : MonoBehaviour
                 for(int i=0; i<hitCollider.Length; i++)
                 {
                     Debug.Log($"NPC[{i}] {hitCollider[i].name} 발견!");
-                    if (TalkManager.instance.talkUI.isDialouge == false)
+                    if (TalkManager.instance.isDialouge == false)
                         hitCollider[i].GetComponent<NpcController>().Interaction();
                 }
             }

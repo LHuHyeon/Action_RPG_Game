@@ -141,10 +141,12 @@ public class PlayerController : BaseController
             return;
         }
 
+        if (State == Define.State.Moving)
+            DiveRoll();
+
         // 캐릭터의 방향은 카메라 기준
         transform.forward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
 
-        DiveRoll();
         Moving();
     }
 

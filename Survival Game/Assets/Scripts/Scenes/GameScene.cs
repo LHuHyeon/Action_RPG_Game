@@ -12,6 +12,8 @@ public class GameScene : BaseScene
         Managers.Game.playerInfo = Managers.UI.ShowSceneUI<UI_PlayerInfo>("UI_Info");
         Managers.Game.itemDatabase = GameObject.Find("ItemEffectDatabase").GetComponent<ItemEffectDatabase>();
 
+        Managers.UI.ShowSceneUI<UI_Talk>();
+
         // Managers.Game.Spawn(Define.WorldObject.Monster, "Zombie1");
     }
 

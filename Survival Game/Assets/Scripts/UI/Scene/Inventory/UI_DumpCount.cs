@@ -27,7 +27,7 @@ public class UI_DumpCount : MonoBehaviour
         itemCount = 1;
     }
 
-    // 슬라이더 값 설정
+    // 슬라이더 값 설정 버튼
     public void SliderValueChange()
     {
         itemCount = ((int)sliderValue.value);

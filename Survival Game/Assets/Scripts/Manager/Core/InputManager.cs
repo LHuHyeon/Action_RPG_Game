@@ -12,6 +12,10 @@ public class InputManager
 
     public void OnUpdate()
     {
+        // 대화 중일 경우 
+        if (TalkManager.instance.isDialouge)
+            return;
+
         if (KeyAction != null)
         {  
             KeyAction.Invoke();

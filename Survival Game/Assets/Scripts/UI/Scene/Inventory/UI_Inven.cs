@@ -110,7 +110,6 @@ public class UI_Inven : UI_Scene
                     if (slots[i].item == _item)         // 아이템이 같다면
                     {
                         // 인벤토리안에 같은 아이템 찾아서 넣기
-                        Debug.Log($"FillSlot({_item}, {count})");
                         tempCount = FillSlot(_item, count);
                         if (tempCount == 0)
                             return;
