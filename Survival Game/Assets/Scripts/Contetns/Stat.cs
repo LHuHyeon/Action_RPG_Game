@@ -93,6 +93,10 @@ public class Stat : MonoBehaviour
         if (playerStat != null){
             playerStat.Exp += 5;
         }
+        // 퀘스트 중이라면 죽은 몬스터 id 전송
+        if (QuestManager.instance.isQuest)
+            QuestManager.instance.KillCheck(GetComponent<ObjectData>().id);
+
         Managers.Game.Despawn(gameObject);
     }
 }

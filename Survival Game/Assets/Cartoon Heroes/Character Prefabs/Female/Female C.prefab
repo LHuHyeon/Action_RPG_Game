@@ -819,6 +819,8 @@ GameObject:
   - component: {fileID: 4480994524703266}
   - component: {fileID: 95735082086840126}
   - component: {fileID: 1075828135}
+  - component: {fileID: 9188813289109732565}
+  - component: {fileID: 1075828136}
   m_Layer: 11
   m_Name: Female C
   m_TagString: Untagged
@@ -878,6 +880,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8461856, y: 1.689178, z: 0.41101488}
   m_Center: {x: -0.004386199, y: 0.85031945, z: -0.027446419}
+--- !u!114 &9188813289109732565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131775697853092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c79443eeb3e1a4b912cf62d10219c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 2
+  talkStates:
+  - basicsLine: {x: 1, y: 1}
+    questLine: {x: 2, y: 2}
+    acceptLine: {x: 3, y: 3}
+    refusalLine: {x: 4, y: 4}
+    procLine: {x: 5, y: 5}
+    clearLine: {x: 6, y: 6}
+  quest:
+  - {fileID: 11400000, guid: 6d31e1d529f01b541885dc813f684cc2, type: 2}
+  nextNumber: 0
+  isQuest: 0
+--- !u!114 &1075828136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131775697853092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcdb730acce4fe469c1dea266e20dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 101
+  isNpc: 1
 --- !u!1 &1142277583328720
 GameObject:
   m_ObjectHideFlags: 0

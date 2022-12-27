@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
     {
         if (TalkManager.instance.isDialouge == false)
         {
-            if (Managers.Game.isInventory == false)
+            if (Managers.Game.isInventory == false && QuestManager.instance.isQuestList == false)
                 CameraLookAround();
             
             CameraUpdate();

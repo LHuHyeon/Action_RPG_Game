@@ -11,10 +11,10 @@ public class TalkManager : MonoBehaviour
 
     Dictionary<int, Dialogue> dialogueDic = new Dictionary<int, Dialogue>();
 
-    public bool isDialouge = false; // 현재 대화 중인지
-    public bool isFinish = false;
-    public UI_Talk talkUI;
-    public NPC_TalkState npc_talkState;
+    public bool isDialouge = false;     // 현재 대화 중인지
+    public bool isFinish = false;       // 대화 파싱이 되어 있는지
+    public UI_Talk talkUI;              // 대화 UI
+    public NpcController currentNpc;    // 현재 대화중인 npc
 
     void Awake()
     {

@@ -8,11 +8,12 @@ public class GameScene : BaseScene
     {
         SceneType = Define.Scene.Game;
 
-        Managers.Game.baseInventory = Managers.UI.ShowSceneUI<UI_Inven>();
-        Managers.Game.playerInfo = Managers.UI.ShowSceneUI<UI_PlayerInfo>("UI_Info");
+        Managers.Game.baseInventory = Managers.UI.ShowSceneUI<UI_Inven>("Inventory/UI_Inven");
+        Managers.Game.playerInfo = Managers.UI.ShowSceneUI<UI_PlayerInfo>("Information/UI_Info");
         Managers.Game.itemDatabase = GameObject.Find("ItemEffectDatabase").GetComponent<ItemEffectDatabase>();
 
-        Managers.UI.ShowSceneUI<UI_Talk>();
+        Managers.UI.ShowSceneUI<UI_Talk>("Talk/UI_Talk");
+        Managers.UI.ShowSceneUI<UI_Quest>("Quest/UI_Quest");
 
         // Managers.Game.Spawn(Define.WorldObject.Monster, "Zombie1");
     }

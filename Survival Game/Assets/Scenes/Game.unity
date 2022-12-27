@@ -326,7 +326,7 @@ Transform:
   m_LocalScale: {x: 4, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &464498210
 GameObject:
@@ -371,6 +371,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &566311913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3123899598709164689, guid: eaecaff2fc56eeb47abeb2aadeeaed47, type: 3}
+  m_PrefabInstance: {fileID: 3123899598261516715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &666945902
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,14 +423,7 @@ MonoBehaviour:
   isDialouge: 0
   isFinish: 0
   talkUI: {fileID: 0}
-  npc_talkState:
-    basicsLine: {x: 0, y: 0}
-    questLine: {x: 0, y: 0}
-    acceptLine: {x: 0, y: 0}
-    refusalLine: {x: 0, y: 0}
-    procLine: {x: 0, y: 0}
-    clearLine: {x: 0, y: 0}
-    failedLine: {x: 0, y: 0}
+  currentNpc: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,35 +593,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6980846283530474922, guid: cc21af89e6454d247b797beeb24bb903, type: 3}
   m_PrefabInstance: {fileID: 3726150747458147262}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1075828134 stripped
+--- !u!1 &1117082881
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1131775697853092, guid: de2a7efe044817e43b49fa819dea7499, type: 3}
-  m_PrefabInstance: {fileID: 1493816748}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1075828135
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1117082882}
+  - component: {fileID: 1117082883}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1117082882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117082881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1583760218}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1117082883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075828134}
+  m_GameObject: {fileID: 1117082881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c79443eeb3e1a4b912cf62d10219c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 88e16eaae4e09244bb6cf50d6b06f1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 2
-  talkStates:
-  - basicsLine: {x: 1, y: 1}
-    questLine: {x: 2, y: 2}
-    acceptLine: {x: 3, y: 3}
-    refusalLine: {x: 4, y: 4}
-    procLine: {x: 5, y: 5}
-    clearLine: {x: 6, y: 6}
-    failedLine: {x: 7, y: 7}
-  quest:
-  - {fileID: 11400000, guid: 6d31e1d529f01b541885dc813f684cc2, type: 2}
-  nextNumber: 0
+  questUI: {fileID: 0}
+  procQuests:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isQuest: 0
 --- !u!4 &1231731339 stripped
 Transform:
@@ -643,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4480994524703266, guid: de2a7efe044817e43b49fa819dea7499, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4480994524703266, guid: de2a7efe044817e43b49fa819dea7499, type: 3}
       propertyPath: m_LocalPosition.x
@@ -890,12 +914,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583760216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3521273, y: 0.9541973, z: 1.9342446}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 666945903}
+  - {fileID: 566311913}
+  - {fileID: 1117082882}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1657972114
 GameObject:
@@ -1078,7 +1104,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5925267741738947360, guid: ee662b836830dcd4e90ae324d65bb53e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5925267741738947360, guid: ee662b836830dcd4e90ae324d65bb53e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1123,10 +1149,6 @@ PrefabInstance:
     - target: {fileID: 7233236503491027251, guid: ee662b836830dcd4e90ae324d65bb53e, type: 3}
       propertyPath: m_Name
       value: Zombie1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7233236503491027251, guid: ee662b836830dcd4e90ae324d65bb53e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee662b836830dcd4e90ae324d65bb53e, type: 3}
@@ -1196,11 +1218,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1583760218}
     m_Modifications:
     - target: {fileID: 3123899598709164689, guid: eaecaff2fc56eeb47abeb2aadeeaed47, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3123899598709164689, guid: eaecaff2fc56eeb47abeb2aadeeaed47, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1261,7 +1283,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3708961397948892482, guid: 055d49fca1124ca43a5cead9c60416a5, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3708961397948892482, guid: 055d49fca1124ca43a5cead9c60416a5, type: 3}
       propertyPath: m_LocalPosition.x

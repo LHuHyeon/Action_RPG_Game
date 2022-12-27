@@ -21,14 +21,14 @@ public class NpcController : MonoBehaviour
 
     public Quest[] quest;  // 퀘스트 목록
     public int nextNumber=0;    // 현재 퀘스트 및 대화 (숫자가 올라가면 다음 퀘스트1,2,3,..)
-
-    public bool isQuest = false;    // 현재 퀘스트 중인지
     
     GameObject obj;
 
     void Start()
     {
         obj = Managers.UI.MakeWorldSpaceUI<UI_NameBar>(transform).gameObject;
+        QuestManager.instance.questNpc -= ClearCheck;
+        QuestManager.instance.questNpc += ClearCheck;
     }
     
     void Update()
@@ -41,6 +41,19 @@ public class NpcController : MonoBehaviour
             obj.SetActive(false);
         else
             obj.SetActive(true);
+    }
+
+    // 퀘스트 성공 확인
+    void ClearCheck(Quest _quest)
+    {
+        if (quest[nextNumber] == _quest)
+        {
+            if (quest[nextNumber].isClear)
+            {
+                // TODO : npc 머리 위 물음표 표시 생성
+                Debug.Log($"{gameObject.name}의 미션 보상을 받으세요.");
+            }
+        }
     }
 
     // 플레이어가 상호작용할 시
@@ -64,7 +77,7 @@ public class NpcController : MonoBehaviour
     public void QuestTalk()
     {
         // 퀘스트 중인지 확인
-        if (isQuest)
+        if (quest[nextNumber].isAccept)
         {
             // TODO : 퀘스트 클리어 여부 확인
             StartTalk(talkStates[nextNumber].procLine);
@@ -72,7 +85,7 @@ public class NpcController : MonoBehaviour
         else
         {
             StartTalk(talkStates[nextNumber].questLine, quest[nextNumber]);
-            TalkManager.instance.npc_talkState = talkStates[nextNumber];
+            TalkManager.instance.currentNpc = this;
         }
     }
 
@@ -83,7 +96,7 @@ public class NpcController : MonoBehaviour
     }
 
     // 대화 시작
-    void StartTalk(Vector2 _talkLine, Quest _quest=null)
+    public void StartTalk(Vector2 _talkLine, Quest _quest=null)
     {
         Dialogue[] dialogues = TalkManager.instance.GetDialogue(_talkLine.x, _talkLine.y);
         TalkManager.instance.StartDialogue(dialogues, _quest);

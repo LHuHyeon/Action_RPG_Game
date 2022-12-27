@@ -2220,13 +2220,14 @@ GameObject:
   - component: {fileID: 3843600895894107531}
   - component: {fileID: 1675465851558710260}
   - component: {fileID: 8296172668809734597}
+  - component: {fileID: 1186032609}
   m_Layer: 0
   m_Name: Zombie1
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5925267741738947360
 Transform:
   m_ObjectHideFlags: 0
@@ -2363,6 +2364,20 @@ MonoBehaviour:
   _defense: 0
   _movespeed: 0
   _addspeed: 0
+--- !u!114 &1186032609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233236503491027251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcdb730acce4fe469c1dea266e20dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1001
+  isNpc: 0
 --- !u!1 &7356886941181622690
 GameObject:
   m_ObjectHideFlags: 0

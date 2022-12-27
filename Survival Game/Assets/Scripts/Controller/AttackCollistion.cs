@@ -28,6 +28,7 @@ public class AttackCollistion : MonoBehaviour
         }
     }
 
+    // 공격 범위 비활성화 
     IEnumerator AutoDisable()
     {
         yield return new WaitForSeconds(0.1f);
