@@ -19,16 +19,25 @@ public class NpcController : MonoBehaviour
 
     public NPC_TalkState[] talkStates;
 
-    public Quest[] quest;  // 퀘스트 목록
-    public int nextNumber=0;    // 현재 퀘스트 및 대화 (숫자가 올라가면 다음 퀘스트1,2,3,..)
+    public Quest[] quest;           // 퀘스트 목록
+    public int nextNumber=0;        // 현재 퀘스트 및 대화 (숫자가 올라가면 다음 퀘스트1,2,3,..)
+    public bool isReward = false;   // 보상 수령 여부
     
     GameObject obj;
 
     void Start()
     {
         obj = Managers.UI.MakeWorldSpaceUI<UI_NameBar>(transform).gameObject;
-        QuestManager.instance.questNpc -= ClearCheck;
-        QuestManager.instance.questNpc += ClearCheck;
+
+        if (state == Define.NPCState.Quest)
+        {
+            QuestManager.instance.questNpc -= ClearCheck;
+            QuestManager.instance.questNpc += ClearCheck;
+            
+            // 시작 시 NPC가 가지고 있는 퀘스트 모두 초기화
+            for(int i=0; i<quest.Length; i++)
+                quest[i].Clear();
+        }
     }
     
     void Update()
@@ -43,15 +52,51 @@ public class NpcController : MonoBehaviour
             obj.SetActive(true);
     }
 
-    // 퀘스트 성공 확인
-    void ClearCheck(Quest _quest)
+    // 퀘스트 성공 확인 및 보상 수령
+    void ClearCheck(Define.NPCAction evt)
     {
-        if (quest[nextNumber] == _quest)
+        // 다음 퀘스트가 없다면 종료
+        if (quest.Length-1 < nextNumber)
+            return;
+
+        // 퀘스트 성공 확인
+        if (evt == Define.NPCAction.Notify)
         {
-            if (quest[nextNumber].isClear)
+            // 퀘스트 중이라면
+            if (quest[nextNumber].isAccept)
             {
-                // TODO : npc 머리 위 물음표 표시 생성
-                Debug.Log($"{gameObject.name}의 미션 보상을 받으세요.");
+                // 클리어 했는가?
+                if (quest[nextNumber].isClear)
+                {
+                    // TODO : npc 머리 위 물음표 표시 생성
+                    Debug.Log($"{gameObject.name}의 미션 보상을 받으세요.");
+                    isReward = true;
+                }
+                else
+                {
+                    Debug.Log("아직 퀘스트 중입니다.");
+                }
+            }
+        }
+        // 보상 수령
+        if (evt == Define.NPCAction.Reward)
+        {
+            // 현재 대화 하는 npc가 맞는지
+            if (TalkManager.instance.currentNpc == this)
+            {
+                if (isReward)
+                {
+                    // 보상 아이템 인벤토리에 지급
+                    Quest.Reward[] reward = quest[nextNumber].itemReward;
+                    for(int i=0; i<reward.Length; i++)
+                        Managers.Game.baseInventory.AcquireItem(reward[i].item, reward[i].itemCount);
+
+                    Managers.Game.playerStat.Gold += quest[nextNumber].gold;    // 골드 지급
+                    Managers.Game.playerStat.Exp += quest[nextNumber].exp;      // 경험치 지급
+
+                    nextNumber++;
+                    isReward = false;
+                }
             }
         }
     }
@@ -61,6 +106,13 @@ public class NpcController : MonoBehaviour
     {
         if (state == Define.NPCState.Quest)
         {
+            // 다음 퀘스트가 없다면 일반 대화 후 종료
+            if (quest.Length-1 < nextNumber)
+            {
+                Talk();
+                return;
+            }
+
             // 퀘스트 레벨 조건 확인
             if (Managers.Game.playerStat.Level >= quest[nextNumber].minLevel)
             {
@@ -79,8 +131,16 @@ public class NpcController : MonoBehaviour
         // 퀘스트 중인지 확인
         if (quest[nextNumber].isAccept)
         {
-            // TODO : 퀘스트 클리어 여부 확인
-            StartTalk(talkStates[nextNumber].procLine);
+            // 퀘스트 목표 달성 시
+            if (quest[nextNumber].achieveValue >= quest[nextNumber].maxTargetValue)
+            {
+                StartTalk(talkStates[nextNumber].clearLine, quest[nextNumber]);
+                TalkManager.instance.currentNpc = this;
+            }
+            else
+            {
+                StartTalk(talkStates[nextNumber].procLine);
+            }
         }
         else
         {
@@ -92,7 +152,11 @@ public class NpcController : MonoBehaviour
     // 일반 대화
     public void Talk()
     {
-        StartTalk(talkStates[nextNumber].basicsLine);
+        // 다음 대화가 없다면 그전 대화 진행
+        if (talkStates.Length-1 < nextNumber)
+            StartTalk(talkStates[nextNumber-1].basicsLine);
+        else
+            StartTalk(talkStates[nextNumber].basicsLine);
     }
 
     // 대화 시작

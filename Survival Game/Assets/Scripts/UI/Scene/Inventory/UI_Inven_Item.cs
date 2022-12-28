@@ -181,8 +181,11 @@ public class UI_Inven_Item : UI_Base
 
         if (isRemove)
         {
-            havebaseSlot.ClearSlot();
-            havebaseSlot = null;
+            if (havebaseSlot != null)
+            {
+                havebaseSlot.ClearSlot();
+                havebaseSlot = null;
+            }
         }
         
         SetColor(0);

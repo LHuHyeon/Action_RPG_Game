@@ -12,6 +12,7 @@ public class PlayerController : BaseController
 
     PlayerAnimator playerAnim;   // 플레이어 애니메이션
     PlayerStat _stat;
+    Animator anim;
 
     public bool stopMoving = false;
 
@@ -24,6 +25,7 @@ public class PlayerController : BaseController
 
         playerAnim = GetComponent<PlayerAnimator>();  // 캐릭터 애니메이션
         _stat = GetComponent<PlayerStat>();           // 스탯
+        anim = GetComponent<Animator>();              // 애니메이션
         
         Managers.Game._player = gameObject;
         Managers.Game.playerStat = _stat;
@@ -90,10 +92,10 @@ public class PlayerController : BaseController
     {
         if (Input.GetKeyDown(KeyCode.Space) && !Managers.Game.isDiveRoll && _stat.Sp >= 30)
         {
-            if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("DiveRoll"))
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("DiveRoll"))
             {
                 Managers.Game.isDiveRoll = true;
-                GetComponent<Animator>().SetBool("HasRoll", true);
+                anim.SetBool("HasRoll", true);
                 SetStamina(-30);
                 _stat.AddSpeed = 2f;
 
@@ -101,6 +103,11 @@ public class PlayerController : BaseController
                 if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
                     Managers.Weapon.crossHair.DiveRollAnim(true);
             }
+        }
+        // 구르는 애니메이션게 갇혔다면
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("DiveRoll"))
+        {
+            GetComponent<PlayerAnimator>().ExitDiveRoll();
         }
     }
 
@@ -127,6 +134,13 @@ public class PlayerController : BaseController
         }
     }
 
+    // 움직임 멈추기
+    public void StopMove()
+    {
+        playerAnim.OnAnimMoving(0, 0);
+        State = Define.State.Idle;
+    }
+
     // 키 입력
     private void KeyboradEvent()
     {
@@ -135,9 +149,9 @@ public class PlayerController : BaseController
             return;
 
         // 멈추기
-        if (stopMoving)
+        if (stopMoving || TalkManager.instance.isDialouge)
         {
-            State = Define.State.Idle;
+            StopMove();
             return;
         }
 

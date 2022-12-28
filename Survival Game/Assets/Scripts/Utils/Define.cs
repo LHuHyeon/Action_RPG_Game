@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Define : MonoBehaviour
 {
+    // NPC 상태
     public enum NPCState
     {
         None,
         Shop,
         Quest,
+    }
+
+    public enum NPCAction
+    {
+        Notify,
+        Reward,
     }
 
     // 캐릭터 상태

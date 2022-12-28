@@ -14,7 +14,10 @@ public class InputManager
     {
         // 대화 중일 경우 
         if (TalkManager.instance.isDialouge)
+        {
+            Managers.Game._player.GetComponent<PlayerController>().StopMove();
             return;
+        }
 
         if (KeyAction != null)
         {  

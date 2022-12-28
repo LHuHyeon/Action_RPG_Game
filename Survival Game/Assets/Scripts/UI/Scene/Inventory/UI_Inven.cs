@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class UI_Inven : UI_Scene
 {
-    GameObject baseInventory;       // 인벤토리 오브젝트
+    public GameObject baseInventory;       // 인벤토리 오브젝트
 
     List<UI_Inven_Item> slots;      // 인벤토리 슬롯을 담는 리스트
 

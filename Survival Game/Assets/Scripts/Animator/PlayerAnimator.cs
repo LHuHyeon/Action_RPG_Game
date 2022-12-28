@@ -90,6 +90,15 @@ public class PlayerAnimator : MonoBehaviour
             anim.SetTrigger("OnRollSword");
         else if (_state == Define.WeaponState.Gun)
             anim.SetTrigger("OnRollGun");
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Gun") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Sword") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Hand"))
+        {
+            anim.ResetTrigger("OnRollHand");
+            anim.ResetTrigger("OnRollSword");
+            anim.ResetTrigger("OnRollGun");
+        }
         
         Managers.Game.isDiveRoll = false;
         playerObj.GetComponent<PlayerStat>().AddSpeed = 0;

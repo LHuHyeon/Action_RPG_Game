@@ -10,6 +10,7 @@ public class UI_Talk : UI_Scene
 
     Dialogue[] dialouges;
     Quest quest;
+    List<Text> texts;   // Text 클래스 리스트
 
     int nextNum=0;      // 다음 대화 확인용
     int talkNum=0;      // 다음 대사 확인용
@@ -34,16 +35,18 @@ public class UI_Talk : UI_Scene
 
     enum Texts
     {
-        Name_Text,          // NPC 이름
-        Talk_Text,          // 대화
         Quest_Title_Text,   // 퀘스트 제목
+        Objective_Content,  // 목표 내용
         Quest_Content,      // 퀘스트 내용
         Gold_Text,          // 골드 보상
         Exp_Text,           // 경험치 보상
+        Name_Text,          // NPC 이름
+        Talk_Text,          // 대화
     }
 
     public override void Init()
     {
+        texts = new List<Text>();
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
 
@@ -51,6 +54,10 @@ public class UI_Talk : UI_Scene
         talkText = GetText((int)Texts.Talk_Text);
 
         TalkManager.instance.talkUI = this;
+
+        // 퀘스트 text UI 리스트 넣기
+        for(int i=0; i<5; i++)
+            texts.Add(GetText(i));
 
         UIClear();
         gameObject.SetActive(false);
@@ -71,7 +78,7 @@ public class UI_Talk : UI_Scene
                 }
                 else
                 {
-                    delayTime = delayTime / 2;
+                    delayTime = delayTime / 4;
                 }
             }
         }
@@ -91,6 +98,9 @@ public class UI_Talk : UI_Scene
         // 플레이어 멈추기
         Managers.Game._player.GetComponent<PlayerController>().State = Define.State.Idle;
 
+        // 켜져있는 UI 끄기
+        UIActive(false);
+
         NextTalkButton();
     }
 
@@ -102,16 +112,16 @@ public class UI_Talk : UI_Scene
         nextTalk = false;
         GetObject((int)GameObjects.Next_Button).SetActive(false);
 
-        // 다음 대화가 마지막이라면 퀘스트 UI On 
-        if (quest != null)
-        {
-            if (dialouges.Length <= nextNum+1 && dialouges[nextNum].contexts.Length <= talkNum+1)
-                OnQuest();
-        }
-
         // 이름, 대화 내용 실행
         if (dialouges.Length-1 >= nextNum)
         {
+            // 다음 대화가 마지막이라면 퀘스트 UI On 
+            if (quest != null)
+            {
+                if (dialouges.Length <= nextNum+1 && dialouges[nextNum].contexts.Length <= talkNum+1)
+                    OnQuest();
+            }
+
             nameText.text = dialouges[nextNum].name;
 
             StopCoroutine(TypeSentence(null));
@@ -122,6 +132,13 @@ public class UI_Talk : UI_Scene
             // 퀘스트 대화가 아니라면 초기화 진행
             if (!isQuest)
             {
+                // 클리어 했다면
+                if (quest != null)
+                {
+                    if (quest.isClear)
+                        QuestManager.instance.Reward(quest);
+                }
+
                 Clear();
                 gameObject.SetActive(false);
             }
@@ -131,20 +148,12 @@ public class UI_Talk : UI_Scene
     // 퀘스트 UI ON
     void OnQuest()
     {
-        isQuest = true;
+        if (!quest.isAccept)
+            isQuest = true;
+
         GetObject((int)GameObjects.UI_Quest).SetActive(true);
 
-        GetText((int)Texts.Quest_Title_Text).text = quest.title;
-        GetText((int)Texts.Quest_Content).text = quest.description;
-        GetText((int)Texts.Gold_Text).text = quest.gold.ToString();
-        GetText((int)Texts.Exp_Text).text = quest.exp.ToString();
-
-        for(int i=0; i<quest.itemReward.Length; i++)
-        {
-            rewardItems[i].SetActive(true);
-            Util.FindChild<Image>(rewardItems[i]).sprite = quest.itemReward[i].item.itemImage;
-            Util.FindChild<Text>(rewardItems[i]).text = quest.itemReward[i].itemCount.ToString();
-        }
+        QuestManager.instance.QuestUISetting(texts.ToArray(), rewardItems, true, quest);
     }
 
     //타이핑 모션 코루틴
@@ -182,7 +191,6 @@ public class UI_Talk : UI_Scene
     // 수락 버튼
     public void AcceptButton()
     {
-        // TODO : 현재 퀘스트 저장(QuestManager), 수락 대화 호출 후 초기화
         Debug.Log("수락!");
 
         // 퀘스트 저장 및 수락 대화 진행
@@ -197,7 +205,6 @@ public class UI_Talk : UI_Scene
     // 거절 버튼
     public void RefusalButton()
     {
-        // TODO : 거절 시 거절 대화 호출 후 초기화
         Debug.Log("거절!");
 
         // 대화 초기화 후 거절 대화 진행
@@ -233,5 +240,14 @@ public class UI_Talk : UI_Scene
             rewardItems[i].SetActive(false);
 
         GetObject((int)GameObjects.UI_Quest).SetActive(false);
+    }
+
+    void UIActive(bool has)
+    {
+        Managers.Game.isInventory = has;
+        Managers.Game.baseInventory.baseInventory.SetActive(has);
+
+        QuestManager.instance.isQuestList = has;
+        QuestManager.instance.questUI.questUI.SetActive(has);
     }
 }
