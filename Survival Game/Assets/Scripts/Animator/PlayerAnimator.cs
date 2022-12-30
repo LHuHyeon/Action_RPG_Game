@@ -156,6 +156,21 @@ public class PlayerAnimator : MonoBehaviour
         onAttack = false;
         playerObj.stopMoving = false;
         
+        // if (State == Define.WeaponState.Hand)
+        // {
+        //     Managers.Weapon.weaponActive.SetActive(false);     // 무기 비활성화
+        //     Managers.Weapon.weaponActive = null;               // 들고 있는 무기 초기화
+        // }
+        // else if (State == Define.WeaponState.Sword || State == Define.WeaponState.Gun)
+        //     Managers.Weapon.weaponActive.SetActive(true);      // 무기 활성화
+
+        StopCoroutine(DelayChange());
+        StartCoroutine(DelayChange());
+    }
+
+    IEnumerator DelayChange()
+    {
+        yield return new WaitForSeconds(0.15f);
         if (State == Define.WeaponState.Hand)
         {
             Managers.Weapon.weaponActive.SetActive(false);     // 무기 비활성화

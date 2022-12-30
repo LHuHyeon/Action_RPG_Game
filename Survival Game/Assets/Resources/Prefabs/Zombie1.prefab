@@ -2227,7 +2227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5925267741738947360
 Transform:
   m_ObjectHideFlags: 0
@@ -2343,6 +2343,9 @@ MonoBehaviour:
   _scanRange: 7
   _attackRange: 1
   _lockTarget: {fileID: 0}
+  dropItem:
+  - {fileID: 3755699982268981548, guid: f295e370269be6e4c905b025911e5917, type: 3}
+  randomNumber: 2
 --- !u!114 &8296172668809734597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2364,6 +2367,7 @@ MonoBehaviour:
   _defense: 0
   _movespeed: 0
   _addspeed: 0
+  _dropExp: 5
 --- !u!114 &1186032609
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,6 @@ public class Quest_Button : MonoBehaviour
 
     public void ShowChoice()
     {
-        QuestManager.instance.questUI.QuestChoice(quest);
+        QuestManager.instance.questUI.QuestChoice(this);
     }
 }

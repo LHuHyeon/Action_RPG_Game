@@ -18,19 +18,19 @@ public class UI_Quest : UI_Scene
 
     enum GameObjects
     {
-        BackGround,
-        List_Grid,
-        GiveUp_Button,
-        Refusal,
+        BackGround,         // 퀘스트 부모 오브젝트
+        List_Grid,          // 퀘스트 목록 리스트
+        GiveUp_Button,      // 포기 버튼
+        Refusal,            // 포기 확인하는 UI 
     }
 
     enum Texts
     {
-        Quest_Title,
-        Objective_Content,
-        Quest_Content,
-        Gold_Text,
-        Exp_Text,
+        Quest_Title,        // 퀘스트 제목
+        Objective_Content,  // 퀘스트 목표 내용
+        Quest_Content,      // 퀘스트 설명 내용
+        Gold_Text,          // 골드 
+        Exp_Text,           // 경험치
     }
 
     public override void Init()
@@ -119,6 +119,7 @@ public class UI_Quest : UI_Scene
 
         if (quests.Length > 0)
         {
+            // 현재 진행중인 목록 이름과 퀘스트 채우기
             for(int i=0; i<quests.Length; i++)
             {
                 questList[i].gameObject.SetActive(true);
@@ -126,22 +127,46 @@ public class UI_Quest : UI_Scene
                 questList[i].title.text = quests[i].title;
             }
 
+            // 첫번째 퀘스트 선택
             if (questList[0].quest != null)
             {
-                QuestChoice(questList[0].quest);
                 currentIndex = 0;
+                QuestChoice();
             }
         }
     }
 
     // 퀘스트 선택 시 퀘스트 정보 호출
-    public void QuestChoice(Quest _quest)
+    public void QuestChoice(Quest_Button _questButton=null)
     {
+        if (_questButton != null)
+            currentIndex = questList.IndexOf(_questButton);
+
         // 포기 버튼 UI 활성화
         GetObject((int)GameObjects.GiveUp_Button).SetActive(true);
 
         // Text 내용 활성화
-        QuestManager.instance.QuestUISetting(texts.ToArray(), rewardItems, true, _quest);
+        QuestManager.instance.QuestUISetting(texts.ToArray(), rewardItems, true, questList[currentIndex].quest);
+    }
+
+    // 퀘스트 성공 시 같은 퀘스트 초기화하기
+    public void QuestClear(Quest _quest)
+    {
+        for(int i=0; i<questList.Count; i++)
+        {
+            if (questList[i].quest != null)
+            {
+                if (questList[i].quest == _quest)
+                {
+                    questList[i].quest = null;
+                    questList[i].title.text = string.Empty;
+
+                    Clear();
+                    questList[i].gameObject.SetActive(false);
+                    return;
+                }
+            }
+        }
     }
 
     // 퀘스트 포기 UI 호출
@@ -153,6 +178,7 @@ public class UI_Quest : UI_Scene
     // 퀘스트 포기 승인 (Button)
     public void QuestGiveUp()
     {
+        // 포기할 퀘스트 삭제
         QuestManager.instance.procQuests.Remove(questList[currentIndex].quest);
 
         // 포기할 퀘스트 초기화
@@ -179,6 +205,6 @@ public class UI_Quest : UI_Scene
         GetObject((int)GameObjects.Refusal).SetActive(false);
 
         // Text 내용 초기화
-        QuestManager.instance.QuestUISetting(texts.ToArray(), rewardItems, true);
+        QuestManager.instance.QuestUISetting(texts.ToArray(), rewardItems, false);
     }
 }

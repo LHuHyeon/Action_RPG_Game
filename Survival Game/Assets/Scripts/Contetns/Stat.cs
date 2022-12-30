@@ -13,6 +13,7 @@ public class Stat : MonoBehaviour
     [SerializeField] protected int _defense;
     [SerializeField] protected float _movespeed;
     [SerializeField] protected float _addspeed;
+    [SerializeField] private int _dropExp = 5;
 
     public int Level { get { return _level; } set { _level = value; } }
     public int Hp {
@@ -53,6 +54,9 @@ public class Stat : MonoBehaviour
         }
     }
 
+    // 몬스터일 경우 주는 exp 설정
+    public int DropExp { get { return _dropExp; } set { _dropExp = value; } }
+
     void Start()
     {
         _level = 1;
@@ -91,10 +95,14 @@ public class Stat : MonoBehaviour
         // attacker가 Player라면 경험치 흭득.
         PlayerStat playerStat = attacker as PlayerStat;
         if (playerStat != null){
-            playerStat.Exp += 5;
+            playerStat.Exp += DropExp;
+
+            // 퀘스트 죽은 몬스터 id 전송
+            QuestManager.instance.KillCheck(GetComponent<ObjectData>().id);
+
+            // 아이템 드랍
+            GetComponent<MonsterController>().DeadDropItem();
         }
-        // 퀘스트 죽은 몬스터 id 전송
-        QuestManager.instance.KillCheck(GetComponent<ObjectData>().id);
 
         Managers.Game.Despawn(gameObject);
     }

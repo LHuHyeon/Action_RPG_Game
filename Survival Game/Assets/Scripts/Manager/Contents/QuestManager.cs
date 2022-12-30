@@ -6,13 +6,6 @@ using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
-    /*
-    1. 모든 퀘스트는 여기서 관리
-    2. 보상 지급
-    3. 수락, 포기
-    4. 퀘스트 창이 사용할 수 있도록
-    */
-
     public static QuestManager instance;
 
     public UI_Quest questUI;             // 퀘스트 UI
@@ -48,6 +41,7 @@ public class QuestManager : MonoBehaviour
     {
         questNpc.Invoke(Define.NPCAction.Reward);
         procQuests.Remove(_quest);
+        questUI.QuestClear(_quest);
     }
     
     // 몬스터 처치 시

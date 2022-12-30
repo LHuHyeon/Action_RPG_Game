@@ -14,6 +14,11 @@ public class MonsterController : BaseController
     [SerializeField]
     GameObject _lockTarget;
 
+    [SerializeField]
+    ItemPickUp[] dropItem;
+    [SerializeField]
+    int randomNumber=2;
+
     float distance;     // 타겟과 나의 거리
     bool stopMoving = false;    // 움직임 멈추기
 
@@ -159,12 +164,42 @@ public class MonsterController : BaseController
         return (_destPos - transform.position).magnitude;
     }
 
+    // 죽을 시 아이템 떨어트리기
+    public void DeadDropItem()
+    {
+        for(int i=0; i<dropItem.Length; i++)
+        {
+            dropItem[i].itemCount = Random.Range(0, randomNumber);
+
+            if (dropItem[i].itemCount > 0)
+            {
+                float randomPos = Random.Range(0.2f, 0.4f);
+                GameObject _item = Managers.Resource.Instantiate($"Item/{dropItem[i].item.itemType}/{dropItem[i].item.itemName}");
+                _item.transform.position = new Vector3(transform.position.x+randomPos, transform.position.y+0.5f, transform.position.z+randomPos);
+            }
+        }
+    }
+
     // 공격 받았을 때 [매개변수](공격자 스탯, 추가 데미지, 스탯 공격 여부)
     public void TakeDamage(Stat attacker, int addDamage=0, bool isStat=true)
     {
         anim.SetTrigger("OnHit");
-        _stat.OnAttacked(attacker, addDamage, isStat);
-        StartCoroutine(DelayHit());
+        _stat.OnAttacked(attacker, addDamage, isStat);  // 스탯에 영향 주기
+        StartCoroutine(DelayHit());                     // 피격 받을 시 딜레이 후 피격 가능
+
+        StopCoroutine(PushedBack());
+        StartCoroutine(PushedBack());   // 뒤로 밀리는 코루틴
+    }
+
+    // 뒤로 밀리기
+    IEnumerator PushedBack()
+    {   
+        Vector3 force = -((Managers.Game._player.transform.position - transform.position).normalized);
+        GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(0.4f);
+
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     // 공격 딜레이

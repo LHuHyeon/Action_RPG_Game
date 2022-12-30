@@ -900,10 +900,17 @@ MonoBehaviour:
     refusalLine: {x: 4, y: 4}
     procLine: {x: 5, y: 5}
     clearLine: {x: 6, y: 6}
+  - basicsLine: {x: 7, y: 7}
+    questLine: {x: 8, y: 8}
+    acceptLine: {x: 9, y: 9}
+    refusalLine: {x: 10, y: 10}
+    procLine: {x: 11, y: 11}
+    clearLine: {x: 12, y: 12}
   quest:
   - {fileID: 11400000, guid: 6d31e1d529f01b541885dc813f684cc2, type: 2}
+  - {fileID: 11400000, guid: 8089d0f0833d4ba4eadd49ffdb08f01e, type: 2}
   nextNumber: 0
-  isQuest: 0
+  isReward: 0
 --- !u!114 &1075828136
 MonoBehaviour:
   m_ObjectHideFlags: 0

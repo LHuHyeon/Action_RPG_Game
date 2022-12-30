@@ -16,14 +16,15 @@ MonoBehaviour:
   minLevel: 1
   objectID: 1001
   maxTargetValue: 5
-  achieveValue: 5
+  achieveValue: 0
   gold: 50
   exp: 50
   itemReward:
   - item: {fileID: 11400000, guid: 734ec0fdb8c23554b8301050505ad865, type: 2}
     itemCount: 2
   isAccept: 1
-  isClear: 1
-  achieveDesc: "\uB9C8\uC744 \uC8FC\uBCC0\uC758 \uC880\uBE44 5\uB9C8\uB9AC \uCC98\uCE58\uD558\uAE30."
+  isClear: 0
+  achieveDesc: "\uB9C8\uC744 \uC8FC\uBCC0\uC5D0\uC11C \uC880\uBE44 5\uB9C8\uB9AC
+    \uCC98\uCE58\uD558\uAE30."
   description: "\uB9C8\uC744 \uC8FC\uBCC0\uC5D0 \uC880\uBE44 5\uB9C8\uB9AC\uB97C
     \uC0AC\uB0E5\uD558\uC5EC \uB9C8\uC744\uC744 \uC548\uC804\uD558\uAC8C \uC9C0\uCF1C\uC8FC\uC790!!\n"
