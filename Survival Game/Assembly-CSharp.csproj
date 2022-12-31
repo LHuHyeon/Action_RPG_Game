@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Contetns\Quest.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Information\UI_PlayerInfo.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_Inven.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Quest\UI_Quest.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\PoolManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\SceneManagerEx.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_Inven_Item.cs" />
@@ -88,12 +89,15 @@
      <Compile Include="Assets\Scripts\Controller\ActionController.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_DragSlot.cs" />
      <Compile Include="Assets\Resources\Art\Guns\Scripts\GunView.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Quest\Quest_Button.cs" />
+     <Compile Include="Assets\Scripts\Manager\Contents\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\WeaponManager.cs" />
      <Compile Include="Assets\Scripts\Contetns\Item.cs" />
-     <Compile Include="Assets\Scripts\Manager\Contents\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Contetns\ObjectData.cs" />
-     <Compile Include="Assets\Scripts\UI\Scene\Quest\UI_Quest.cs" />
-     <Compile Include="Assets\Scripts\UI\Scene\Quest\Quest_Button.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_Shop.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_BuySlot.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_SaleSlot.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_SaleCount.cs" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />
