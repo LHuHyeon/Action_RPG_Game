@@ -12,6 +12,7 @@ public class UI_SaleCount : MonoBehaviour
     // TODO : 취소할 시 회색을 원래 색으로 변경 후 초기화
 
     public UI_Inven_Item invenSlot; // 판매 아이템을 가진 슬롯
+    public UI_SaleSlot saleSlot;    // 판매 아이템을 등록할 상점 슬롯
     public Slider sliderValue;
     public InputField countText;
     public Text goldText;
@@ -30,10 +31,12 @@ public class UI_SaleCount : MonoBehaviour
     }
 
     // 판매할 아이템 설정
-    public void SetSlot(UI_Inven_Item _slot, int _itemSlotCount)
+    public void SetSlot(UI_Inven_Item _invenSlot, UI_SaleSlot _saleSlot)
     {
-        invenSlot = _slot;
-        sliderValue.maxValue = _itemSlotCount;
+        _invenSlot.IsClick = false;     // 판매 등록된 인벤은 클릭 금지시키기
+        invenSlot = _invenSlot;
+        saleSlot = _saleSlot;
+        sliderValue.maxValue = _invenSlot.itemCount;
         itemCount = 1;
     }
 
@@ -46,24 +49,16 @@ public class UI_SaleCount : MonoBehaviour
     // 확인 버튼
     public void CheckButton()
     {
-        // 아이템 개수가 최대 개수보다 작을 때
-        if (itemCount < invenSlot.itemCount)
-            invenSlot.SetCount(-itemCount);
-        else
-            invenSlot.ClearSlot();  // 슬롯 초기화
-
-        CancelButton();             // 종료
+        // 판매 등록
+        saleSlot.SaleSetting(invenSlot, itemCount);
+        Clear();             // 초기화
     }
 
     // 취소 버튼
     public void CancelButton()
     {
-        invenSlot = null;
-        sliderValue.value = 1;
-        sliderValue.maxValue = 1;
-        countText.text = "";
-        goldText.text = "";
-        gameObject.SetActive(false);
+        invenSlot.IsClick = true;
+        Clear();
     }
 
     // 버튼 클릭 시 아이템 개수 +1
@@ -76,5 +71,16 @@ public class UI_SaleCount : MonoBehaviour
     public void MinusButton()
     {
         sliderValue.value = --itemCount;
+    }
+
+    void Clear()
+    {
+        invenSlot = null;
+        saleSlot = null;
+        sliderValue.value = 1;
+        sliderValue.maxValue = 1;
+        countText.text = "";
+        goldText.text = "";
+        gameObject.SetActive(false);
     }
 }

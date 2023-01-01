@@ -6,8 +6,18 @@ using UnityEngine.UI;
 
 public class UI_Shop : UI_Scene
 {
-    List<UI_BuySlot> buySlots;
-    List<UI_SaleSlot> saleSlots;
+    public Define.ShopState shopState = Define.ShopState.Sale;
+    private int saleGold;
+    public int SaleGold{
+        get { return saleGold; }
+        set {
+            saleGold = value;
+            GetText((int)Texts.Gold_Text).text = saleGold.ToString();
+        }
+    }
+
+    List<UI_BuySlot> buySlots;      // 구매 슬롯
+    List<UI_SaleSlot> saleSlots;    // 판매 슬롯
 
     enum GameObjects
     {
@@ -21,7 +31,7 @@ public class UI_Shop : UI_Scene
 
     enum Texts
     {
-
+        Gold_Text,
     }
 
     public override void Init()
@@ -36,6 +46,7 @@ public class UI_Shop : UI_Scene
         SlotReset();
 
         GetObject((int)GameObjects.CountCheck).SetActive(false);
+        gameObject.SetActive(false);
     }
 
     // 클릭 이벤트 관련 코드
@@ -43,12 +54,11 @@ public class UI_Shop : UI_Scene
     {
         // 판매 아이템 받기
         Get<GameObject>((int)GameObjects.Sale_Grid).BindEvent((PointerEventData eventData) => {
+            Debug.Log("드랍 받음");
             if (UI_DragSlot.instance.dragSlot != null)
             {
-                if (UI_DragSlot.instance.dragSlot.itemCount > 1)
-                    GetObject((int)GameObjects.CountCheck).SetActive(true);
-                else
-                    SaleConnection();
+                Debug.Log("드랍 : 드래그 슬롯 존재함");
+                SaleConnection();
             }
         }, Define.UIEvent.Drop);
     }
@@ -69,25 +79,44 @@ public class UI_Shop : UI_Scene
         // 실제 인벤토리 정보를 참고해서 자식을 다시 채움
         for(int i=0; i<10; i++)
         {
-            buySlots.Add(Managers.UI.MakeSubItem<UI_BuySlot>(parent: buyGrid.transform, name: "BuySlot"));
+            buySlots.Add(Managers.UI.MakeSubItem<UI_BuySlot>(parent: buyGrid.transform, name: "Buy_Slot"));
             buySlots[i].gameObject.SetActive(false);
         }
 
         for(int i=0; i<15; i++)
         {
-            saleSlots.Add(Managers.UI.MakeSubItem<UI_SaleSlot>(parent: saleGrid.transform, name: "SaleSlot"));
+            saleSlots.Add(Managers.UI.MakeSubItem<UI_SaleSlot>(parent: saleGrid.transform, name: "Sale_Slot"));
             saleSlots[i].gameObject.SetActive(false);
         }
     }
-    
-    public void Buy()
-    {
 
+    // 상점 이용
+    public void UseShop()
+    {
+        if (shopState == Define.ShopState.Buy)
+        {
+            GetObject((int)GameObjects.Buy_Grid).SetActive(true);
+            GetObject((int)GameObjects.SaleObj).SetActive(false);
+        }
+        if (shopState == Define.ShopState.Sale)
+        {
+            GetObject((int)GameObjects.SaleObj).SetActive(true);
+            GetObject((int)GameObjects.Buy_Grid).SetActive(false);
+        }
+    }
+    
+    // 구매창 버튼
+    public void BuyButton()
+    {
+        shopState = Define.ShopState.Buy;
+        UseShop();
     }
 
-    public void Sale()
+    // 판매창 버튼
+    public void SaleButton()
     {
-
+        shopState = Define.ShopState.Sale;
+        UseShop();
     }
 
     // 판매 아이템 등록
@@ -97,11 +126,45 @@ public class UI_Shop : UI_Scene
         {
             if (saleSlots[i].item == null)
             {
-                UI_Inven_Item _slot = UI_DragSlot.instance.dragSlot;
-                saleSlots[i].item = _slot.item;
-                saleSlots[i].itemImage = _slot.itemImage;
-                saleSlots[i].itemCount.text = _slot.itemCount.ToString();
+                if (UI_DragSlot.instance.dragSlot.itemCount > 1)
+                {
+                    // 개수가 1개 이상일 시 개수 선택창 On
+                    GetObject((int)GameObjects.CountCheck).SetActive(true);
+                    UI_SaleCount _go = GetObject((int)GameObjects.CountCheck).GetComponent<UI_SaleCount>();
+                    _go.SetSlot(UI_DragSlot.instance.dragSlot, saleSlots[i]);
+                }
+                else
+                {
+                    // 개수가 1개라면 바로 등록
+                    saleSlots[i].SaleSetting(UI_DragSlot.instance.dragSlot);
+                } 
+
+                UI_DragSlot.instance.SetColor(0);
+                UI_DragSlot.instance.dragSlot = null;
+                return;
             }
         }
+    }
+
+    // 판매하기
+    public void Selling()
+    {
+        for(int i=0; i<saleSlots.Count; i++)
+        {
+            if (saleSlots[i].item != null)
+            {
+                // 인벤토리 개수 차감
+                saleSlots[i].invenSlot.SetCount(-saleSlots[i].ItemCount);
+
+                // 골드 지급
+                Managers.Game.playerStat.Gold += saleSlots[i].gold;
+
+                // 초기화
+                saleSlots[i].Clear();
+            }
+            else
+                break;
+        }
+        SaleGold = 0;
     }
 }

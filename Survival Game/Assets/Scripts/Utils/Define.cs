@@ -35,6 +35,12 @@ public class Define : MonoBehaviour
         Gun,
     }
 
+    public enum ShopState
+    {
+        Buy,
+        Sale,
+    }
+
     public enum WorldObject
     {
         Unknown,

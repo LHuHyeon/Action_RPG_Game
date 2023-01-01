@@ -2769,6 +2769,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1522101907289771126}
     m_Modifications:
+    - target: {fileID: 82547878624747816, guid: d1de3a8d1d78d4a4c9aa8c8a846149dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 542635498659026668, guid: d1de3a8d1d78d4a4c9aa8c8a846149dc, type: 3}
       propertyPath: m_Name
       value: Slot

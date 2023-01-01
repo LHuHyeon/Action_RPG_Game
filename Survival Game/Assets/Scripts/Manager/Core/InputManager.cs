@@ -12,6 +12,9 @@ public class InputManager
 
     public void OnUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+            Managers.Game.shopObj.gameObject.SetActive(true);
+
         // 대화 중일 경우 
         if (TalkManager.instance.isDialouge)
         {

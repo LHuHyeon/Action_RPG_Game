@@ -7,6 +7,14 @@ using UnityEngine.EventSystems;
 public class UI_Inven : UI_Scene
 {
     public GameObject baseInventory;       // 인벤토리 오브젝트
+    private int gold;
+    public int Gold{
+        get { return gold; }
+        set {
+            gold = value;
+            GetText((int)Texts.Coin_Text).text = gold.ToString();
+        }
+    }
 
     List<UI_Inven_Item> slots;      // 인벤토리 슬롯을 담는 리스트
 

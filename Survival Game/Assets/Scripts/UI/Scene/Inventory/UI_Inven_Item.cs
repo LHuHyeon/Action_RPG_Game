@@ -10,11 +10,27 @@ public class UI_Inven_Item : UI_Base
     public Image itemImage;     // UI 이미지
     public Text itemCountText;  // UI 개수
     public int itemCount;       // 아이템 개수
+    private bool isClick;  // 클릭 가능 여부
+    public bool IsClick{
+        get { return isClick; }
+        set {
+            isClick = value;
+
+            if (isClick)
+                clickBan.SetActive(false);
+            else
+                clickBan.SetActive(true);
+        }
+    }
+
+    public GameObject clickBan;         // 클릭 금지일 경우 회색 슬롯
 
     public UI_BaseSlot havebaseSlot;    // 메인 슬롯에 있는 슬롯과 연결
 
     public override void Init()
     {
+        IsClick = true;
+
         // 커서가 닿을 시 아이템 정보 UI 활성화
         gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.ShowItemTip(item);}, Define.UIEvent.Enter);
         
@@ -22,7 +38,11 @@ public class UI_Inven_Item : UI_Base
         gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.HideItemTip();}, Define.UIEvent.Exit);
 
         // 아이템에 커서를 올리고 오른쪽 클릭 시 아이템 사용
-        gameObject.BindEvent((PointerEventData)=>{
+        gameObject.BindEvent((PointerEventData)=>
+        {
+            if (isClick == false)
+                return;
+                
             if (Input.GetMouseButtonUp(1))
             {
                 Managers.Game.baseInventory.UsingItem(null, this);    // 아이템 사용
@@ -32,6 +52,9 @@ public class UI_Inven_Item : UI_Base
         // 아이템이 존재할 시 마우스로 들 수 있다.
         gameObject.BindEvent((PointerEventData eventData)=>
         {
+            if (isClick == false)
+                return;
+                
             if (item != null)
             {
                 UI_DragSlot.instance.dragSlot = this;
@@ -44,6 +67,9 @@ public class UI_Inven_Item : UI_Base
         // 마우스를 드래그할 시 아이템이 이동됨.
         gameObject.BindEvent((PointerEventData eventData)=>
         {
+            if (isClick == false)
+                return;
+
             if (item != null)
                 UI_DragSlot.instance.transform.position = eventData.position;
 
@@ -52,6 +78,9 @@ public class UI_Inven_Item : UI_Base
         // 드래그가 끝났을 때
         gameObject.BindEvent((PointerEventData eventData)=>
         {
+            if (isClick == false)
+                return;
+
             // 아이템을 버린 위치가 UI가 아니라면
             if (item != null && !EventSystem.current.IsPointerOverGameObject())
             {
@@ -79,6 +108,9 @@ public class UI_Inven_Item : UI_Base
         // 이 슬롯에 마우스 클릭이 끝나면 아이템 받기
         gameObject.BindEvent((PointerEventData eventData)=>
         {
+            if (isClick == false)
+                return;
+
             if (UI_DragSlot.instance.dragSlot != null)      // 인벤 슬롯을 받을 때
             {
                 // 두 슬롯의 아이템이 같은 아이템일 경우 개수 체크
@@ -178,6 +210,7 @@ public class UI_Inven_Item : UI_Base
         itemImage.sprite = null;
         itemCount = 0;
         itemCountText.text = "0";
+        IsClick = true;
 
         if (isRemove)
         {
