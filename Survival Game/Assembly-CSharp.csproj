@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Utils\Util.cs" />
-     <Compile Include="Assets\Scripts\Controller\NpcController.cs" />
+     <Compile Include="Assets\Scripts\Controller\Npc\NpcController.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\TalkManager.cs" />
      <Compile Include="Assets\Scripts\Animator\PlayerAnimator.cs" />
      <Compile Include="Assets\Scripts\Animator\CrossHair.cs" />
@@ -98,6 +98,8 @@
      <Compile Include="Assets\Scripts\Contetns\Item.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_SaleCount.cs" />
      <Compile Include="Assets\Scripts\Contetns\ObjectData.cs" />
+     <Compile Include="Assets\Scripts\Controller\Npc\ShopNpc.cs" />
+     <Compile Include="Assets\Scripts\Controller\Npc\QuestNpc.cs" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />

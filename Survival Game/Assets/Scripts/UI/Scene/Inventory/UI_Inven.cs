@@ -52,7 +52,9 @@ public class UI_Inven : UI_Scene
 
         // 인벤토리 옮기기 EventSystem 등록
         GetObject((int)GameObjects.Title).BindEvent((PointerEventData eventData)=>{
-            baseInventory.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
+            // 상점에서는 인벤토리 못 옮김.
+            if (Managers.Game.isShop == false)
+                baseInventory.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
         }, Define.UIEvent.Drag);
 
         baseInventory = GetObject((int)GameObjects.Inventory);
@@ -84,7 +86,7 @@ public class UI_Inven : UI_Scene
     // 인벤토리 On/Off
     void OnInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && !Managers.Game.isShop)
         {
             Managers.Game.isInventory = !Managers.Game.isInventory;
 
@@ -92,6 +94,7 @@ public class UI_Inven : UI_Scene
             {
                 baseInventory.SetActive(true);
                 Cursor.visible = true;
+                baseInventory.transform.position = new Vector3(1920, 540, 0);   // 위치 초기화
             }
             else
             {
@@ -99,7 +102,6 @@ public class UI_Inven : UI_Scene
                 Cursor.visible = false;
                 
                 GetObject((int)GameObjects.CountCheck).SetActive(false);        // 아이템 개수 설정 UI 비활성화
-                baseInventory.transform.position = new Vector3(1920, 540, 0);   // 위치 초기화
             }
         }
     }

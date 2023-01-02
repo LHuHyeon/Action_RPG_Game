@@ -12,11 +12,8 @@ public class InputManager
 
     public void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-            Managers.Game.shopObj.gameObject.SetActive(true);
-
-        // 대화 중일 경우 
-        if (TalkManager.instance.isDialouge)
+        // 대화 중이거나 상점을 이용할 경우 움직이거나 공격 금지.
+        if (TalkManager.instance.isDialouge || Managers.Game.isShop)
         {
             Managers.Game._player.GetComponent<PlayerController>().StopMove();
             return;

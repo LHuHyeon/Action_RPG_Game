@@ -73,7 +73,7 @@ public class UI_SaleCount : MonoBehaviour
         sliderValue.value = --itemCount;
     }
 
-    void Clear()
+    public void Clear()
     {
         invenSlot = null;
         saleSlot = null;

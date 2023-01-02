@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UI_Shop : UI_Scene
 {
     public Define.ShopState shopState = Define.ShopState.Sale;
+
     private int saleGold;
     public int SaleGold{
         get { return saleGold; }
@@ -54,10 +55,8 @@ public class UI_Shop : UI_Scene
     {
         // 판매 아이템 받기
         Get<GameObject>((int)GameObjects.Sale_Grid).BindEvent((PointerEventData eventData) => {
-            Debug.Log("드랍 받음");
             if (UI_DragSlot.instance.dragSlot != null)
             {
-                Debug.Log("드랍 : 드래그 슬롯 존재함");
                 SaleConnection();
             }
         }, Define.UIEvent.Drop);
@@ -146,7 +145,7 @@ public class UI_Shop : UI_Scene
         }
     }
 
-    // 판매하기
+    // 판매하기 (Button)
     public void Selling()
     {
         for(int i=0; i<saleSlots.Count; i++)
@@ -166,5 +165,14 @@ public class UI_Shop : UI_Scene
                 break;
         }
         SaleGold = 0;
+    }
+
+    public void Clear()
+    {
+        shopState = Define.ShopState.Buy;
+        SaleGold = 0;
+        
+        GetObject((int)GameObjects.CountCheck).GetComponent<UI_SaleCount>().Clear();
+        GetObject((int)GameObjects.CountCheck).SetActive(false);
     }
 }

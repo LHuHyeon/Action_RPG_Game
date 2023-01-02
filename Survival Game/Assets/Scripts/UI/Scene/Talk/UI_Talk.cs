@@ -198,7 +198,7 @@ public class UI_Talk : UI_Scene
 
         // 대화 초기화 후 수락 대화 진행
         Clear();
-        NpcController npc = TalkManager.instance.currentNpc;
+        QuestNpc npc = TalkManager.instance.currentNpc;
         npc.StartTalk(npc.talkStates[npc.nextNumber].acceptLine);
     }
 
@@ -209,7 +209,7 @@ public class UI_Talk : UI_Scene
 
         // 대화 초기화 후 거절 대화 진행
         Clear();
-        NpcController npc = TalkManager.instance.currentNpc;
+        QuestNpc npc = TalkManager.instance.currentNpc;
         npc.StartTalk(npc.talkStates[npc.nextNumber].refusalLine);
     }
 
