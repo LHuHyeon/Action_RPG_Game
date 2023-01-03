@@ -39,16 +39,20 @@ public class PlayerController : BaseController
         // 키 입력 관련 메소드 등록
         Managers.Input.KeyAction -= () => {
             KeyboradEvent();
-            Stamina();
         };
         Managers.Input.KeyAction += () => {
             KeyboradEvent();
-            Stamina();
         };
 
         // 마우스 입력 관련 메소드 등록
         Managers.Input.MouseAction -= MouseEvent;
         Managers.Input.MouseAction += MouseEvent;
+    }
+
+    // 계속 호출될 메소드
+    protected override void PlayUpdate()
+    {
+        Stamina();  // 스테미나 회복
     }
 
     // 움직임

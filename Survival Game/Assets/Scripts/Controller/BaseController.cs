@@ -24,6 +24,8 @@ public abstract class BaseController : MonoBehaviour
 
     void Update()
     {
+        PlayUpdate();   // 계속 호출되어야 하는 메소드
+
         // State 패턴
         switch (State){
             case Define.State.Moving:    // 움직임
@@ -43,6 +45,7 @@ public abstract class BaseController : MonoBehaviour
 
     public abstract void Init();
 
+    protected virtual void PlayUpdate() {}
     protected virtual void UpdateMoving() {}
     protected virtual void UpdateIdle() {}
     protected virtual void UpdateSkill() {}

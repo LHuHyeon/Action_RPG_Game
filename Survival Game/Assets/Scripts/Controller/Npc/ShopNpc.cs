@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class ShopNpc : NpcController
 {
-    public Item[] buyItems;         // 구매 아이템 (아이템 가격은 item.coin*1.5)
+    public Item[] buyItems;         // 판매할 아이템
     
     public UI_Shop shopUI;          // 상점 UI
 
-    public Vector3 invenpos = new Vector3(900, 85, 0);
+    public Vector3 invenpos = new Vector3(900, 85, 0);  // 인벤 위치
 
     protected override void Init()
     {
-        
     }
 
+    // 상호작용
     public override void Interaction()
     {
-        OnShop();
+        OnShop();                       // SHOP UI 호출 및 설정
+        shopUI.BuySetting(buyItems);    // 구매 슬롯 설정
     }
 
     protected override void NPCUpdate()

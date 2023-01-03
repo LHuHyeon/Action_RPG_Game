@@ -26,7 +26,8 @@ public class UI_Shop : UI_Scene
         Buy_Grid,
         Sale_Grid,
         SaleObj,
-        CountCheck,         // 판매할 아이템 개수 체크
+        Buy_CountCheck,
+        Sale_CountCheck,    // 판매할 아이템 개수 체크
         Sale_Content,       // 판매할 때 아이템이 올려지면 Active 용도
     }
 
@@ -46,7 +47,11 @@ public class UI_Shop : UI_Scene
         AddEventSystem();
         SlotReset();
 
-        GetObject((int)GameObjects.CountCheck).SetActive(false);
+        Clear();
+
+        GetObject((int)GameObjects.Sale_CountCheck).SetActive(false);
+        GetObject((int)GameObjects.Buy_CountCheck).SetActive(false);
+
         gameObject.SetActive(false);
     }
 
@@ -79,6 +84,7 @@ public class UI_Shop : UI_Scene
         for(int i=0; i<10; i++)
         {
             buySlots.Add(Managers.UI.MakeSubItem<UI_BuySlot>(parent: buyGrid.transform, name: "Buy_Slot"));
+            buySlots[i].buyCount = GetObject((int)GameObjects.Buy_CountCheck).GetComponent<UI_BuyCount>();
             buySlots[i].gameObject.SetActive(false);
         }
 
@@ -118,6 +124,16 @@ public class UI_Shop : UI_Scene
         UseShop();
     }
 
+    // 구매 슬롯 세팅
+    public void BuySetting(Item[] _items)
+    {
+        // npc가 들고있던 판매아이템 생성
+        for(int i=0; i<_items.Length; i++)
+        {
+            buySlots[i].BuySlotSetting(_items[i]);
+        }
+    }
+
     // 판매 아이템 등록
     void SaleConnection()
     {
@@ -128,8 +144,8 @@ public class UI_Shop : UI_Scene
                 if (UI_DragSlot.instance.dragSlot.itemCount > 1)
                 {
                     // 개수가 1개 이상일 시 개수 선택창 On
-                    GetObject((int)GameObjects.CountCheck).SetActive(true);
-                    UI_SaleCount _go = GetObject((int)GameObjects.CountCheck).GetComponent<UI_SaleCount>();
+                    GetObject((int)GameObjects.Sale_CountCheck).SetActive(true);
+                    UI_SaleCount _go = GetObject((int)GameObjects.Sale_CountCheck).GetComponent<UI_SaleCount>();
                     _go.SetSlot(UI_DragSlot.instance.dragSlot, saleSlots[i]);
                 }
                 else
@@ -158,6 +174,9 @@ public class UI_Shop : UI_Scene
                 // 골드 지급
                 Managers.Game.playerStat.Gold += saleSlots[i].gold;
 
+                // 들고 있는 아이템체크
+                Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
+
                 // 초기화
                 saleSlots[i].Clear();
             }
@@ -172,7 +191,7 @@ public class UI_Shop : UI_Scene
         shopState = Define.ShopState.Buy;
         SaleGold = 0;
         
-        GetObject((int)GameObjects.CountCheck).GetComponent<UI_SaleCount>().Clear();
-        GetObject((int)GameObjects.CountCheck).SetActive(false);
+        GetObject((int)GameObjects.Sale_CountCheck).GetComponent<UI_SaleCount>().Clear();
+        GetObject((int)GameObjects.Sale_CountCheck).SetActive(false);
     }
 }

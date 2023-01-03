@@ -1805,6 +1805,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2946840013785721122, guid: e8a854bdc24009940a62d0ad697c2232, type: 3}
+      propertyPath: buyItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946840013785721122, guid: e8a854bdc24009940a62d0ad697c2232, type: 3}
+      propertyPath: buyItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71a0d0f1d85364e4ca9bbeac1e3eec33, type: 2}
+    - target: {fileID: 2946840013785721122, guid: e8a854bdc24009940a62d0ad697c2232, type: 3}
+      propertyPath: buyItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 734ec0fdb8c23554b8301050505ad865, type: 2}
+    - target: {fileID: 2946840013785721122, guid: e8a854bdc24009940a62d0ad697c2232, type: 3}
+      propertyPath: buyItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: ad1354d70881c5b40b10be9ebed62037, type: 2}
     - target: {fileID: 4138487294852197909, guid: e8a854bdc24009940a62d0ad697c2232, type: 3}
       propertyPath: m_Name
       value: "\uD241\uD241\uC774"
