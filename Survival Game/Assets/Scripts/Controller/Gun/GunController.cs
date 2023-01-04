@@ -33,12 +33,13 @@ public class GunController : MonoBehaviour
 
     void Start()
     {
-        Managers.Input.KeyAction -= Reload;
-        Managers.Input.KeyAction += Reload;
+        Managers.Input.KeyAction -= KeyReload;
+        Managers.Input.KeyAction += KeyReload;
         Managers.Input.MouseAction -= GunShot;
         Managers.Input.MouseAction += GunShot;
     }
 
+    // 총 발사
     void GunShot(Define.MouseEvent evt)
     {
         if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
@@ -53,26 +54,32 @@ public class GunController : MonoBehaviour
         }
     }
 
-    // 장전
-    public void Reload()
+    // R키 장전
+    void KeyReload()
     {
         if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                if (currentGun.currentBulletCount < currentGun.maxBulletCount)
-                {
-                    // 인벤토리 총알 개수 확인
-                    int bulletCount = Managers.Game.baseInventory.GetItem(currentGun.bullt, currentGun.maxBulletCount);
-                    Debug.Log($"장전! : {bulletCount}");
-                    if (bulletCount > 0 && !isReload)
-                    {
-                        StartCoroutine(ReloadTime());
-                    }
-                }
+                Reload();
             }
         }
     }
+
+    // 장전
+    void Reload()
+    {
+        if (currentGun.currentBulletCount < currentGun.maxBulletCount)
+        {
+            // 인벤토리 총알 개수 확인
+            int bulletCount = Managers.Game.baseInventory.GetItem(currentGun.bullt, currentGun.maxBulletCount);
+            Debug.Log($"장전! : {bulletCount}");
+            if (bulletCount > 0 && !isReload)
+            {
+                StartCoroutine(ReloadTime());
+            }
+        }
+    }    
 
     // 장전 시간
     IEnumerator ReloadTime()

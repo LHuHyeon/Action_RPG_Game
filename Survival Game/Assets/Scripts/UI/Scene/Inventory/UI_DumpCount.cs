@@ -1,23 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class UI_DumpCount : MonoBehaviour
+public class UI_DumpCount : UI_ItemCount
 {
     public UI_Inven_Item invenSlot; // 버릴 아이템을 가진 슬롯
-    public Slider sliderValue;
-    public InputField countText;
-    public int itemCount;
-
-    void Update()
-    {
-        if (invenSlot != null)
-        {
-            itemCount = Mathf.Clamp(itemCount, 1, ((int)sliderValue.maxValue));
-            countText.text = itemCount.ToString();
-        }
-    }
 
     // 버릴 슬롯 아이템 설정
     public void SetSlot(UI_Inven_Item _slot, int _itemSlotCount)
@@ -27,14 +14,8 @@ public class UI_DumpCount : MonoBehaviour
         itemCount = 1;
     }
 
-    // 슬라이더 값 설정 버튼
-    public void SliderValueChange()
-    {
-        itemCount = ((int)sliderValue.value);
-    }
-
     // 확인 버튼
-    public void CheckButton()
+    public override void CheckButton()
     {
         // 버릴 아이템에 개수 적용
         ItemPickUp itemPrefab = invenSlot.item.itemPrefab.GetComponent<ItemPickUp>();
@@ -54,24 +35,12 @@ public class UI_DumpCount : MonoBehaviour
     }
 
     // 취소 버튼
-    public void CancelButton()
+    public override void CancelButton()
     {
         invenSlot = null;
         sliderValue.value = 1;
         sliderValue.maxValue = 1;
         countText.text = "";
         gameObject.SetActive(false);
-    }
-
-    // 버튼 클릭 시 아이템 개수 +1
-    public void PlusButton()
-    {
-        sliderValue.value = ++itemCount;
-    }
-
-    // 버튼 클릭 시 아이템 개수 -1
-    public void MinusButton()
-    {
-        sliderValue.value = --itemCount;
     }
 }

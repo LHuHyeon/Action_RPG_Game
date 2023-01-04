@@ -301,10 +301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3096e9c7d284504caa202cd4301bc36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invenSlot: {fileID: 0}
   sliderValue: {fileID: 902958712}
   countText: {fileID: 764722352}
   itemCount: 1
+  invenSlot: {fileID: 0}
 --- !u!1 &499742609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,8 +1416,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -20, y: 0}
-  m_SizeDelta: {x: 30, y: 0}
+  m_AnchoredPosition: {x: -10.3, y: 0}
+  m_SizeDelta: {x: 20, y: -10}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1121999159
 CanvasRenderer:
@@ -1440,15 +1440,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.82745105, g: 0.80392164, b: 0.73333335, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

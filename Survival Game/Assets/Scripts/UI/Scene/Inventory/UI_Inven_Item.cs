@@ -32,7 +32,12 @@ public class UI_Inven_Item : UI_Base
         IsClick = true;
 
         // 커서가 닿을 시 아이템 정보 UI 활성화
-        gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.ShowItemTip(item);}, Define.UIEvent.Enter);
+        gameObject.BindEvent((PointerEventData)=>
+        {
+            Managers.Game.baseInventory.ShowItemTip(item);
+
+            
+        }, Define.UIEvent.Enter);
         
         // 커서가 때어지면 아이템 정보 UI 비활성화
         gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.HideItemTip();}, Define.UIEvent.Exit);
@@ -61,6 +66,10 @@ public class UI_Inven_Item : UI_Base
                 UI_DragSlot.instance.DragSetImage(itemImage);
 
                 UI_DragSlot.instance.transform.position = eventData.position;
+
+                // 상점일 경우 Drop 받을 Obj 활성화
+                if (Managers.Game.isShop)
+                    UI_Shop.go_RayDrop.SetActive(true);
             }
         }, Define.UIEvent.BeginDrag);
 
@@ -223,5 +232,28 @@ public class UI_Inven_Item : UI_Base
         
         SetColor(0);
         Managers.Game.baseInventory.HideItemTip();
+    }
+
+    // 키 인풋
+    void KeyInput()
+    {
+        // if (Input.GetKeyDown(KeyCode.Alpha1))
+        //     Managers.Game.playerInfo.slots[0].
+        // else if (Input.GetKeyDown(KeyCode.Alpha2))
+        //     CurrentSlot = slots[1];
+        // else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //     CurrentSlot = slots[2];
+        // else if (Input.GetKeyDown(KeyCode.Alpha4))
+        //     CurrentSlot = slots[3];
+        // else if (Input.GetKeyDown(KeyCode.Alpha5))
+        //     CurrentSlot = slots[4];
+        // else if (Input.GetKeyDown(KeyCode.Alpha6))
+        //     CurrentSlot = slots[5];
+        // else if (Input.GetKeyDown(KeyCode.Alpha7))
+        //     CurrentSlot = slots[6];
+        // else if (Input.GetKeyDown(KeyCode.Alpha8))
+        //     CurrentSlot = slots[7];
+        // else if (Input.GetKeyDown(KeyCode.Alpha9))
+        //     CurrentSlot = slots[8];
     }
 }

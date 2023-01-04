@@ -73,8 +73,21 @@ public class UI_BaseSlot : UI_Base
     // 인벤토리에서 대표 슬롯에 등록할 때
     private void ConnectionSlot()
     {
+        // 현재 메인슬롯이 인벤슬롯과 연결되어 있다면 이전에 연결된 메인슬롯을 초기화
         if (haveinvenSlot != null)
             UI_DragSlot.instance.dragSlot.havebaseSlot.ClearSlot();
+        else
+        {
+            UI_BaseSlot[] slots = Managers.Game.playerInfo.slots.ToArray();
+            for(int i=0; i<slots.Length; i++)
+            {
+                // 다른 메인 슬롯에 연결된 인벤슬롯이 내꺼와 같다면 그 메인슬롯을 초기화
+                if (slots[i].haveinvenSlot == UI_DragSlot.instance.dragSlot)
+                {
+                    slots[i].ClearSlot();
+                }
+            }
+        }
             
         AddItem(UI_DragSlot.instance.dragSlot.item, UI_DragSlot.instance.dragSlot.itemCount, UI_DragSlot.instance.dragSlot);
         UI_DragSlot.instance.dragSlot = null;

@@ -17,6 +17,8 @@ public class UI_Shop : UI_Scene
         }
     }
 
+    public static GameObject go_RayDrop;
+
     List<UI_BuySlot> buySlots;      // 구매 슬롯
     List<UI_SaleSlot> saleSlots;    // 판매 슬롯
 
@@ -26,7 +28,8 @@ public class UI_Shop : UI_Scene
         Buy_Grid,
         Sale_Grid,
         SaleObj,
-        Buy_CountCheck,
+        RayDrop,            // 아이템을 Drop 받을 때 사용될 Obj
+        Buy_CountCheck,     // 구매할 아이템 개수 체크
         Sale_CountCheck,    // 판매할 아이템 개수 체크
         Sale_Content,       // 판매할 때 아이템이 올려지면 Active 용도
     }
@@ -59,12 +62,16 @@ public class UI_Shop : UI_Scene
     void AddEventSystem()
     {
         // 판매 아이템 받기
-        Get<GameObject>((int)GameObjects.Sale_Grid).BindEvent((PointerEventData eventData) => {
+        go_RayDrop = Get<GameObject>((int)GameObjects.RayDrop);
+        go_RayDrop.BindEvent((PointerEventData eventData) => {
             if (UI_DragSlot.instance.dragSlot != null)
             {
                 SaleConnection();
+                go_RayDrop.SetActive(false);
             }
         }, Define.UIEvent.Drop);
+
+        go_RayDrop.SetActive(false);
     }
 
     // 각 구매, 판매안의 슬롯 초기화
@@ -186,6 +193,7 @@ public class UI_Shop : UI_Scene
         SaleGold = 0;
     }
 
+    // UI 초기화
     public void Clear()
     {
         shopState = Define.ShopState.Buy;
@@ -193,5 +201,18 @@ public class UI_Shop : UI_Scene
         
         GetObject((int)GameObjects.Sale_CountCheck).GetComponent<UI_SaleCount>().Clear();
         GetObject((int)GameObjects.Sale_CountCheck).SetActive(false);
+    }
+
+    // 상점 나가기
+    public void ExitShop()
+    {
+        Managers.Game.isShop = false;
+        Cursor.visible = false;
+
+        Managers.Game.isInventory = false;
+        Managers.Game.baseInventory.baseInventory.SetActive(false);
+
+        Clear();
+        gameObject.SetActive(false);
     }
 }

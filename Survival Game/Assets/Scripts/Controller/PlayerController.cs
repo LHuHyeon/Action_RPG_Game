@@ -152,6 +152,9 @@ public class PlayerController : BaseController
         if (Managers.Game.isDiveRoll)
             return;
 
+        // 캐릭터의 방향은 카메라 기준
+        transform.forward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
+
         // 멈추기
         if (stopMoving || TalkManager.instance.isDialouge)
         {
@@ -161,9 +164,6 @@ public class PlayerController : BaseController
 
         if (State == Define.State.Moving)
             DiveRoll();
-
-        // 캐릭터의 방향은 카메라 기준
-        transform.forward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
 
         Moving();
     }

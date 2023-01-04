@@ -68,7 +68,7 @@ public class ActionController : MonoBehaviour
     // Start 보다 늦게 Start 되는 오브젝트를 위해 딜레이를 준다.
     void DelayInit()
     {
-        slots = Managers.Game.playerInfo.GetSlot(); // 슬롯 UI 가져오기
+        slots = Managers.Game.playerInfo.slots; // 슬롯 UI 가져오기
         CurrentSlot = slots[0];     // 현재 선택한 슬롯
     }
 

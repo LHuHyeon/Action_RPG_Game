@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class UI_PlayerInfo : UI_Scene
 {
-    List<UI_BaseSlot> slots;    // BaseSlot(메인 슬롯) 저장
+    public List<UI_BaseSlot> slots;    // BaseSlot(메인 슬롯) 저장
     PlayerStat _stat;
-
-    public List<UI_BaseSlot> GetSlot() { return slots; }
     
     enum GameObjects
     {
