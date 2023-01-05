@@ -9,6 +9,8 @@ public class ObjectData : MonoBehaviour
 
     /*
     몬스터 : 1001 시작
+    총 : 601 시작
+    근접무기 : 501 시작
     npc : 101 시작
     */
 }

@@ -58,6 +58,20 @@ public class UI_PlayerInfo : UI_Scene
         }
     }
 
+    // 메인 슬롯의 중복된 아이템 초기화
+    public void OverlabClear(UI_Inven_Item _invenSlot)
+    {
+        UI_BaseSlot[] slots = Managers.Game.playerInfo.slots.ToArray();
+        for(int i=0; i<slots.Length; i++)
+        {
+            // 다른 메인 슬롯에 연결된 인벤슬롯이 내꺼와 같다면 그 메인슬롯을 초기화
+            if (slots[i].haveinvenSlot == _invenSlot)
+            {
+                slots[i].ClearSlot();
+            }
+        }
+    }
+
     // 1~9의 슬롯 초기화
     void SlotReset()
     {

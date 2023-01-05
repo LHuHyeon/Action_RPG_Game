@@ -27,6 +27,8 @@ public class UI_Inven_Item : UI_Base
 
     public UI_BaseSlot havebaseSlot;    // 메인 슬롯에 있는 슬롯과 연결
 
+    bool isKeyConnection = false;
+
     public override void Init()
     {
         IsClick = true;
@@ -34,18 +36,29 @@ public class UI_Inven_Item : UI_Base
         // 커서가 닿을 시 아이템 정보 UI 활성화
         gameObject.BindEvent((PointerEventData)=>
         {
+            if (isClick == false)
+                return;
+
+            // 아이템 정보 호출
             Managers.Game.baseInventory.ShowItemTip(item);
 
-            
+            // 키 입력으로 메인슬롯과 연결
+            if (item != null)
+                isKeyConnection = true;
         }, Define.UIEvent.Enter);
         
         // 커서가 때어지면 아이템 정보 UI 비활성화
-        gameObject.BindEvent((PointerEventData)=>{Managers.Game.baseInventory.HideItemTip();}, Define.UIEvent.Exit);
+        gameObject.BindEvent((PointerEventData)=>
+        {
+            Managers.Game.baseInventory.HideItemTip();
+            isKeyConnection = false;
+        }, Define.UIEvent.Exit);
 
         // 아이템에 커서를 올리고 오른쪽 클릭 시 아이템 사용
         gameObject.BindEvent((PointerEventData)=>
         {
-            if (isClick == false)
+            // 상점 이용중일 땐 아이템 사용 금지
+            if (Managers.Game.isShop)
                 return;
                 
             if (Input.GetMouseButtonUp(1))
@@ -146,6 +159,12 @@ public class UI_Inven_Item : UI_Base
         }, Define.UIEvent.Drop);
     }
 
+    void Update()
+    {
+        if (isKeyConnection)
+            KeyConnection();
+    }
+
     // 현재 슬롯을 다른 슬롯과 바꿀 때 사용하는 메소드
     private void ChangeSlot()
     {
@@ -234,26 +253,26 @@ public class UI_Inven_Item : UI_Base
         Managers.Game.baseInventory.HideItemTip();
     }
 
-    // 키 인풋
-    void KeyInput()
+    // 숫자 키로 메인슬롯과 연결
+    void KeyConnection()
     {
-        // if (Input.GetKeyDown(KeyCode.Alpha1))
-        //     Managers.Game.playerInfo.slots[0].
-        // else if (Input.GetKeyDown(KeyCode.Alpha2))
-        //     CurrentSlot = slots[1];
-        // else if (Input.GetKeyDown(KeyCode.Alpha3))
-        //     CurrentSlot = slots[2];
-        // else if (Input.GetKeyDown(KeyCode.Alpha4))
-        //     CurrentSlot = slots[3];
-        // else if (Input.GetKeyDown(KeyCode.Alpha5))
-        //     CurrentSlot = slots[4];
-        // else if (Input.GetKeyDown(KeyCode.Alpha6))
-        //     CurrentSlot = slots[5];
-        // else if (Input.GetKeyDown(KeyCode.Alpha7))
-        //     CurrentSlot = slots[6];
-        // else if (Input.GetKeyDown(KeyCode.Alpha8))
-        //     CurrentSlot = slots[7];
-        // else if (Input.GetKeyDown(KeyCode.Alpha9))
-        //     CurrentSlot = slots[8];
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            Managers.Game.playerInfo.slots[0].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            Managers.Game.playerInfo.slots[1].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            Managers.Game.playerInfo.slots[2].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+            Managers.Game.playerInfo.slots[3].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+            Managers.Game.playerInfo.slots[4].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+            Managers.Game.playerInfo.slots[5].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+            Managers.Game.playerInfo.slots[6].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+            Managers.Game.playerInfo.slots[7].ConnectionSlot(this);
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+            Managers.Game.playerInfo.slots[8].ConnectionSlot(this);
     }
 }

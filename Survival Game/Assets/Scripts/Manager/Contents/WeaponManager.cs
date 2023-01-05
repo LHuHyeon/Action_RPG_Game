@@ -34,7 +34,7 @@ public class WeaponManager
         // 무기 개수가 많지 않으므로 루프문 사용
         for(int i=0; i<count; i++)
         {
-            if (_item.itemName == weaponList[i].name)
+            if (_item.itemPrefab.GetComponent<ObjectData>().id == weaponList[i].GetComponent<ObjectData>().id)
             {
                 weaponActive = weaponList[i];
                 

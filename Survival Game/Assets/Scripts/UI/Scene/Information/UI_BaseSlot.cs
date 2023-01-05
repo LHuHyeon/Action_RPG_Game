@@ -64,32 +64,30 @@ public class UI_BaseSlot : UI_Base
                 if (UI_DragSlot.instance.baseSlot != null)
                     ChangeSlot();
                 else if (UI_DragSlot.instance.dragSlot != null)
-                    ConnectionSlot();
+                    DropConnectionSlot();
             }
 
         }, Define.UIEvent.Drop);
     }
 
-    // 인벤토리에서 대표 슬롯에 등록할 때
-    private void ConnectionSlot()
+    // 아이템을 Drop이 아닌 코드로 넣을 때 사용될 메소드
+    public void ConnectionSlot(UI_Inven_Item _invenSlot)
     {
-        // 현재 메인슬롯이 인벤슬롯과 연결되어 있다면 이전에 연결된 메인슬롯을 초기화
+        // 다른 인벤슬롯이 현재 메인슬롯과 연결할 것이기 때문에
+        // 현재 메인슬롯이 인벤슬롯과 연결되어 있다면 초기화
         if (haveinvenSlot != null)
-            UI_DragSlot.instance.dragSlot.havebaseSlot.ClearSlot();
-        else
-        {
-            UI_BaseSlot[] slots = Managers.Game.playerInfo.slots.ToArray();
-            for(int i=0; i<slots.Length; i++)
-            {
-                // 다른 메인 슬롯에 연결된 인벤슬롯이 내꺼와 같다면 그 메인슬롯을 초기화
-                if (slots[i].haveinvenSlot == UI_DragSlot.instance.dragSlot)
-                {
-                    slots[i].ClearSlot();
-                }
-            }
-        }
+            ClearSlot();
+
+        // 다른 메인슬롯과 중복되는지 확인
+        Managers.Game.playerInfo.OverlabClear(_invenSlot);
             
-        AddItem(UI_DragSlot.instance.dragSlot.item, UI_DragSlot.instance.dragSlot.itemCount, UI_DragSlot.instance.dragSlot);
+        AddItem(_invenSlot.item, _invenSlot.itemCount, _invenSlot);
+    }
+
+    // 인벤토리에서 메인 슬롯에 등록할 때
+    private void DropConnectionSlot()
+    {
+        ConnectionSlot(UI_DragSlot.instance.dragSlot);
         UI_DragSlot.instance.dragSlot = null;
     }
 
@@ -162,6 +160,7 @@ public class UI_BaseSlot : UI_Base
         itemImage.sprite = null;
         itemCount = 0;
         itemCountText.text = "0";
+        haveinvenSlot.havebaseSlot = null;
         haveinvenSlot = null;
 
         SetColor(0);
