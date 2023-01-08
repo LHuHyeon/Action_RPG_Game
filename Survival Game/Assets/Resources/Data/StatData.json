@@ -5,6 +5,7 @@
             "maxHp": "200",
             "maxSp": "200",
             "attack": "20",
+            "statPoint": "0",
             "totalExp": "0"
         },
         {
@@ -12,6 +13,7 @@
             "maxHp": "250",
             "maxSp": "200",
             "attack": "25",
+            "statPoint": "3",
             "totalExp": "10"
         },
         {
@@ -19,6 +21,7 @@
             "maxHp": "300",
             "maxSp": "200",
             "attack": "30",
+            "statPoint": "3",
             "totalExp": "20"
         }
     ]

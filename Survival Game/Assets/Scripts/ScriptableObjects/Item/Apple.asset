@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297876743e2dbcd4ba2c78643b8d0ead, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  itemName: "\uC0AC\uACFC"
+  itemName: Apple
+  maxCount: 99
   itemType: 1
   itemCoin: 5
+  damage: 0
   itemImage: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
   itemPrefab: {fileID: 5133822282634275084, guid: f295e370269be6e4c905b025911e5917, type: 3}
+  gun: {fileID: 0}
   itemDesc: "\uC544\uC0AD\uC544\uC0AD\uD55C \uACFC\uC77C\uC774\uB2E4."

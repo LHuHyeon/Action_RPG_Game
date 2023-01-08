@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297876743e2dbcd4ba2c78643b8d0ead, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  itemName: "\uC591\uC190\uAC80"
+  itemName: 2HandSword
   maxCount: 1
   itemType: 0
   itemCoin: 100

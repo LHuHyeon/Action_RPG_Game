@@ -102,6 +102,7 @@
      <Compile Include="Assets\Scripts\Contetns\ObjectData.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\ItemCountCheck\UI_ItemCount.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_BuyCount.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Stat\UI_Stat.cs" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />

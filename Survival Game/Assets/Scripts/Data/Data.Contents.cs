@@ -14,6 +14,7 @@ namespace Data
         public int maxHp;
         public int maxSp;
         public int attack;
+        public int statPoint;
         public int totalExp;
     }
 

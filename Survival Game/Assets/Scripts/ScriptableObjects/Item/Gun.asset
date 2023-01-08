@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297876743e2dbcd4ba2c78643b8d0ead, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
-  itemName: "\uAD8C\uCD1D"
+  itemName: Pistol
   maxCount: 1
   itemType: 0
   itemCoin: 300

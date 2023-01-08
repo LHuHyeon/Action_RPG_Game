@@ -234,6 +234,8 @@ public class UI_Inven_Item : UI_Base
     // 슬롯 초기화
     public void ClearSlot(bool isRemove=true)
     {
+        // 프리팹 개수가 0으로 초기화되는 경우도 있어 1로 맞춰주기
+        item.itemPrefab.GetComponent<ItemPickUp>().itemCount = 1;
         item = null;
         itemImage.sprite = null;
         itemCount = 0;

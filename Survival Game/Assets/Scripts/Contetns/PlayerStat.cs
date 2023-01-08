@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerStat : Stat
 {
+    [SerializeField] protected int _statPoint;
     [SerializeField] protected int _exp;
     [SerializeField] protected int _gold;
 
+    public int StatPoint { get { return _statPoint; } set { _statPoint = value; } }
     public int Gold { 
         get { return _gold; }
         set {
@@ -68,6 +70,7 @@ public class PlayerStat : Stat
         _sp = stat.maxSp;
         _maxSp = stat.maxSp;
         _attack = stat.attack;
+        _statPoint += stat.statPoint;
     }
 
     protected override void OnDead(Stat attacker)
