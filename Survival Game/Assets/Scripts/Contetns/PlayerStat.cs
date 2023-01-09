@@ -7,6 +7,15 @@ public class PlayerStat : Stat
     [SerializeField] protected int _statPoint;
     [SerializeField] protected int _exp;
     [SerializeField] protected int _gold;
+    [SerializeField] protected int _luk;
+
+    public int totalExp;    // 채워야 할 경험치
+
+    public int hpPoint;
+    public int spPoint;
+    public int atkPoint;
+    public int lukPoint;
+    public int dpPoint;
 
     public int StatPoint { get { return _statPoint; } set { _statPoint = value; } }
     public int Gold { 
@@ -31,6 +40,8 @@ public class PlayerStat : Stat
                 // 해당 Key에 Value가 존재 하는지 여부
                 if (Managers.Data.StatDict.TryGetValue(level + 1, out stat) == false)
                     break;
+                else
+                    totalExp = stat.totalExp;
 
                 // 경험치가 다음 레벨 경험치보다 작은지 확인
                 if (_exp < stat.totalExp)
@@ -45,6 +56,11 @@ public class PlayerStat : Stat
                 Debug.Log("Level UP!!");
             }
         }
+    }
+    public int Luk
+    {
+        get { return _luk; }
+        set { _luk = value; }
     }
 
     void Start()
@@ -71,6 +87,7 @@ public class PlayerStat : Stat
         _maxSp = stat.maxSp;
         _attack = stat.attack;
         _statPoint += stat.statPoint;
+        _exp = 0;
     }
 
     protected override void OnDead(Stat attacker)
