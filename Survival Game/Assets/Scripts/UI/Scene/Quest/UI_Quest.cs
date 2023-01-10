@@ -98,17 +98,11 @@ public class UI_Quest : UI_Scene
         {
             QuestManager.instance.isQuestList = !QuestManager.instance.isQuestList;
 
+            // 활성화/비활성화
+            Managers.Game.IsActive(QuestManager.instance.isQuestList, questUI);
+
             if (QuestManager.instance.isQuestList)
-            {
-                questUI.SetActive(true);
-                Cursor.visible = true;
                 ShowQuest();
-            }
-            else
-            {
-                Cursor.visible = false;
-                questUI.SetActive(false);
-            }
         }
     }
 

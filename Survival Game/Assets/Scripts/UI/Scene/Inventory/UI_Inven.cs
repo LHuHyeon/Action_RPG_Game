@@ -90,19 +90,13 @@ public class UI_Inven : UI_Scene
         {
             Managers.Game.isInventory = !Managers.Game.isInventory;
 
+            // 활성화/비활성화
+            Managers.Game.IsActive(Managers.Game.isInventory, baseInventory);
+
             if (Managers.Game.isInventory)
-            {
-                baseInventory.SetActive(true);
-                Cursor.visible = true;
                 baseInventory.transform.position = new Vector3(1920, 540, 0);   // 위치 초기화
-            }
             else
-            {
-                baseInventory.SetActive(false);
-                Cursor.visible = false;
-                
                 GetObject((int)GameObjects.CountCheck).SetActive(false);        // 아이템 개수 설정 UI 비활성화
-            }
         }
     }
 

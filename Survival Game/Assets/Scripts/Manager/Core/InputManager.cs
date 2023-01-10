@@ -25,7 +25,7 @@ public class InputManager
         }
 
         // UI를 클릭했거나, 인벤토리/퀘스트 목록(이)가 활성화 됐을 경우
-        if (EventSystem.current.IsPointerOverGameObject() || Managers.Game.isInventory || QuestManager.instance.isQuestList)
+        if (EventSystem.current.IsPointerOverGameObject() || Managers.Game.isUIMode)
             return;
 
         if (MouseAction != null)

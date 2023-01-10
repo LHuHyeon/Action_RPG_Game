@@ -50,7 +50,7 @@ public class UIManager
         if (parent != null)
             go.transform.SetParent(parent);
 
-        Canvas canvas = go.GetOrAddComponent<Canvas>(); // or -> go.GetComponent<Canvas>();
+        Canvas canvas = go.GetOrAddComponent<Canvas>(); // or == go.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.WorldSpace;
         canvas.worldCamera = Camera.main;
 

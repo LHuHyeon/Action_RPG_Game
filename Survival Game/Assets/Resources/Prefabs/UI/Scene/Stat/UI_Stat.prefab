@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 4040162803678536236}
   - component: {fileID: 4040162803678536243}
   m_Layer: 0
-  m_Name: Button
+  m_Name: SP_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1613,7 +1613,7 @@ GameObject:
   - component: {fileID: 4040162803878397281}
   - component: {fileID: 4040162803878397280}
   m_Layer: 0
-  m_Name: Button
+  m_Name: HP_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,7 +2129,7 @@ GameObject:
   - component: {fileID: 4040162804183527213}
   - component: {fileID: 4040162804183527212}
   m_Layer: 0
-  m_Name: Button
+  m_Name: DP_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2329,7 +2329,7 @@ GameObject:
   - component: {fileID: 4040162804299532268}
   - component: {fileID: 4040162804299532275}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ATK_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3383,7 +3383,7 @@ GameObject:
   - component: {fileID: 4040162804880944987}
   - component: {fileID: 4040162804880944986}
   m_Layer: 0
-  m_Name: Button
+  m_Name: LUK_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4458,7 +4458,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4040162805357686522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4534554198126378918}
+        m_TargetAssemblyTypeName: UI_Stat, Assembly-CSharp
+        m_MethodName: StatClear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4040162805357686516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5049,17 +5061,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb7463a767f1814fb24fba4ac4a3d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statList:
-  - baseText: {fileID: 4040162804971726066}
-    addText: {fileID: 4040162803948375399}
-  - baseText: {fileID: 4040162804407645606}
-    addText: {fileID: 4040162803862006729}
-  - baseText: {fileID: 4040162805609803814}
-    addText: {fileID: 4040162804406219575}
-  - baseText: {fileID: 4040162804400056054}
-    addText: {fileID: 4040162803776055785}
-  - baseText: {fileID: 4040162804776649959}
-    addText: {fileID: 4040162804980680431}
   statUI: {fileID: 4040162804762521154}
   expGauge: {fileID: 4040162805519749584}
 --- !u!1 &4040162805517862529
@@ -5212,7 +5213,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.516
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

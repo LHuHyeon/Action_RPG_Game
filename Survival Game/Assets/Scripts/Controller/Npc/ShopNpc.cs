@@ -41,7 +41,6 @@ public class ShopNpc : NpcController
 
         // 인벤토리 위치 설정
         Managers.Game.baseInventory.baseInventory.transform.localPosition = invenpos;
-        Cursor.visible = true;
     }
 
     void UIActive(bool has)
@@ -50,6 +49,8 @@ public class ShopNpc : NpcController
 
         Managers.Game.isInventory = has;
         Managers.Game.baseInventory.baseInventory.SetActive(has);
+
+        Cursor.visible = has;
     }
 
     void Clear()
@@ -58,7 +59,5 @@ public class ShopNpc : NpcController
 
         shopUI.Clear();
         UIActive(false);
-
-        Cursor.visible = false;
     }
 }

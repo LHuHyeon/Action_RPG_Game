@@ -11,12 +11,69 @@ public class PlayerStat : Stat
 
     public int totalExp;    // 채워야 할 경험치
 
-    public int hpPoint;
-    public int spPoint;
-    public int atkPoint;
-    public int lukPoint;
-    public int dpPoint;
+// 스탯 포인트 변수
+#region StatPoint
+    private int _hpPoint;
+    private int _spPoint;
+    private int _atkPoint;
+    private int _lukPoint;
+    private int _dpPoint;
 
+    public int HPPoint {
+        get { return _hpPoint; } 
+        set { 
+            _hpPoint = value;
+            if (_hpPoint > 0)
+            {
+                MaxHp += 20;
+                Hp += 20;
+            }
+        }
+    }
+    public int SPPoint {
+        get { return _spPoint; } 
+        set { 
+            _spPoint = value;
+            if (_spPoint > 0)
+            {
+                MaxSp += 20;
+                Sp += 20;
+            }
+        }
+    }
+    public int ATKPoint {
+        get { return _atkPoint; } 
+        set { 
+            _atkPoint = value;
+            if (_atkPoint > 0)
+            {
+                Attack += 5;
+            }
+        }
+    }
+    public int LUKPoint {
+        get { return _lukPoint; } 
+        set { 
+            _lukPoint = value;
+            if (_lukPoint > 0)
+            {
+                Luk += 5;
+            }
+        }
+    }
+    public int DPPoint {
+        get { return _dpPoint; } 
+        set { 
+            _dpPoint = value;
+            if (_dpPoint > 0)
+            {
+                Defense += 5;
+            }
+        }
+    }
+#endregion
+    
+    int basePoint;
     public int StatPoint { get { return _statPoint; } set { _statPoint = value; } }
     public int Gold { 
         get { return _gold; }
@@ -53,6 +110,7 @@ public class PlayerStat : Stat
             if (level != Level){
                 Level = level;
                 SetStat(Level);
+                _exp = 0;
                 Debug.Log("Level UP!!");
             }
         }
@@ -72,6 +130,12 @@ public class PlayerStat : Stat
         _gold = 0;
         _exp = 0;
 
+        _hpPoint = 0;
+        _spPoint = 0;
+        _atkPoint = 0;
+        _lukPoint = 0;
+        _dpPoint = 0;
+
         SetStat(_level);
     }
     
@@ -81,13 +145,36 @@ public class PlayerStat : Stat
         Dictionary<int, Data.Stat> dict = Managers.Data.StatDict;
         Data.Stat stat = dict[level];
 
-        _hp = stat.maxHp;
-        _maxHp = stat.maxHp;
-        _sp = stat.maxSp;
-        _maxSp = stat.maxSp;
-        _attack = stat.attack;
+        StatSetting(stat);
+        
+        basePoint += stat.statPoint;
         _statPoint += stat.statPoint;
-        _exp = 0;
+    }
+
+    // 스탯 초기화
+    public void StatClear()
+    {
+        Dictionary<int, Data.Stat> dict = Managers.Data.StatDict;
+        StatSetting(dict[Level]);
+
+        _hpPoint = 0;
+        _spPoint = 0;
+        _atkPoint = 0;
+        _lukPoint = 0;
+        _dpPoint = 0;
+
+        _statPoint = basePoint;
+    }
+
+    void StatSetting(Data.Stat _stat)
+    {
+        _maxHp = _stat.maxHp;
+        _hp = _stat.maxHp;
+        _maxSp = _stat.maxSp;
+        _sp = _stat.maxSp;
+        _attack = _stat.attack;
+        _luk = _stat.luk;
+        _defense = 5;
     }
 
     protected override void OnDead(Stat attacker)

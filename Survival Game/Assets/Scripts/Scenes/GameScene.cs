@@ -18,6 +18,7 @@ public class GameScene : BaseScene
 
         Managers.UI.ShowSceneUI<UI_Talk>("Talk/UI_Talk");
         Managers.UI.ShowSceneUI<UI_Quest>("Quest/UI_Quest");
+        Managers.UI.ShowSceneUI<UI_Stat>("Stat/UI_Stat");
 
         // Managers.Game.Spawn(Define.WorldObject.Monster, "Zombie1");
     }

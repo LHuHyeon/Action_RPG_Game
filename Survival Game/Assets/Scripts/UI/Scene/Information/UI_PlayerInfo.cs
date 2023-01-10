@@ -13,12 +13,14 @@ public class UI_PlayerInfo : UI_Scene
         UsingSlot,
         HPBar,
         SPBar,
+        EXPBar,
     }
 
     enum Texts
     {
         HP_Text,
         SP_Text,
+        Exp_Text,
     }
 
     public override void Init()
@@ -31,10 +33,11 @@ public class UI_PlayerInfo : UI_Scene
         SlotReset();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float ratioHP = (float)_stat.Hp / _stat.MaxHp;
         float ratioSP = (float)_stat.Sp / _stat.MaxSp;
+        float ratioEXP = (float)_stat.Exp / _stat.totalExp;
 
         // 체력, 스테미나 게이지
         GetObject((int)GameObjects.HPBar).GetComponent<Slider>().value = ratioHP;
@@ -43,6 +46,18 @@ public class UI_PlayerInfo : UI_Scene
         // 체력, 스테미나 텍스트
         GetText((int)Texts.HP_Text).text = _stat.Hp + " / " + _stat.MaxHp;
         GetText((int)Texts.SP_Text).text = _stat.Sp + " / " + _stat.MaxSp;
+
+        // Slider 값이 NaN이 된다면 값 수정이 불가능하기 때문에 사전에 처리해야 한다.
+        if (float.IsNaN(ratioEXP) == false)
+        {
+            GetObject((int)GameObjects.EXPBar).GetComponent<Slider>().value = ratioEXP;
+            GetText((int)Texts.Exp_Text).text = (ratioEXP*100).ToString("F1")+"%";
+        }
+        else
+        {
+            GetObject((int)GameObjects.EXPBar).GetComponent<Slider>().value = 0;
+            GetText((int)Texts.Exp_Text).text = "0.0%";
+        }
     }
 
     // 메인 슬롯 아이템 등록

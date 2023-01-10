@@ -15,6 +15,8 @@ public class GameManager
     public bool isInventory = false;    // 인벤토리 비활성화/활성화 여부
     public bool isDiveRoll = false;     // 현재 구르기 중인가?
     public bool isShop = false;         // 상점 이용 중인가?
+    public bool isStat = false;         // 스탯 비활성화/활성화 여부
+    public bool isUIMode = false;       // UI 사용 중인지 확인
     
     HashSet<GameObject> _monsters = new HashSet<GameObject>();
 
@@ -74,5 +76,15 @@ public class GameManager
         }
 
         Managers.Resource.Destroy(go);
+    }
+
+    // 공통적인 활성화/비활성화
+    public void IsActive(bool has, GameObject _go=null)
+    {
+        if (_go != null)
+            _go.SetActive(has);
+        
+        Cursor.visible = has;
+        isUIMode = has;
     }
 }

@@ -73,6 +73,8 @@ public class MonsterController : BaseController
                 State = Define.State.Moving;
                 return;
             }
+            else
+                State = Define.State.Idle;
         }
     }
 
