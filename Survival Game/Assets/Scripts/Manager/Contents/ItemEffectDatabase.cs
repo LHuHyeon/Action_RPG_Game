@@ -11,6 +11,7 @@ public class ItemEffect
     public int[] num;  // 수치.
 }
 
+// 아이템 능력 데이터 저장 클래스
 public class ItemEffectDatabase : MonoBehaviour
 {
     [SerializeField]

@@ -8,7 +8,7 @@ public class UI_Shop : UI_Scene
 {
     public Define.ShopState shopState = Define.ShopState.Sale;
 
-    private int saleGold;
+    private int saleGold;       // 판매 골드량
     public int SaleGold{
         get { return saleGold; }
         set {
@@ -17,7 +17,7 @@ public class UI_Shop : UI_Scene
         }
     }
 
-    public static GameObject go_RayDrop;
+    public static GameObject go_RayDrop;    // EventSystem Drop 역할
 
     List<UI_BuySlot> buySlots;      // 구매 슬롯
     List<UI_SaleSlot> saleSlots;    // 판매 슬롯
@@ -25,8 +25,8 @@ public class UI_Shop : UI_Scene
     enum GameObjects
     {
         BackGround,
-        Buy_Grid,
-        Sale_Grid,
+        Buy_Grid,           // 구매 슬롯 정렬 Obj
+        Sale_Grid,          // 판매 슬롯 정렬 Obj
         SaleObj,
         RayDrop,            // 아이템을 Drop 받을 때 사용될 Obj
         Buy_CountCheck,     // 구매할 아이템 개수 체크
@@ -136,14 +136,13 @@ public class UI_Shop : UI_Scene
     {
         // npc가 들고있던 판매아이템 생성
         for(int i=0; i<_items.Length; i++)
-        {
             buySlots[i].BuySlotSetting(_items[i]);
-        }
     }
 
     // 판매 아이템 등록
     void SaleConnection()
     {
+        // 판매 등록 가능한 슬롯 찾기
         for(int i=0; i<saleSlots.Count; i++)
         {
             if (saleSlots[i].item == null)
@@ -210,7 +209,7 @@ public class UI_Shop : UI_Scene
         Cursor.visible = false;
 
         Managers.Game.isInventory = false;
-        Managers.Game.baseInventory.baseInventory.SetActive(false);
+        Managers.Game.baseInventory.baseObject.SetActive(false);
 
         Clear();
         gameObject.SetActive(false);

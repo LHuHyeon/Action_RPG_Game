@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 플레이어 정보 UI 클래스
 public class UI_PlayerInfo : UI_Scene
 {
     public List<UI_BaseSlot> slots;    // BaseSlot(메인 슬롯) 저장
@@ -33,6 +34,7 @@ public class UI_PlayerInfo : UI_Scene
         SlotReset();
     }
 
+    // Update보다 덜 호출하게 만들려고 FixedUpdate 사용
     void FixedUpdate()
     {
         float ratioHP = (float)_stat.Hp / _stat.MaxHp;

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UI_Stat : UI_Scene
 {
-    public GameObject statUI;
+    public GameObject title;    // 타이틀 Obj
 
     [SerializeField]
-    private Slider expGauge;
+    private Slider expGauge;    // 슬라이더
 
     enum Texts
     {
@@ -27,6 +28,7 @@ public class UI_Stat : UI_Scene
         DP_Add,
     }
 
+    // 스탯 포인트 버튼
     enum Buttons
     {
         HP_Button,
@@ -41,6 +43,17 @@ public class UI_Stat : UI_Scene
         Bind<Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
 
+        UISetting();
+
+        Managers.Input.KeyAction -= OnStatUI;
+        Managers.Input.KeyAction += OnStatUI;
+
+        baseObject.SetActive(false);
+    }
+
+    // UI 세팅
+    void UISetting()
+    {
         // 버튼 이벤트 설정
         for(int i=0; i<5; i++)
         {
@@ -48,12 +61,16 @@ public class UI_Stat : UI_Scene
             GetButton(i).onClick.AddListener(() => AddStatButton(temp));
         }
 
-        statUI.SetActive(false);
-    }
+        // 스탯창 옮기기 EventSystem 등록
+        title.BindEvent((PointerEventData eventData)=>{
+            baseObject.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
+            Managers.UI.OnUI(this);
+        }, Define.UIEvent.Drag);
 
-    void Update()
-    {
-        OnStatUI();
+        // ui를 클릭할 시 order 우선순위
+        baseObject.BindEvent((PointerEventData eventData)=>{
+            Managers.UI.OnUI(this);
+        }, Define.UIEvent.Click);
     }
 
     // 스탯 On/Off
@@ -61,10 +78,11 @@ public class UI_Stat : UI_Scene
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            MissActive();
             Managers.Game.isStat = !Managers.Game.isStat;
 
             // 활성화/비활성화
-            Managers.Game.IsActive(Managers.Game.isStat, statUI);
+            Managers.Game.IsActive(Managers.Game.isStat, this);
 
             if (Managers.Game.isStat)
                 StatSetting();      // 스탯 업데이트
@@ -146,5 +164,15 @@ public class UI_Stat : UI_Scene
     {
         Managers.Game.playerStat.StatClear();
         StatSetting();
+    }
+
+    // Active가 bool과 엇갈렸는지 확인
+    void MissActive()
+    {
+        // 오브젝트는 true인데 bool 변수는 false일 수 있으니 true로 바꿔주기
+        if (baseObject.activeSelf == true)
+            Managers.Game.isStat = true;
+        else
+            Managers.Game.isStat = false;
     }
 }

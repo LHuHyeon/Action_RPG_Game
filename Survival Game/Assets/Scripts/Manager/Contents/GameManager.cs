@@ -6,12 +6,12 @@ using UnityEngine;
 // 컨텐츠에서 사용될 매니저 (플레이어, 몬스터 등..)
 public class GameManager
 {
-    public GameObject _player;          // 플레이어 관리 오브젝트
-    public PlayerStat playerStat;       // 플레이어 스탯
-    public UI_PlayerInfo playerInfo;    // 플레이어 UI 관리 (HP, 슬롯 등..)
+    public GameObject _player;              // 플레이어 관리 오브젝트
+    public PlayerStat playerStat;           // 플레이어 스탯
+    public UI_PlayerInfo playerInfo;        // 플레이어 UI 관리 (HP, 슬롯 등..)
     public ItemEffectDatabase itemDatabase; // 아이템 스탯 저장소
+    public UI_Inven baseInventory;          // 인벤토리 관리
 
-    public UI_Inven baseInventory;      // 인벤토리 관리
     public bool isInventory = false;    // 인벤토리 비활성화/활성화 여부
     public bool isDiveRoll = false;     // 현재 구르기 중인가?
     public bool isShop = false;         // 상점 이용 중인가?
@@ -79,12 +79,15 @@ public class GameManager
     }
 
     // 공통적인 활성화/비활성화
-    public void IsActive(bool has, GameObject _go=null)
+    public void IsActive(bool has, UI_Scene _scene)
     {
-        if (_go != null)
-            _go.SetActive(has);
-        
-        Cursor.visible = has;
-        isUIMode = has;
+        if (_scene.baseObject != null)
+            _scene.baseObject.SetActive(has);
+
+        // SortingOrder 관리
+        if (has)
+            Managers.UI.OnUI(_scene);
+        else
+            Managers.UI.CloseUI(_scene);
     }
 }

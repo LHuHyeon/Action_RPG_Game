@@ -7,6 +7,7 @@ public class UIManager
     int _order = 10;
 
     Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
+    List<UI_Scene> _uiList = new List<UI_Scene>();
     UI_Scene _sceneUI = null;
 
     // 프리팹 오브젝트 부모 (하이라이커 깔끔하게 정리하려고 사용)
@@ -102,6 +103,47 @@ public class UIManager
         go.transform.SetParent(Root.transform);
 
         return popup;
+    }
+
+    // UI가 활성화 됐을 때 order 관리
+    public void OnUI(UI_Scene _scene)
+    {
+        // List에 없다면 추가
+        if (_uiList.Contains(_scene) == false)
+            _uiList.Add(_scene);
+
+        Cursor.visible = true;
+        Managers.Game.isUIMode = true;
+
+        _scene.GetComponent<Canvas>().sortingOrder = _order;
+        _order++;
+    }
+
+    // UI 비활성화
+    public void CloseUI(UI_Scene _scene)
+    {
+        if (_uiList.Contains(_scene) == true)
+            _uiList.Remove(_scene);
+
+        if (_uiList.Count <= 0)
+        {
+            Cursor.visible = false;
+            Managers.Game.isUIMode = false;
+            _order = 10;
+        }
+    }
+
+    // 활성화된 모든 UI 비활성화
+    public void CloseAllUI()
+    {
+        for(int i=0; i<_uiList.Count; i++)
+            _uiList[i].baseObject.SetActive(false);
+
+        Cursor.visible = false;
+        Managers.Game.isUIMode = false;
+
+        _uiList.Clear();
+        _order = 10;
     }
 
     // 스택의 마지막 위치에 popup이 있나 확인 후 삭제

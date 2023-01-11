@@ -9,7 +9,7 @@ public class UI_SaleSlot : UI_Base
     public Image itemImage;
     public Text itemCount_Text;
 
-    private int itemCount;
+    private int itemCount;          // 아이템 개수
     public int ItemCount{
         get { return itemCount; }
         set {
@@ -52,6 +52,7 @@ public class UI_SaleSlot : UI_Base
         Clear();
     }
 
+    // 초기화
     public void Clear()
     {
         invenSlot.IsClick = true;

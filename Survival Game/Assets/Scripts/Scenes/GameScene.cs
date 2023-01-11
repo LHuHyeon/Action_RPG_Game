@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 게임이 시작되면 먼저 실행될 클래스
 public class GameScene : BaseScene
 {
     protected override void Init()

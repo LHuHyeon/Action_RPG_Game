@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    /*
-    1. 발사
-    3. 장전, 장전 시간
-    5. 발사 이팩트
-    7. 애니메이션
-    9. 맞췄을 때 표시
-    */
-
     // [경로] 총알 몸통 : Bullet_Body, 발사되는 총알 : Bullet_Shot
     string prefabPath = "WeaponObj/Bullet/";
 

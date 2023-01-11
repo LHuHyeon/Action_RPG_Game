@@ -24,7 +24,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (TalkManager.instance.isDialouge == false)
+        // 상점, 대화창이 아닐때
+        if (TalkManager.instance.isDialouge == false && Managers.Game.isShop == false)
         {
             if (Managers.Game.isUIMode == false)
                 CameraLookAround();

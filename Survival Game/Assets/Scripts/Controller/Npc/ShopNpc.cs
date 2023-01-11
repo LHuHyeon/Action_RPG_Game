@@ -34,13 +34,16 @@ public class ShopNpc : NpcController
 
     void OnShop()
     {
+        // 활성화된 모든 UI 비활성화
+        Managers.UI.CloseAllUI();
+        
         Managers.Game.isShop = true;
 
         UIActive(true);
         shopUI.UseShop();
 
         // 인벤토리 위치 설정
-        Managers.Game.baseInventory.baseInventory.transform.localPosition = invenpos;
+        Managers.Game.baseInventory.baseObject.transform.localPosition = invenpos;
     }
 
     void UIActive(bool has)
@@ -48,7 +51,7 @@ public class ShopNpc : NpcController
         shopUI.gameObject.SetActive(has);
 
         Managers.Game.isInventory = has;
-        Managers.Game.baseInventory.baseInventory.SetActive(has);
+        Managers.Game.baseInventory.baseObject.SetActive(has);
 
         Cursor.visible = has;
     }

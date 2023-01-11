@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+// 인벤토리 슬롯
 public class UI_Inven_Item : UI_Base
 {
     public Item item;           // 인벤이 들고 있는 Item 정보
     public Image itemImage;     // UI 이미지
     public Text itemCountText;  // UI 개수
     public int itemCount;       // 아이템 개수
-    private bool isClick;  // 클릭 가능 여부
+
+    private bool isClick;       // 클릭 가능 여부
     public bool IsClick{
         get { return isClick; }
         set {
@@ -33,6 +35,8 @@ public class UI_Inven_Item : UI_Base
     {
         IsClick = true;
 
+        #region EventSystems Code
+
         // 커서가 닿을 시 아이템 정보 UI 활성화
         gameObject.BindEvent((PointerEventData)=>
         {
@@ -54,12 +58,15 @@ public class UI_Inven_Item : UI_Base
             isKeyConnection = false;
         }, Define.UIEvent.Exit);
 
-        // 아이템에 커서를 올리고 오른쪽 클릭 시 아이템 사용
+        // 아이템에 커서를 클릭 시
         gameObject.BindEvent((PointerEventData)=>
         {
             // 상점 이용중일 땐 아이템 사용 금지
             if (Managers.Game.isShop)
                 return;
+
+            // 클릭 시 ui 우선순위
+            Managers.UI.OnUI(Managers.Game.baseInventory);
                 
             if (Input.GetMouseButtonUp(1))
             {
@@ -157,10 +164,13 @@ public class UI_Inven_Item : UI_Base
                 UI_DragSlot.instance.baseSlot.ClearSlot();
 
         }, Define.UIEvent.Drop);
+
+        #endregion
     }
 
     void Update()
     {
+        // 1~9 키를 눌러 인벤->메인 슬롯으로 바로 이동 시키는 메소드
         if (isKeyConnection)
             KeyConnection();
     }
@@ -172,9 +182,11 @@ public class UI_Inven_Item : UI_Base
         int _tempItemCount = itemCount;
         UI_BaseSlot _tempSlot = havebaseSlot;
 
+        // 드래그된 슬롯을 현재 슬롯에 Add
         UI_Inven_Item dragSlot = UI_DragSlot.instance.dragSlot;
         AddItem(dragSlot.item, dragSlot.itemCount, dragSlot.havebaseSlot);
 
+        // 현재 슬롯 아이템을 드래그된 슬롯에 Add
         if (_tempItem != null)
             UI_DragSlot.instance.dragSlot.AddItem(_tempItem, _tempItemCount, _tempSlot);
         else
@@ -196,12 +208,14 @@ public class UI_Inven_Item : UI_Base
         item = _item;
         itemImage.sprite = item.itemImage;
 
+        // 메인 슬롯과 연결
         if (_baseSlot != null)
         {
             havebaseSlot = _baseSlot;
             havebaseSlot.haveinvenSlot = this;
         }
 
+        // 장비가 아니라면 개수 설정
         if (Item.ItemType.Equipment != _item.itemType)
         {
             itemCount = count;
@@ -213,6 +227,7 @@ public class UI_Inven_Item : UI_Base
             itemCountText.text = "";
         }
 
+        // 색 활성화
         SetColor(255);
     }
 
@@ -236,12 +251,14 @@ public class UI_Inven_Item : UI_Base
     {
         // 프리팹 개수가 0으로 초기화되는 경우도 있어 1로 맞춰주기
         item.itemPrefab.GetComponent<ItemPickUp>().itemCount = 1;
+
         item = null;
         itemImage.sprite = null;
         itemCount = 0;
         itemCountText.text = "0";
         IsClick = true;
 
+        // 메인 슬롯도 초기화
         if (isRemove)
         {
             if (havebaseSlot != null)
@@ -252,10 +269,10 @@ public class UI_Inven_Item : UI_Base
         }
         
         SetColor(0);
-        Managers.Game.baseInventory.HideItemTip();
+        Managers.Game.baseInventory.HideItemTip();  // 아이템 팁 비활성화
     }
 
-    // 숫자 키로 메인슬롯과 연결
+    // 숫자 키(1~9)로 메인슬롯과 연결
     void KeyConnection()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

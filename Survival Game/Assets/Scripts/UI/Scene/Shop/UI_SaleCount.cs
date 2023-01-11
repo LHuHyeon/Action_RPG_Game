@@ -10,6 +10,7 @@ public class UI_SaleCount : UI_ItemCount
     public Text goldText;
     public int goldCount;
 
+    // 판매 수량, 골드 업데이트
     protected override void CountUpdate()
     {
         if (invenSlot != null)
@@ -45,6 +46,7 @@ public class UI_SaleCount : UI_ItemCount
         Clear();
     }
 
+    // 초기화
     public override void Clear()
     {
         invenSlot = null;

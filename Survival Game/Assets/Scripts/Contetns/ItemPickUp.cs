@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 아이템 프리팹
 public class ItemPickUp : MonoBehaviour
 {
     public Item item;
@@ -11,6 +12,7 @@ public class ItemPickUp : MonoBehaviour
 
     void Start()
     {
+        // 이름 적용
         obj = Managers.UI.MakeWorldSpaceUI<UI_NameBar>(transform).gameObject;
     }
     

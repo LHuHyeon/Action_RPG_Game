@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 퀘스트 내용
 [CreateAssetMenu(fileName = "New Quest", menuName = "New Quest/quest")]
 public class Quest : ScriptableObject
 {

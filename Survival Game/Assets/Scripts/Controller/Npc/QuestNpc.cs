@@ -75,6 +75,7 @@ public class QuestNpc : NpcController
                 }
             }
         }
+        
         // 보상 수령
         if (evt == Define.NPCAction.Reward)
         {
@@ -110,13 +111,9 @@ public class QuestNpc : NpcController
 
         // 퀘스트 레벨 조건 확인
         if (Managers.Game.playerStat.Level >= quest[nextNumber].minLevel)
-        {
             QuestTalk();
-        }
         else
-        {
             Talk();
-        }
     }
 
     // 퀘스트 대화
@@ -132,9 +129,7 @@ public class QuestNpc : NpcController
                 TalkManager.instance.currentNpc = this;
             }
             else
-            {
                 StartTalk(talkStates[nextNumber].procLine);
-            }
         }
         else
         {

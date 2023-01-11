@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// json을 코드로 변환할 곳
 namespace Data
 {
     #region Stat

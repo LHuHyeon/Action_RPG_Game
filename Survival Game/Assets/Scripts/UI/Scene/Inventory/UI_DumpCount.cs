@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 버릴 아이템 체크하는 클래스
 public class UI_DumpCount : UI_ItemCount
 {
     public UI_Inven_Item invenSlot; // 버릴 아이템을 가진 슬롯

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 개수 설정 부모 클래스
 public abstract class UI_ItemCount : MonoBehaviour
 {
     public Slider sliderValue;
@@ -15,14 +16,15 @@ public abstract class UI_ItemCount : MonoBehaviour
             CountUpdate();
     }
 
+    // 개수 업데이트
     protected virtual void CountUpdate()
     {
         itemCount = Mathf.Clamp(itemCount, 1, ((int)sliderValue.maxValue));
         countText.text = itemCount.ToString();
     }
 
-    public abstract void CheckButton();
-    public abstract void CancelButton();
+    public abstract void CheckButton();     // 확인 버튼
+    public abstract void CancelButton();    // 취소 버튼
 
     // 슬라이더 값 설정 버튼
     public virtual void SliderValueChange()

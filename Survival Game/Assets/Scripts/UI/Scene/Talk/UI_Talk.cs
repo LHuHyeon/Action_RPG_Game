@@ -68,9 +68,9 @@ public class UI_Talk : UI_Scene
         // 현재 대화 중인지
         if (TalkManager.instance.isDialouge)
         {
-            // 다음 대화로 넘어가도 되는지, 퀘스트 확인 중이 아닐 때
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
+                // 다음 대화로 넘어가도 되는지, 퀘스트 확인 중이 아닐 때
                 if (nextTalk && !isQuest)
                 {
                     NextTalkButton();
@@ -78,6 +78,7 @@ public class UI_Talk : UI_Scene
                 }
                 else
                 {
+                    // 대화 딜레이 줄이기
                     delayTime = delayTime / 4;
                 }
             }
@@ -91,6 +92,8 @@ public class UI_Talk : UI_Scene
         if (_quest != null)
             quest = _quest;
         
+        Managers.UI.CloseAllUI();   // 활성화된 모든 UI 비활성화
+        
         dialouges = _dialogues;
         TalkManager.instance.isDialouge = true;
         Cursor.visible = true;
@@ -98,17 +101,16 @@ public class UI_Talk : UI_Scene
         // 플레이어 멈추기
         Managers.Game._player.GetComponent<PlayerController>().State = Define.State.Idle;
 
-        // 켜져있는 UI 끄기
-        UIActive(false);
-
+        // 다음 대화
         NextTalkButton();
     }
 
     // 다음 대화
     public void NextTalkButton()
     {
+        // 대화의 기본값으로 초기화
         delayTime = 0.1f;
-        talkText.text = string.Empty;   // 초기화
+        talkText.text = string.Empty;
         nextTalk = false;
         GetObject((int)GameObjects.Next_Button).SetActive(false);
 
@@ -156,9 +158,10 @@ public class UI_Talk : UI_Scene
         QuestManager.instance.QuestUISetting(texts.ToArray(), rewardItems, true, quest);
     }
 
-    //타이핑 모션 코루틴
+    // 타이핑 모션 코루틴
     IEnumerator TypeSentence(string sentence)
     {
+        // 대화 타이밍 모션 실행
         foreach(var letter in sentence)
         {
             talkText.text += letter;
@@ -240,14 +243,5 @@ public class UI_Talk : UI_Scene
             rewardItems[i].SetActive(false);
 
         GetObject((int)GameObjects.UI_Quest).SetActive(false);
-    }
-
-    void UIActive(bool has)
-    {
-        Managers.Game.isInventory = has;
-        Managers.Game.baseInventory.baseInventory.SetActive(has);
-
-        QuestManager.instance.isQuestList = has;
-        QuestManager.instance.questUI.questUI.SetActive(has);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 식별 ID 클래스
 public class ObjectData : MonoBehaviour
 {
     public int id;

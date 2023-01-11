@@ -6,8 +6,8 @@ using UnityEngine.UI;
 // 오브젝트 위에 표실될 이름 클래스
 public class UI_NameBar : UI_Base
 {
-    ItemPickUp itemObj;
-    Item.ItemType itemType;
+    ItemPickUp itemObj;         // 아이템 프리팹
+    Item.ItemType itemType;     // 아이템 Type
 
     enum RectTransforms
     {
@@ -28,6 +28,7 @@ public class UI_NameBar : UI_Base
         Transform parent = transform.parent;
         transform.rotation = Camera.main.transform.rotation;
     
+        // 이름 위치 설정
         if (itemObj != null)
         {
             itemType = itemObj.item.itemType;
@@ -45,6 +46,7 @@ public class UI_NameBar : UI_Base
 
     void Update()
     {
+        // 위치, 회전 업데이트
         Transform parent = transform.parent;   
 
         if (itemObj != null)
@@ -58,6 +60,7 @@ public class UI_NameBar : UI_Base
         transform.rotation = Camera.main.transform.rotation;
     }
 
+    // 이름 Text와 길이 설정 메소드
     void SetName()
     {
         Vector2 pos;

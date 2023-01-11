@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 기본 스탯
 public class Stat : MonoBehaviour
 {
     [SerializeField] protected int _level;

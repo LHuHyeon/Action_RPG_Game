@@ -168,6 +168,7 @@ public class PlayerAnimator : MonoBehaviour
         StartCoroutine(DelayChange());
     }
 
+    // 무기 체인지
     IEnumerator DelayChange()
     {
         yield return new WaitForSeconds(0.15f);

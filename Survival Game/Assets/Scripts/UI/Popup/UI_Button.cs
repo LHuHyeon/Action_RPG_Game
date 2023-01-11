@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// Test Class
 public class UI_Button : UI_Popup
 {
     int score = 0;

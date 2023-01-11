@@ -4,19 +4,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// 메인 슬롯 클래스 (퀵슬롯)
 public class UI_BaseSlot : UI_Base
 {
     public Item item;
     public Image itemImage;     // UI 이미지
     public Text itemCountText;  // UI 개수
     public int itemCount;       // 아이템 개수
-    public GameObject currentEffect;    // 플레이어가 들고 있다면
-    public Text slotNumber;
+
+    public GameObject currentEffect;    // 플레이어가 들고 있다면 테두리 활성화 Obj
+    public Text slotNumber;             // 몇번 슬롯인지 Obj
 
     public UI_Inven_Item haveinvenSlot; // 인벤 슬롯에 있는 슬롯과 연결
     
     public override void Init()
     {
+        #region EventSystems Code
+
         // 아이템이 존재할 시 마우스로 들 수 있다.
         gameObject.BindEvent((PointerEventData eventData)=>
         {
@@ -68,6 +72,8 @@ public class UI_BaseSlot : UI_Base
             }
 
         }, Define.UIEvent.Drop);
+
+        #endregion
     }
 
     // 아이템을 Drop이 아닌 코드로 넣을 때 사용될 메소드
@@ -81,6 +87,7 @@ public class UI_BaseSlot : UI_Base
         // 다른 메인슬롯과 중복되는지 확인
         Managers.Game.playerInfo.OverlabClear(_invenSlot);
             
+        // 추가
         AddItem(_invenSlot.item, _invenSlot.itemCount, _invenSlot);
     }
 

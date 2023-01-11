@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// NPC 부모 클래스
 public abstract class NpcController : MonoBehaviour
 {
     public float scanRange = 2f;

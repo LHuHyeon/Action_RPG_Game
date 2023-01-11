@@ -11,6 +11,7 @@ public class UI_BuyCount : UI_ItemCount
 
     public int itemGold;    // 아이템 가격
 
+    // 구매 수량, 골드 업데이트
     protected override void CountUpdate()
     {
         base.CountUpdate();

@@ -1753,11 +1753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2741926632ccb204cbed0794e4038e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseObject: {fileID: 0}
   rewardItems:
   - {fileID: 8136944139855442917}
   - {fileID: 3784045822560363458}
   - {fileID: 2241025052820918023}
-  questUI: {fileID: 0}
 --- !u!1 &4652086836019450856
 GameObject:
   m_ObjectHideFlags: 0

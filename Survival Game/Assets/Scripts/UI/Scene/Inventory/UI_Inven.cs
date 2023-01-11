@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+// 인벤토리 클래스
 public class UI_Inven : UI_Scene
 {
-    public GameObject baseInventory;       // 인벤토리 오브젝트
     private int gold;
     public int Gold{
         get { return gold; }
@@ -20,14 +20,12 @@ public class UI_Inven : UI_Scene
 
     Vector2 startPosition;          // 타이틀을 눌렀을 때 시작좌표
 
-    ItemEffectDatabase itemStat;
-
     enum GameObjects
     {
-        Inventory,
-        CountCheck,
-        GridPanel,
-        ItemTip,
+        Inventory,      // 바로 밑에 자식
+        CountCheck,     // 개수 체크
+        GridPanel,      // 인벤 슬롯 정렬
+        ItemTip,        // 아이템 정보창
         Title,
     }
 
@@ -39,29 +37,36 @@ public class UI_Inven : UI_Scene
     public override void Init()
     {
         slots = new List<UI_Inven_Item>();
-        itemStat = GameObject.Find("ItemEffectDatabase").GetComponent<ItemEffectDatabase>();
-
-        gameObject.GetComponent<Canvas>().sortingOrder = 1;
         
         Bind<Text>(typeof(Texts));
-        GetText((int)Texts.Coin_Text).text = "0";
-        
         Bind<GameObject>(typeof(GameObjects));
         
         SlotReset();    // 인벤토리 초기화
+        EventSetting(); // EventSystem 설정
 
-        // 인벤토리 옮기기 EventSystem 등록
-        GetObject((int)GameObjects.Title).BindEvent((PointerEventData eventData)=>{
-            // 상점에서는 인벤토리 못 옮김.
-            if (Managers.Game.isShop == false)
-                baseInventory.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
-        }, Define.UIEvent.Drag);
+        Managers.Input.KeyAction -= OnInventory;
+        Managers.Input.KeyAction += OnInventory;
 
-        baseInventory = GetObject((int)GameObjects.Inventory);
-        baseInventory.SetActive(false);
+        baseObject = GetObject((int)GameObjects.Inventory);
+        baseObject.SetActive(false);
 
         HideItemTip();
         GetObject((int)GameObjects.CountCheck).SetActive(false);
+    }
+
+    // EventSystem 세팅
+    void EventSetting()
+    {
+        // 인벤토리 옮기기 EventSystem 등록
+        GetObject((int)GameObjects.Title).BindEvent((PointerEventData eventData)=>{
+            baseObject.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
+            Managers.UI.OnUI(this);
+        }, Define.UIEvent.Drag);
+
+        // ui를 클릭할 시 order 우선순위
+        GetObject((int)GameObjects.Inventory).BindEvent((PointerEventData eventData)=>{
+            Managers.UI.OnUI(this);
+        }, Define.UIEvent.Click);
     }
 
     // 슬롯 초기화 
@@ -78,25 +83,21 @@ public class UI_Inven : UI_Scene
             slots.Add(Managers.UI.MakeSubItem<UI_Inven_Item>(parent: gridPanel.transform, name: "Slot"));
     }
 
-    void Update()
-    {
-        OnInventory();
-    }
-
     // 인벤토리 On/Off
     void OnInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I) && !Managers.Game.isShop)
+        if (Input.GetKeyDown(KeyCode.I))
         {
+            MissActive();   // Active가 bool과 엇갈렸는지 확인
             Managers.Game.isInventory = !Managers.Game.isInventory;
 
             // 활성화/비활성화
-            Managers.Game.IsActive(Managers.Game.isInventory, baseInventory);
+            Managers.Game.IsActive(Managers.Game.isInventory, this);
 
             if (Managers.Game.isInventory)
-                baseInventory.transform.position = new Vector3(1920, 540, 0);   // 위치 초기화
+                baseObject.transform.position = new Vector3(1920, 540, 0);   // 위치 초기화
             else
-                GetObject((int)GameObjects.CountCheck).SetActive(false);        // 아이템 개수 설정 UI 비활성화
+                GetObject((int)GameObjects.CountCheck).SetActive(false);     // 아이템 개수 설정 UI 비활성화
         }
     }
 
@@ -238,7 +239,7 @@ public class UI_Inven : UI_Scene
         {
             if (_item.itemType == Item.ItemType.Used)
             {
-                itemStat.UseItem(_item);
+                Managers.Game.itemDatabase.UseItem(_item);
                 _slot.SetCount(-1);
             }            
         }
@@ -281,5 +282,14 @@ public class UI_Inven : UI_Scene
     public void HideItemTip()
     {
         GetObject((int)GameObjects.ItemTip).GetComponent<UI_SlotItemTip>().HideItemTip();
+    }
+
+    // Active가 bool과 엇갈렸는지 확인
+    void MissActive()
+    {
+        if (baseObject.activeSelf == true)
+            Managers.Game.isInventory = true;
+        else
+            Managers.Game.isInventory = false;
     }
 }

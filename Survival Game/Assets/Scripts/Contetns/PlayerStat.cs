@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 플레이어 스탯
 public class PlayerStat : Stat
 {
     [SerializeField] protected int _statPoint;
@@ -166,6 +167,7 @@ public class PlayerStat : Stat
         _statPoint = basePoint;
     }
 
+    // 스탯 세팅
     void StatSetting(Data.Stat _stat)
     {
         _maxHp = _stat.maxHp;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 아이템 정보 출력 클래스
 public class UI_SlotItemTip : MonoBehaviour
 {
     [SerializeField] private Image itemIcon;

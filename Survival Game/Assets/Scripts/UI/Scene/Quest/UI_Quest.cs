@@ -14,7 +14,6 @@ public class UI_Quest : UI_Scene
     int currentIndex;              // 현재 보고 있는 퀘스트
 
     public GameObject[] rewardItems;     // 보상 아이템 오브젝트
-    public GameObject questUI;           // ui 오브젝트
 
     enum GameObjects
     {
@@ -40,23 +39,32 @@ public class UI_Quest : UI_Scene
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
 
-        questUI = GetObject((int)GameObjects.BackGround);
+        baseObject = GetObject((int)GameObjects.BackGround);
         QuestManager.instance.questUI = this;
 
-        ClickStayMove();    // ui 잡고 움직이기 기능
+        EventSetting();     // ui 잡고 움직이기 기능
         QuestReSet();       // 퀘스트 목록 변수 등록
         Clear();            // 초기화
 
+        Managers.Input.KeyAction -= OnQuest;
+        Managers.Input.KeyAction += OnQuest;
+
         GetObject((int)GameObjects.Refusal).SetActive(false);
-        questUI.SetActive(false);
+        baseObject.SetActive(false);
     }
 
     // 마우스 클릭 후 이동 가능
-    void ClickStayMove()
+    void EventSetting()
     {
+        // ui를 클릭할 시 order 우선순위
+        baseObject.BindEvent((PointerEventData eventData)=>{
+            Managers.UI.OnUI(this);
+        }, Define.UIEvent.Click);
+
         // 퀘스트 목록 움직이기
-        questUI.BindEvent((PointerEventData eventData)=>{
-            questUI.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
+        baseObject.BindEvent((PointerEventData eventData)=>{
+            baseObject.transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
+            Managers.UI.OnUI(this);
         }, Define.UIEvent.Drag);
 
         // 퀘스트 포기 ui 움직이기
@@ -87,19 +95,15 @@ public class UI_Quest : UI_Scene
             texts.Add(GetText(i));
     }
 
-    void Update()
-    {
-        OnQuest();
-    }
-
     void OnQuest()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            MissActive();
             QuestManager.instance.isQuestList = !QuestManager.instance.isQuestList;
 
             // 활성화/비활성화
-            Managers.Game.IsActive(QuestManager.instance.isQuestList, questUI);
+            Managers.Game.IsActive(QuestManager.instance.isQuestList, this);
 
             if (QuestManager.instance.isQuestList)
                 ShowQuest();
@@ -200,5 +204,15 @@ public class UI_Quest : UI_Scene
 
         // Text 내용 초기화
         QuestManager.instance.QuestUISetting(texts.ToArray(), rewardItems, false);
+    }
+
+    // Active가 bool과 엇갈렸는지 확인
+    void MissActive()
+    {
+        // 오브젝트는 true인데 bool 변수는 false라면 true로 바꿔주기
+        if (baseObject.activeSelf == true)
+            QuestManager.instance.isQuestList = true;
+        else
+            QuestManager.instance.isQuestList = false;
     }
 }

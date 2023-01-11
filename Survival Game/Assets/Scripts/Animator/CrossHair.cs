@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 조준점 클래스
 public class CrossHair : MonoBehaviour
 {
     private Animator anim;
@@ -14,16 +15,19 @@ public class CrossHair : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    // 움직일 때
     public void MovingAnim(bool _flag)
     {
         anim.SetBool("Moving", _flag);
     }
 
+    // 구를 때
     public void DiveRollAnim(bool _flag)
     {
         anim.SetBool("DiveRoll", _flag);
     }
 
+    // 총을 발사할 때
     public void FireAnim()
     {
         if (anim.GetBool("Moving"))
@@ -32,6 +36,7 @@ public class CrossHair : MonoBehaviour
             anim.SetTrigger("Idle_Fire");   
     }
     
+    // 반동 적용
     public float GetAccuracy()
     {
         if (anim.GetBool("Moving"))             // 움직일 때
