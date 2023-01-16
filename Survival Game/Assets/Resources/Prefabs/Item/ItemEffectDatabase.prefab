@@ -44,23 +44,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemEffects:
-  - itemName: "\uC0AC\uACFC"
+  - itemName: Apple
     part:
     - HP
     num: 14000000
-  - itemName: "\uBE68\uAC04\uBB3C\uC57D"
+  - itemName: RedBottle
     part:
     - HP
     num: 32000000
-  - itemName: "\uD30C\uB780\uBB3C\uC57D"
+  - itemName: BlueBottle
     part:
-    - SPEED
-    num: 01000000
-  - itemName: "\uC0BC\uAC01\uAE40\uBC25"
+    - SP
+    num: 32000000
+  - itemName: Onigiri
     part:
     - HP
     num: 28000000
-  - itemName: "\uD584"
+  - itemName: Ham
     part:
     - ATTACK
     num: 05000000

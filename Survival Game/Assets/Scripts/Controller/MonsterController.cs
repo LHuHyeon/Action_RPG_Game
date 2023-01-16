@@ -27,6 +27,7 @@ public class MonsterController : BaseController
     Stat _stat;
     Animator anim;
     NavMeshAgent nav;
+    GameObject hpBarUI;
 
     public override Define.State State
     {
@@ -58,7 +59,7 @@ public class MonsterController : BaseController
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
-        Managers.UI.MakeWorldSpaceUI<UI_HPBar>(transform);
+        hpBarUI = Managers.UI.MakeWorldSpaceUI<UI_HPBar>(transform).gameObject;
     }
 
     // 주변 플레이어 탐색
@@ -68,13 +69,18 @@ public class MonsterController : BaseController
 
         if (player.isValid()){
             distance = TargetDistance(player);
-            if (distance <= _scanRange){
+            if (distance <= _scanRange)
+            {
                 _lockTarget = player;
                 State = Define.State.Moving;
+                hpBarUI.SetActive(true);
                 return;
             }
             else
+            {
                 State = Define.State.Idle;
+                hpBarUI.SetActive(false);
+            }
         }
     }
 
@@ -171,7 +177,8 @@ public class MonsterController : BaseController
     {
         for(int i=0; i<dropItem.Length; i++)
         {
-            dropItem[i].itemCount = Random.Range(0, randomNumber);
+            int num = randomNumber + Managers.Game.playerStat.Luk;
+            dropItem[i].itemCount = Random.Range(0, num);
 
             if (dropItem[i].itemCount > 0)
             {

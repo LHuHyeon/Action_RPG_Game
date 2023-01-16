@@ -7,11 +7,11 @@ public abstract class NpcController : MonoBehaviour
 {
     public float scanRange = 2f;
     
-    GameObject obj;
+    GameObject nameBarUI;
 
     void Start()
     {
-        obj = Managers.UI.MakeWorldSpaceUI<UI_NameBar>(transform).gameObject;
+        nameBarUI = Managers.UI.MakeWorldSpaceUI<UI_NameBar>(transform).gameObject;
         Init();
     }
     
@@ -28,9 +28,13 @@ public abstract class NpcController : MonoBehaviour
         float distance = Vector3.Distance(transform.position, playerPos);
 
         if (distance >= scanRange)
-            obj.SetActive(false);
+            nameBarUI.SetActive(false);
         else
-            obj.SetActive(true);
+        {
+            nameBarUI.SetActive(true);
+            // 플레이어 쳐다보기
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerPos-transform.position), 20f * Time.deltaTime);
+        }
     }
 
     protected virtual void NPCUpdate() {}

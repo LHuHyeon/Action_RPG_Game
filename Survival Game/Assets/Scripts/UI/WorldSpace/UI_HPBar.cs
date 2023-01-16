@@ -24,7 +24,7 @@ public class UI_HPBar : UI_Base
         // 체력 설정
         Transform parent = transform.parent;
         transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y * 0.1f);
-        transform.rotation = Camera.main.transform.rotation;
+        GetObject((int)GameObjects.HPBar).transform.rotation = Camera.main.transform.rotation;
 
         float ratio = (float)_stat.Hp / _stat.MaxHp;
         SetHpRatio(ratio);

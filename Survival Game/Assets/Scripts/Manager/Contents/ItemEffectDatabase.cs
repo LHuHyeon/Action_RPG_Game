@@ -49,7 +49,7 @@ public class ItemEffectDatabase : MonoBehaviour
                                 playerStat.Defense += itemEffects[i].num[j];
                                 break;
                             case SPEED:
-                                playerStat.MoveSpeed += itemEffects[i].num[j];
+                                playerStat.AddSpeed += itemEffects[i].num[j];
                                 break;
                             default:
                                 Debug.Log("잘못된 Status 부위. HP, ATTACK, DEFENSE, SPEED 만 가능합니다.");

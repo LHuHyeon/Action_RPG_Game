@@ -89,6 +89,9 @@ public class UI_BaseSlot : UI_Base
             
         // 추가
         AddItem(_invenSlot.item, _invenSlot.itemCount, _invenSlot);
+
+        // 아이템 들기
+        Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
     }
 
     // 인벤토리에서 메인 슬롯에 등록할 때

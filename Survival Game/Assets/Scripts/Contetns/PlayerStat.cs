@@ -58,7 +58,7 @@ public class PlayerStat : Stat
             _lukPoint = value;
             if (_lukPoint > 0)
             {
-                Luk += 5;
+                Luk += 1;
             }
         }
     }
@@ -130,6 +130,7 @@ public class PlayerStat : Stat
         _movespeed = 3.0f;
         _gold = 0;
         _exp = 0;
+        _luk = 0;
 
         _hpPoint = 0;
         _spPoint = 0;
@@ -155,14 +156,17 @@ public class PlayerStat : Stat
     // 스탯 초기화
     public void StatClear()
     {
-        Dictionary<int, Data.Stat> dict = Managers.Data.StatDict;
-        StatSetting(dict[Level]);
-
         _hpPoint = 0;
         _spPoint = 0;
         _atkPoint = 0;
         _lukPoint = 0;
         _dpPoint = 0;
+
+        Dictionary<int, Data.Stat> dict = Managers.Data.StatDict;
+        StatSetting(dict[Level]);
+
+        _luk = 0;
+        _defense = 5;
 
         _statPoint = basePoint;
     }
@@ -170,13 +174,12 @@ public class PlayerStat : Stat
     // 스탯 세팅
     void StatSetting(Data.Stat _stat)
     {
-        _maxHp = _stat.maxHp;
+        // TODO : 하드코딩이 아닌 다른 방식으로 하기
+        _maxHp = _stat.maxHp + (_hpPoint*20);
         _hp = _stat.maxHp;
-        _maxSp = _stat.maxSp;
+        _maxSp = _stat.maxSp + (_spPoint*20);
         _sp = _stat.maxSp;
-        _attack = _stat.attack;
-        _luk = _stat.luk;
-        _defense = 5;
+        _attack = _stat.attack + (_atkPoint*5);
     }
 
     protected override void OnDead(Stat attacker)
