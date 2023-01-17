@@ -12,7 +12,8 @@ public class UI_Inven_Item : UI_Base
     public Text itemCountText;  // UI 개수
     public int itemCount;       // 아이템 개수
 
-    private bool isClick;       // 클릭 가능 여부
+    // 클릭 가능 여부
+    private bool isClick;
     public bool IsClick{
         get { return isClick; }
         set {
@@ -65,12 +66,16 @@ public class UI_Inven_Item : UI_Base
             if (Managers.Game.isShop)
                 return;
 
+            // TODO : 다른 scene UI 들도 클릭 시 Sorting Order 수정 시키기
             // 클릭 시 ui 우선순위
             Managers.UI.OnUI(Managers.Game.baseInventory);
                 
             if (Input.GetMouseButtonUp(1))
             {
-                Managers.Game.baseInventory.UsingItem(null, this);    // 아이템 사용
+                if (item.itemType == Item.ItemType.Used)
+                    Managers.Game.baseInventory.UsingItem(null, this);    // 아이템 사용
+                else if (item.itemType == Item.ItemType.Equipment)
+                    Managers.Weapon.eqSlotUI.ConnectionSlot(this);
             }
         }, Define.UIEvent.Click);
         
@@ -125,9 +130,6 @@ public class UI_Inven_Item : UI_Base
                 }
             }
 
-            // 더블 체크
-            Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
-
             // 들고 있는 임시 아이템 초기화
             UI_DragSlot.instance.SetColor(0);
             UI_DragSlot.instance.dragSlot = null;
@@ -137,7 +139,7 @@ public class UI_Inven_Item : UI_Base
         // 이 슬롯에 마우스 클릭이 끝나면 아이템 받기
         gameObject.BindEvent((PointerEventData eventData)=>
         {
-            if (isClick == false)
+            if (isClick == false || UI_DragSlot.instance.dragSlot == this)
                 return;
 
             if (UI_DragSlot.instance.dragSlot != null)      // 인벤 슬롯을 받을 때
@@ -162,6 +164,14 @@ public class UI_Inven_Item : UI_Base
             }
             else if (UI_DragSlot.instance.baseSlot != null) // 메인 슬롯을 받을 때
                 UI_DragSlot.instance.baseSlot.ClearSlot();
+            else if (UI_DragSlot.instance.eqSlot != null)   // 장비 슬롯을 받을 때
+            {
+                if (item == null)
+                {
+                    AddItem(UI_DragSlot.instance.eqSlot.item);
+                    UI_DragSlot.instance.eqSlot.ClearSlot();
+                }
+            }
 
         }, Define.UIEvent.Drop);
 
@@ -170,7 +180,7 @@ public class UI_Inven_Item : UI_Base
 
     void Update()
     {
-        // 1~9 키를 눌러 인벤->메인 슬롯으로 바로 이동 시키는 메소드
+        // 숫자 키를 눌러 인벤->메인 슬롯으로 바로 이동 시키는 메소드
         if (isKeyConnection)
             KeyConnection();
     }
@@ -249,9 +259,6 @@ public class UI_Inven_Item : UI_Base
     // 슬롯 초기화
     public void ClearSlot(bool isRemove=true)
     {
-        // 프리팹 개수가 0으로 초기화되는 경우도 있어 1로 맞춰주기
-        item.itemPrefab.GetComponent<ItemPickUp>().itemCount = 1;
-
         item = null;
         itemImage.sprite = null;
         itemCount = 0;
@@ -272,6 +279,7 @@ public class UI_Inven_Item : UI_Base
         Managers.Game.baseInventory.HideItemTip();  // 아이템 팁 비활성화
     }
 
+    // TODO : 슬롯 개수 수정
     // 숫자 키(1~9)로 메인슬롯과 연결
     void KeyConnection()
     {

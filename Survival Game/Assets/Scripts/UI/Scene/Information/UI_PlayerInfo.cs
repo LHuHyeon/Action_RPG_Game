@@ -89,6 +89,7 @@ public class UI_PlayerInfo : UI_Scene
         }
     }
 
+    // TODO : 슬롯 개수 수정하기
     // 1~9의 슬롯 초기화
     void SlotReset()
     {

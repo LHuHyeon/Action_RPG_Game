@@ -180,9 +180,6 @@ public class UI_Shop : UI_Scene
                 // 골드 지급
                 Managers.Game.playerStat.Gold += saleSlots[i].gold;
 
-                // 들고 있는 아이템체크
-                Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
-
                 // 초기화
                 saleSlots[i].Clear();
             }

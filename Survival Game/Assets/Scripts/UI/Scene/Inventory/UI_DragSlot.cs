@@ -10,6 +10,7 @@ public class UI_DragSlot : MonoBehaviour
 
     public UI_Inven_Item dragSlot;  // 인벤 슬롯
     public UI_BaseSlot baseSlot;    // 캐릭터 슬롯
+    public UI_EqSlot eqSlot;        // 장비 슬롯
 
     // 아이템 이미지
     [SerializeField]

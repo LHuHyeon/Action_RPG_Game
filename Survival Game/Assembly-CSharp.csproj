@@ -47,10 +47,12 @@
      <Compile Include="Assets\Scripts\Manager\Core\UIManager.cs" />
      <Compile Include="Assets\Scripts\UI\UI_EventHandler.cs" />
      <Compile Include="Assets\Resources\Art\Guns\Scripts\GunsMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Stat\UI_Stat.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Talk\UI_Talk.cs" />
      <Compile Include="Assets\Scripts\Controller\CameraController.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_BuySlot.cs" />
      <Compile Include="Assets\Scripts\Utils\Extension.cs" />
+     <Compile Include="Assets\Scripts\Contetns\EqItem.cs" />
      <Compile Include="Assets\Scripts\Controller\CursorController.cs" />
      <Compile Include="Assets\Scripts\UI\WorldSpace\UI_HPBar.cs" />
      <Compile Include="Assets\Scripts\Scenes\BaseScene.cs" />
@@ -90,6 +92,7 @@
      <Compile Include="Assets\Scripts\UI\WorldSpace\UI_NameBar.cs" />
      <Compile Include="Assets\Scripts\Manager\Core\Poolable.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_SlotItemTip.cs" />
+     <Compile Include="Assets\Scripts\UI\Scene\Stat\UI_EqSlot.cs" />
      <Compile Include="Assets\Scripts\Controller\ActionController.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_Shop.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Inventory\UI_DragSlot.cs" />
@@ -102,7 +105,6 @@
      <Compile Include="Assets\Scripts\Contetns\ObjectData.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\ItemCountCheck\UI_ItemCount.cs" />
      <Compile Include="Assets\Scripts\UI\Scene\Shop\UI_BuyCount.cs" />
-     <Compile Include="Assets\Scripts\UI\Scene\Stat\UI_Stat.cs" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />

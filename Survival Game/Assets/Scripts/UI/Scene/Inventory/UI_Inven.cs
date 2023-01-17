@@ -133,13 +133,15 @@ public class UI_Inven : UI_Scene
                 if (tempCount > _item.maxCount)
                 {
                     slots[i].AddItem(_item, _item.maxCount);
-                    Managers.Game.playerInfo.ItemRegistration(_item, _item.maxCount, slots[i]);
+                    // TODO Remove
+                    // Managers.Game.playerInfo.ItemRegistration(_item, _item.maxCount, slots[i]);
                     tempCount -= _item.maxCount;
                 }
                 else
                 {
                     slots[i].AddItem(_item, tempCount);
-                    Managers.Game.playerInfo.ItemRegistration(_item, tempCount, slots[i]);
+                    // TODO Remove
+                    // Managers.Game.playerInfo.ItemRegistration(_item, tempCount, slots[i]);
                     return;
                 }
             }

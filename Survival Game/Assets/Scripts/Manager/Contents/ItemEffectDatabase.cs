@@ -42,6 +42,9 @@ public class ItemEffectDatabase : MonoBehaviour
                             case HP:
                                 playerStat.Hp += itemEffects[i].num[j];
                                 break;
+                            case SP:
+                                playerStat.Sp += itemEffects[i].num[j];
+                                break;
                             case ATTACK:    // TODO : ATTACK, DEFENSE, SPEED 는 쿨타임 구현
                                 playerStat.Attack += itemEffects[i].num[j];
                                 break;
@@ -52,7 +55,7 @@ public class ItemEffectDatabase : MonoBehaviour
                                 playerStat.AddSpeed += itemEffects[i].num[j];
                                 break;
                             default:
-                                Debug.Log("잘못된 Status 부위. HP, ATTACK, DEFENSE, SPEED 만 가능합니다.");
+                                Debug.Log("잘못된 Status 부위. HP, SP, ATTACK, DEFENSE, SPEED 만 가능합니다.");
                                 break;
                         }
                         Debug.Log(_item.itemName + " 을 사용했습니다.");
@@ -68,7 +71,11 @@ public class ItemEffectDatabase : MonoBehaviour
     public string GetStat(Item _item)
     {
         if (_item.itemType == Item.ItemType.Equipment)
-            return $"공격력 {_item.damage}";
+        {
+            EqItem eqItem = _item as EqItem;
+
+            return $"공격력 {eqItem.damage}";
+        }
 
         if (_item.itemType == Item.ItemType.Used)
         {

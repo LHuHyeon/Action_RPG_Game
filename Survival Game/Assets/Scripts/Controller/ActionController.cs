@@ -8,33 +8,14 @@ public class ActionController : MonoBehaviour
     public UI_BaseSlot CurrentSlot{     // 선택 슬롯 프로퍼티
         get { return currentSlot; }
         set{
-            if (currentSlot != null)
-            {
-                currentSlot.currentEffect.SetActive(false);
-            }
-
             currentSlot = value;
-            currentSlot.currentEffect.SetActive(true);
 
-            if (currentSlot.item != null)
+            // 아이템 사용
+            if (currentSlot.item != null && !Managers.Game.isInventory)
             {
-                // 장비 체크
-                if (currentSlot.item.itemType == Item.ItemType.Equipment)
-                    playerAnim.State = Managers.Weapon.EquipWeapon(currentSlot.item);
-                else
-                    playerAnim.State = Managers.Weapon.NoneWeapon();
+                if (currentSlot.item.itemType == Item.ItemType.Used)
+                    Managers.Game.baseInventory.UsingItem(currentSlot, null);
             }
-            else
-                playerAnim.State = Managers.Weapon.NoneWeapon();
-
-            // 조준점 활성화 여부
-            if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
-            {
-                Managers.Weapon.crossHair.gameObject.SetActive(true);
-                Managers.Weapon.weaponActive.GetComponent<GunController>().SetGun(currentSlot.item.gun);
-            }
-            else
-                Managers.Weapon.crossHair.gameObject.SetActive(false);
         }
     }
     
@@ -59,9 +40,6 @@ public class ActionController : MonoBehaviour
             TargetCheck();
         };
 
-        Managers.Input.MouseAction -= UsingSlot;
-        Managers.Input.MouseAction += UsingSlot;
-
         playerAnim = GetComponent<PlayerAnimator>();
     }
 
@@ -69,14 +47,14 @@ public class ActionController : MonoBehaviour
     void DelayInit()
     {
         slots = Managers.Game.playerInfo.slots; // 슬롯 UI 가져오기
-        CurrentSlot = slots[0];     // 현재 선택한 슬롯
     }
 
+    // TODO Remove
     // 현재 슬롯 다시 들기 (더블 체크)
-    public void TakeUpSlot()
-    {
-        CurrentSlot = currentSlot;
-    }
+    // public void TakeUpSlot()
+    // {
+    //     CurrentSlot = currentSlot;
+    // }
 
     // 주변 상호작용
     void Interaction()
@@ -99,17 +77,18 @@ public class ActionController : MonoBehaviour
         }
     }
 
-    // 슬롯의 아이템 사용
-    void UsingSlot(Define.MouseEvent evt)
-    {
-        if (currentSlot.item != null && evt == Define.MouseEvent.RightDown)
-        {
-            if (currentSlot.item.itemType == Item.ItemType.Used)
-                Managers.Game.baseInventory.UsingItem(currentSlot, null);
-        }
-    }
+    // TODO Remove
+    // void UsingSlot(Define.MouseEvent evt)
+    // {
+    //     if (currentSlot.item != null && evt == Define.MouseEvent.RightDown)
+    //     {
+    //         if (currentSlot.item.itemType == Item.ItemType.Used)
+    //             Managers.Game.baseInventory.UsingItem(currentSlot, null);
+    //     }
+    // }
 
-    // 슬롯 선택
+    // TODO : 슬롯 줄이기
+    // 슬롯 사용하기
     void SlotKeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -135,9 +114,10 @@ public class ActionController : MonoBehaviour
     // 주변 오브젝트 체크
     private void TargetCheck()
     {
-        // 주변 콜라이더 탐색
+        // 주변 아이템 탐색
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, maxRadius, LayerMask.GetMask("Item"));
         
+        // F 키를 누르면 줍기
         if (Input.GetKeyDown(KeyCode.F))
         {
             for(int i=0; i<hitCollider.Length; i++)
@@ -145,10 +125,9 @@ public class ActionController : MonoBehaviour
                 ItemPickUp _item = hitCollider[i].GetComponent<ItemPickUp>();
                 if (_item != null)
                 {
+                    // 인벤에 넣기
                     Managers.Game.baseInventory.AcquireItem(_item.item, _item.itemCount);
                     Destroy(hitCollider[i].gameObject);
-                    
-                    TakeUpSlot(); // 현재 슬롯 선택
 
                     return;
                 }

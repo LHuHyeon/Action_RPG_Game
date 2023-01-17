@@ -424,6 +424,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1657972115}
     m_Modifications:
+    - target: {fileID: 3835117937721832533, guid: 6cd4519f18ed80743b67ef76bbb686d4, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 4581195da7feb0445ad4e7bbab3404df, type: 2}
     - target: {fileID: 5051066702640196952, guid: 6cd4519f18ed80743b67ef76bbb686d4, type: 3}
       propertyPath: m_Name
       value: RedBottle

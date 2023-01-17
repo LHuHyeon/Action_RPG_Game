@@ -12,7 +12,6 @@ public class UI_BaseSlot : UI_Base
     public Text itemCountText;  // UI 개수
     public int itemCount;       // 아이템 개수
 
-    public GameObject currentEffect;    // 플레이어가 들고 있다면 테두리 활성화 Obj
     public Text slotNumber;             // 몇번 슬롯인지 Obj
 
     public UI_Inven_Item haveinvenSlot; // 인벤 슬롯에 있는 슬롯과 연결
@@ -50,9 +49,6 @@ public class UI_BaseSlot : UI_Base
                 if (item != null && !EventSystem.current.IsPointerOverGameObject())
                     ClearSlot();
 
-                // 더블 체크
-                Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
-
                 // 들고 있는 임시 아이템 초기화
                 UI_DragSlot.instance.SetColor(0);
                 UI_DragSlot.instance.baseSlot = null;
@@ -79,6 +75,13 @@ public class UI_BaseSlot : UI_Base
     // 아이템을 Drop이 아닌 코드로 넣을 때 사용될 메소드
     public void ConnectionSlot(UI_Inven_Item _invenSlot)
     {
+        // 사용 아이템만 적용 가능
+        if (_invenSlot.item.itemType != Item.ItemType.Used)
+        {
+            Debug.Log("Used 아이템이 아닙니다!");
+            return;
+        }
+
         // 다른 인벤슬롯이 현재 메인슬롯과 연결할 것이기 때문에
         // 현재 메인슬롯이 인벤슬롯과 연결되어 있다면 초기화
         if (haveinvenSlot != null)
@@ -89,9 +92,6 @@ public class UI_BaseSlot : UI_Base
             
         // 추가
         AddItem(_invenSlot.item, _invenSlot.itemCount, _invenSlot);
-
-        // 아이템 들기
-        Managers.Game._player.GetComponent<ActionController>().TakeUpSlot();
     }
 
     // 인벤토리에서 메인 슬롯에 등록할 때

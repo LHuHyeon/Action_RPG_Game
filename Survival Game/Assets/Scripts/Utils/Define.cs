@@ -12,6 +12,16 @@ public class Define : MonoBehaviour
         Quest,
     }
 
+    // 장비 상태
+    public enum EqType
+    {
+        NoneType,
+        Weapon,
+        Helmet,
+        Armor,
+        Shoes,
+    }
+
     public enum NPCAction
     {
         Notify,
