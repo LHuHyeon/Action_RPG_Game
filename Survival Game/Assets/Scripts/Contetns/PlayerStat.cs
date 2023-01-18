@@ -151,6 +151,10 @@ public class PlayerStat : Stat
         
         basePoint += stat.statPoint;
         _statPoint += stat.statPoint;
+
+        // 추가된 스탯 적용 (버프, 장비)
+        if (Managers.Stat.addStat != null)
+            Managers.Stat.addStat.Invoke();
     }
 
     // 스탯 초기화

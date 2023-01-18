@@ -20,11 +20,11 @@ MonoBehaviour:
   gold: 100
   exp: 100
   itemReward:
-  - item: {fileID: 11400000, guid: a417d4ddc0a03b848a25ab7190a593e4, type: 2}
+  - item: {fileID: 11400000, guid: a1049eda4e6acd7469d479dcc083f133, type: 2}
     itemCount: 1
   - item: {fileID: 11400000, guid: 71a0d0f1d85364e4ca9bbeac1e3eec33, type: 2}
     itemCount: 14
-  isAccept: 0
+  isAccept: 1
   isClear: 0
   achieveDesc: "\uB9C8\uC744 \uC8FC\uBCC0\uC5D0\uC11C \uC880\uBE44 10\uB9C8\uB9AC
     \uCC98\uCE58\uD558\uAE30."

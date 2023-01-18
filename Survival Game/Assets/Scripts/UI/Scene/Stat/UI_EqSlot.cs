@@ -70,12 +70,18 @@ public class UI_EqSlot : UI_Base
             if (Managers.Game.isInventory)
             {
                 if (UI_DragSlot.instance.dragSlot != null)
-                    DropConnectionSlot();
+                {
+                    ConnectionSlot(UI_DragSlot.instance.dragSlot);
+                    UI_DragSlot.instance.dragSlot = null;
+                }
             }
 
         }, Define.UIEvent.Drop);
 
         #endregion
+
+        Managers.Stat.addStat -= StatUp;
+        Managers.Stat.addStat += StatUp;
 
         if (eqType == Define.EqType.Weapon)
             Managers.Weapon.eqSlotUI = this;
@@ -98,6 +104,7 @@ public class UI_EqSlot : UI_Base
             // 장비가 존재하면 바꾸기
             if (item != null)
             {
+                IsStat(false);
                 Item _tempItem = item;
 
                 AddItem(_eqitem);
@@ -111,14 +118,7 @@ public class UI_EqSlot : UI_Base
         }
     }
 
-    // 인벤토리에서 메인 슬롯에 등록할 때
-    private void DropConnectionSlot()
-    {
-        ConnectionSlot(UI_DragSlot.instance.dragSlot);
-        UI_DragSlot.instance.dragSlot = null;
-    }
-
-    // 아이템 등록
+    // 장비 장착
     public void AddItem(EqItem _item)
     {
         item = _item;
@@ -129,6 +129,42 @@ public class UI_EqSlot : UI_Base
 
         if (eqType == Define.EqType.Weapon)
             EqInstall();
+
+        // 장비 능력치가 스탯에 적용 됨.
+        IsStat(true);
+    }
+
+    // 스탯 상승
+    void IsStat(bool has)
+    {
+        if (item == null)
+            return;
+
+        PlayerStat _stat = Managers.Game.playerStat;
+        if (has)
+            StatUp();
+        else
+        {
+            _stat.MaxHp -= item.hp;
+            _stat.MaxSp -= item.sp;
+            _stat.Attack -= item.damage;
+            _stat.Defense -= item.defense;
+        }
+
+        Managers.Stat.statUI.StatSetting();
+    }
+
+    // 델리게이트 호출 받을 메소드
+    void StatUp()
+    {
+        if (item != null)
+        {
+            PlayerStat _stat = Managers.Game.playerStat;
+            _stat.MaxHp += item.hp;
+            _stat.MaxSp += item.sp;
+            _stat.Attack += item.damage;
+            _stat.Defense += item.defense;
+        }
     }
 
     // 투명도 설정 (0 ~ 255)
@@ -142,6 +178,8 @@ public class UI_EqSlot : UI_Base
     // 슬롯 초기화
     public void ClearSlot()
     {
+        IsStat(false);
+
         item = null;
         itemImage.sprite = null;
         SetColor(0);
