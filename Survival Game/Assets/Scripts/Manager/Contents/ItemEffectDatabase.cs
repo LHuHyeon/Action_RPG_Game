@@ -73,8 +73,15 @@ public class ItemEffectDatabase : MonoBehaviour
         if (_item.itemType == Item.ItemType.Equipment)
         {
             EqItem eqItem = _item as EqItem;
+            Dictionary<string, int> eqDic = eqItem.GetStat();
 
-            return $"공격력 {eqItem.damage}";
+            string value="";
+            value += eqDic.ContainsKey("ATTACK") ? "공격력 " + eqDic["ATTACK"].ToString() : "";
+            value += eqDic.ContainsKey("DEFENSE") ? "방어력 " + eqDic["DEFENSE"].ToString() : "";
+            value += eqDic.ContainsKey("HP") ? "체력 " + eqDic["HP"].ToString() : "";
+            value += eqDic.ContainsKey("SP") ? "마나 " + eqDic["SP"].ToString() : "";
+
+            return value;
         }
 
         if (_item.itemType == Item.ItemType.Used)

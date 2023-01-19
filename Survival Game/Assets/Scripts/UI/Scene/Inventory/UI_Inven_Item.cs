@@ -95,6 +95,8 @@ public class UI_Inven_Item : UI_Base
 
                 UI_DragSlot.instance.transform.position = eventData.position;
 
+                Managers.UI.OnUI(Managers.Game.baseInventory);
+
                 // 상점일 경우 Drop 받을 Obj 활성화
                 if (Managers.Game.isShop)
                     UI_Shop.go_RayDrop.SetActive(true);

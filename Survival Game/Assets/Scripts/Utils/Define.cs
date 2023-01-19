@@ -22,6 +22,15 @@ public class Define : MonoBehaviour
         Shoes,
     }
 
+    // 아이템 등급
+    public enum ItemGrade
+    {
+        Common,
+        Rare,
+        Epic,
+        Legendary,
+    }
+
     public enum NPCAction
     {
         Notify,

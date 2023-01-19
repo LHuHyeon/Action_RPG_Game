@@ -18,7 +18,10 @@ public class AttackCollistion : MonoBehaviour
         {
             // 무기가 존재하면
             if (Managers.Weapon.weaponActive != null)
-                damage = (Managers.Weapon.currentWeapon as EqItem).damage;
+            {
+                EqItem eqItem = Managers.Weapon.currentWeapon as EqItem;
+                damage = eqItem.GetStat()["ATTACK"];
+            }
             else
                 damage = 0;
 

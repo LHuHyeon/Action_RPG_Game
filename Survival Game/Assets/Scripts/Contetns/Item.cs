@@ -14,6 +14,7 @@ public class Item : ScriptableObject
     }
 
     public string itemName;         // 이름
+    public Define.ItemGrade itemGrade = Define.ItemGrade.Common;  // 아이템 등급
     public int maxCount=99;         // 한칸에 들고 있을 수 있는 최대 개수
     public ItemType itemType;       // 아이템 타입
     public int itemCoin;            // 코인

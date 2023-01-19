@@ -140,16 +140,10 @@ public class UI_EqSlot : UI_Base
         if (item == null)
             return;
 
-        PlayerStat _stat = Managers.Game.playerStat;
         if (has)
-            StatUp();
+            item.StatImport(true);
         else
-        {
-            _stat.MaxHp -= item.hp;
-            _stat.MaxSp -= item.sp;
-            _stat.Attack -= item.damage;
-            _stat.Defense -= item.defense;
-        }
+            item.StatImport(false);
 
         Managers.Stat.statUI.StatSetting();
     }
@@ -158,13 +152,7 @@ public class UI_EqSlot : UI_Base
     void StatUp()
     {
         if (item != null)
-        {
-            PlayerStat _stat = Managers.Game.playerStat;
-            _stat.MaxHp += item.hp;
-            _stat.MaxSp += item.sp;
-            _stat.Attack += item.damage;
-            _stat.Defense += item.defense;
-        }
+            item.StatImport(true);
     }
 
     // 투명도 설정 (0 ~ 255)

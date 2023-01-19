@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   itemName: 2HandSword
+  itemGrade: 0
   maxCount: 1
   itemType: 0
   itemCoin: 100
@@ -21,6 +22,9 @@ MonoBehaviour:
   itemDesc: "\uBB34\uAC8C\uAC00 \uC788\uB294 \uAC80\uC774\uAE30\uC5D0 \uD718\uB450\uB974\uAE30
     \uD798\uB4E4\uB2E4."
   eqType: 1
-  defense: 0
-  damage: 10
+  minLevel: 1
+  eqStat:
+    part:
+    - ATTACK
+    num: 05000000
   gun: {fileID: 0}
