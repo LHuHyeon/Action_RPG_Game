@@ -8,6 +8,8 @@ public class UI_Stat : UI_Scene
 {
     public GameObject title;    // 타이틀 Obj
 
+    public List<UI_EqSlot> eqSlotList;
+
     [SerializeField]
     private Slider expGauge;    // 슬라이더
 
@@ -38,10 +40,22 @@ public class UI_Stat : UI_Scene
         DP_Button,
     }
 
+    // 장비 슬롯
+    enum EqSlot
+    {
+        WeaponSlot,
+        HelmetSlot,
+        ArmorSlot,
+        ShoesSlot,
+    }
+
     public override void Init()
     {
+        eqSlotList = new List<UI_EqSlot>();
+
         Bind<Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
+        Bind<UI_EqSlot>(typeof(EqSlot));
 
         UISetting();
 
@@ -60,6 +74,10 @@ public class UI_Stat : UI_Scene
             int temp = i; // Closure 문제때문에 복사해서 사용한다.
             GetButton(i).onClick.AddListener(() => AddStatButton(temp));
         }
+
+        // 장비 슬롯 리스트로 관리
+        for(int i=0; i<4; i++)
+            eqSlotList.Add(Get<UI_EqSlot>(i));
 
         // 스탯창 옮기기 EventSystem 등록
         title.BindEvent((PointerEventData eventData)=>{

@@ -8,9 +8,11 @@ public class UI_PlayerInfo : UI_Scene
 {
     public List<UI_BaseSlot> slots;    // BaseSlot(메인 슬롯) 저장
     PlayerStat _stat;
+    GameObject background;
     
     enum GameObjects
     {
+        BackGround,
         UsingSlot,
         HPBar,
         SPBar,
@@ -31,12 +33,26 @@ public class UI_PlayerInfo : UI_Scene
 
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
+
+        background = GetObject((int)GameObjects.BackGround);
         SlotReset();
     }
 
     // Update보다 덜 호출하게 만들려고 FixedUpdate 사용
     void FixedUpdate()
     {
+        // 상점이나 대화할 시 비활성화
+        if (Managers.Game.isShop || TalkManager.instance.isDialouge)
+        {
+            if (background.activeSelf == true)
+                background.SetActive(false);
+        }
+        else
+        {
+            if (background.activeSelf == false)
+                background.SetActive(true);
+        }
+
         float ratioHP = (float)_stat.Hp / _stat.MaxHp;
         float ratioSP = (float)_stat.Sp / _stat.MaxSp;
         float ratioEXP = (float)_stat.Exp / _stat.totalExp;

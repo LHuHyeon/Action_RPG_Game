@@ -82,15 +82,12 @@ public class UI_EqSlot : UI_Base
 
         Managers.Stat.addStat -= StatUp;
         Managers.Stat.addStat += StatUp;
-
-        if (eqType == Define.EqType.Weapon)
-            Managers.Weapon.eqSlotUI = this;
     }
 
     // 아이템을 Drop이 아닌 코드로 넣을 때 사용될 메소드
-    public void ConnectionSlot(UI_Inven_Item _invenSlot)
+    public void ConnectionSlot(UI_Inven_Item _invenSlot=null)
     {
-        // 사용 아이템만 적용 가능
+        // 장비만 적용 가능
         if (_invenSlot.item.itemType != Item.ItemType.Equipment)
         {
             Debug.Log("장비 아이템이 아닙니다!");

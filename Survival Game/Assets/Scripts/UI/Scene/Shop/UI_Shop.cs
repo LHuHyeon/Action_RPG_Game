@@ -140,7 +140,7 @@ public class UI_Shop : UI_Scene
     }
 
     // 판매 아이템 등록
-    void SaleConnection()
+    public void SaleConnection()
     {
         // 판매 등록 가능한 슬롯 찾기
         for(int i=0; i<saleSlots.Count; i++)
@@ -204,6 +204,15 @@ public class UI_Shop : UI_Scene
     {
         Managers.Game.isShop = false;
         Cursor.visible = false;
+
+        // 판매슬롯에 아이템이 있으면 클리어해주고 없다면 종료
+        for(int i=0; i<saleSlots.Count; i++)
+        {
+            if (saleSlots[i].item != null)
+                saleSlots[i].Clear();
+            else
+                break;
+        }
 
         Managers.Game.isInventory = false;
         Managers.Game.baseInventory.baseObject.SetActive(false);

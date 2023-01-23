@@ -8,7 +8,6 @@ public class WeaponManager
 
     // 현재 들고있는 무기를 여기서 확인
     public GameObject weaponActive;        // 현재 무기 오브젝트 (활성화/비활성화 용도)
-    public UI_EqSlot eqSlotUI;             // 무기 슬롯
     public Item currentWeapon;             // 현재 무기 아이템
     public GameObject attackCollistion;    // 공격 시 충돌처리 해줄 객체
     public TrailRenderer weaponEffect;     // 무기 이팩트

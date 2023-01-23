@@ -75,10 +75,7 @@ public class UI_Inven_Item : UI_Base
                 if (item.itemType == Item.ItemType.Used)
                     Managers.Game.baseInventory.UsingItem(null, this);    // 아이템 사용
                 else if (item.itemType == Item.ItemType.Equipment)
-                {
-                    if (Managers.Weapon.eqSlotUI != null)
-                        Managers.Weapon.eqSlotUI.ConnectionSlot(this);
-                }
+                    Managers.Stat.EqConnection(this);
             }
         }, Define.UIEvent.Click);
         
