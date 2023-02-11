@@ -99,7 +99,7 @@ public class UI_Talk : UI_Scene
         Cursor.visible = true;
 
         // 플레이어 멈추기
-        Managers.Game._player.GetComponent<PlayerController>().State = Define.State.Idle;
+        Managers.Game._player.GetComponent<PlayerController>().state = Define.PlayerState.Idle;
 
         // 다음 대화
         NextTalkButton();

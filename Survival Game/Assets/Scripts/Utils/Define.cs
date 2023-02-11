@@ -46,6 +46,24 @@ public class Define : MonoBehaviour
         Skill,
     }
 
+    public enum PlayerState
+    {
+        Idle,
+        Moving,
+        Attack,
+        Guard,
+        Die,
+    }
+
+    public enum MonsterState
+    {
+        Idle,
+        Moving,
+        Ready,
+        Attack,
+        Die,
+    }
+
     // 무기 상태
     public enum WeaponState
     {

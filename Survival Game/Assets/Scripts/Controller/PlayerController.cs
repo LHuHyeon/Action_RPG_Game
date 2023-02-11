@@ -2,30 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : BaseController
+public class PlayerController : MonoBehaviour
 {
+    public Define.PlayerState state = Define.PlayerState.Idle;
     public List<GameObject> weaponList = new List<GameObject>();
 
-    Transform cameraArm;        // 카메라 회전 중심 객체
-
-    Vector2 moveInput;           // 이동 키 입력 확인
-
-    PlayerAnimator playerAnim;   // 플레이어 애니메이션
-    PlayerStat _stat;
-    Animator anim;
+    public Transform cameraArm;        // 카메라 회전 중심 객체
+    public Transform character;         // 캐릭터
 
     public bool stopMoving = false;
+
+    bool onAttack = false;
+
+    public float runSpeed = 3;
+    float walkSpeed;
+    float baseSpeed;
+
+    float attackTime;
 
     float maxCurrentTime = 2f;      // 스테미나 재생 대기 시간
     float currentTime = 0f;         // 스테미나 재생 가능 시간 체크
 
-    public override void Init()
-    {
-        WorldObjectType = Define.WorldObject.Player;
+    Vector2 moveInput;           // 이동 키 입력 확인
+    Animator anim;
+    PlayerStat _stat;
 
-        playerAnim = GetComponent<PlayerAnimator>();  // 캐릭터 애니메이션
+    void Start()
+    {
         _stat = GetComponent<PlayerStat>();           // 스탯
-        anim = GetComponent<Animator>();              // 애니메이션
+        anim = character.GetComponent<Animator>();    // 애니메이션
         
         Managers.Game._player = gameObject;
         Managers.Game.playerStat = _stat;
@@ -35,6 +40,10 @@ public class PlayerController : BaseController
 
         // 카메라 오브젝트
         cameraArm = Util.FindChild<Transform>(transform.root.gameObject, "CameraArm");
+        walkSpeed = _stat.MoveSpeed;
+        baseSpeed = walkSpeed;
+
+        anim.SetBool("IsHand", true);
         
         // 키 입력 관련 메소드 등록
         Managers.Input.KeyAction -= () => {
@@ -49,20 +58,30 @@ public class PlayerController : BaseController
         Managers.Input.MouseAction += MouseEvent;
     }
 
-    // 계속 호출될 메소드
-    protected override void PlayUpdate()
+    void Update()
     {
         Stamina();  // 스테미나 회복
-    }
+        CameraLookAround();
 
-    // 움직임
-    protected override void UpdateMoving()
-    {
-        Vector3 lookForward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
-        Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
-        Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
-
-        transform.position += moveDir.normalized * Time.deltaTime * _stat.MoveSpeed;
+        // 상태에 따라 작동
+        switch (state)
+        {
+            case Define.PlayerState.Idle:
+                UpdateIdle();
+                break;
+            case Define.PlayerState.Moving:
+                UpdateMoving();
+                break;
+            case Define.PlayerState.Attack:
+                UpdateAttack();
+                break;
+            case Define.PlayerState.Guard:
+                UpdateGuard();
+                break;
+            case Define.PlayerState.Die:
+                UpdateDie();
+                break;
+        }
     }
 
     // 스테미나 재생
@@ -98,38 +117,55 @@ public class PlayerController : BaseController
         {
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("DiveRoll"))
             {
+                state = Define.PlayerState.Moving;
+
+                Moving();
+                if (state == Define.PlayerState.Idle)
+                {
+                    DelayDive();
+                    return;
+                }
+
                 Managers.Game.isDiveRoll = true;
-                anim.SetBool("HasRoll", true);
+                _stat.AddSpeed = 1f;
                 SetStamina(-30);
-                _stat.AddSpeed = 2f;
+
+                anim.SetTrigger("OnDiveRoll");
+                Invoke("DelayDive", 1f);
 
                 // 조준점 변화
                 if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
                     Managers.Weapon.crossHair.DiveRollAnim(true);
             }
         }
-        // 구르는 애니메이션게 갇혔다면
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("DiveRoll"))
-        {
-            GetComponent<PlayerAnimator>().ExitDiveRoll();
-        }
+    }
+
+    void DelayDive()
+    {
+        onAttack = false;
+
+        Managers.Game.isDiveRoll = false;
+        _stat.AddSpeed = 0;
     }
 
     // w, a, s, d 움직임 메소드
     private void Moving()
     {
+        // 공격 중이라면 종료
+        if (state == Define.PlayerState.Attack)
+            return;
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical   = Input.GetAxisRaw("Vertical");
 
-        playerAnim.OnAnimMoving(horizontal, vertical);
-
+        Running(horizontal, vertical);
         moveInput = new Vector2(horizontal, vertical);  // 키 입력값 받기
-        
+
         bool isMove = moveInput.magnitude != 0;
         if (isMove)
-            State = Define.State.Moving;
+            state = Define.PlayerState.Moving;
         else
-            State = Define.State.Idle;
+            state = Define.PlayerState.Idle;
 
         // 총을 들었을 때 움직임에 따른 조준점 변화
         if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
@@ -138,11 +174,40 @@ public class PlayerController : BaseController
         }
     }
 
+    // 달리기 or 걷기
+    void Running(float horizontal, float vertical)
+    {
+        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            anim.SetFloat("Horizontal", horizontal);
+            anim.SetFloat("Vertical", vertical);
+            baseSpeed = runSpeed;
+        }
+        else
+        {
+            if (horizontal < 0)
+                anim.SetFloat("Horizontal", -0.25f);
+            else if (horizontal > 0)
+                anim.SetFloat("Horizontal", 0.25f);
+            else 
+                anim.SetFloat("Horizontal", 0);
+            
+            if (vertical < 0)
+                anim.SetFloat("Vertical", -0.25f);
+            else if (vertical > 0)
+                anim.SetFloat("Vertical", 0.25f);
+            else 
+                anim.SetFloat("Vertical", 0);
+
+            baseSpeed = walkSpeed;
+        }
+    }
+
     // 움직임 멈추기
     public void StopMove()
     {
-        playerAnim.OnAnimMoving(0, 0);
-        State = Define.State.Idle;
+        state = Define.PlayerState.Idle;
     }
 
     // 키 입력
@@ -153,7 +218,7 @@ public class PlayerController : BaseController
             return;
 
         // 캐릭터의 방향은 카메라 기준
-        transform.forward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
+        // transform.forward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
 
         // 멈추기
         if (stopMoving || TalkManager.instance.isDialouge)
@@ -162,7 +227,7 @@ public class PlayerController : BaseController
             return;
         }
 
-        if (State == Define.State.Moving)
+        if (state == Define.PlayerState.Moving)
             DiveRoll();
 
         Moving();
@@ -171,10 +236,114 @@ public class PlayerController : BaseController
     // 마우스 입력
     private void MouseEvent(Define.MouseEvent evt)
     {
-        if (!Managers.Game.isDiveRoll && evt == Define.MouseEvent.LeftDown && _stat.Sp >= 10)
+        // 공격
+        if (Input.GetMouseButtonDown(0) && !Managers.Game.isDiveRoll)
         {
-            if (playerAnim.State != Define.WeaponState.Gun)
-                playerAnim.OnAttack();
+            // 0.5f ~ maxAnimTime 사이에 공격키를 누를 시 공격 가능
+            if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack") &&
+                anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.91f &&
+                anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f && onAttack)
+            {
+                onAttack = false;
+            }
+
+            // 공격!
+            if (!onAttack)
+            {
+                anim.SetTrigger("OnAttack");    // 공격 애니메이션
+                state = Define.PlayerState.Attack;
+
+                attackTime = 0;
+                onAttack = true;
+            }
         }
+
+        // 방어
+        if (Input.GetMouseButton(1) && !Managers.Game.isDiveRoll)
+        {
+            anim.SetBool("IsGuard", true);
+            state = Define.PlayerState.Guard;
+        }
+        else
+        {
+            if (state == Define.PlayerState.Guard)
+            {
+                anim.SetBool("IsGuard", false);
+                state = Define.PlayerState.Idle;
+            }
+        }
+    }
+
+    // 멈춘 상태 메소드
+    public void UpdateIdle()
+    {
+        // 몇초 뒤 멈춘 특정 모션 취하기
+    }
+
+    // 움직이는 상태 메소드
+    void UpdateMoving()
+    {
+        Vector3 lookForward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
+        Vector3 lookRight = new Vector3(cameraArm.right.x, 0f, cameraArm.right.z).normalized;
+        Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
+
+        // 구르기할 땐 구르는 방향 바라보기
+        if (Managers.Game.isDiveRoll == false)
+            character.forward = lookForward;
+        else
+            character.forward = moveDir;
+
+        transform.position += moveDir.normalized * Time.deltaTime * _stat.MoveSpeed;
+    }
+
+    // 공격 상태 메소드
+    public void UpdateAttack()
+    {
+        // 공격 취소 시간 계산
+        attackTime += Time.deltaTime;
+
+        // 연속 공격 가능 시간이 지날 시
+        if (attackTime > 0.88f)
+        {
+            if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack") &&
+                anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.91f)
+            {
+                // 공격 중단
+                anim.ResetTrigger("OnAttack");
+
+                onAttack = false;
+                state = Define.PlayerState.Idle;
+            }
+        }
+    }
+
+    // 방어 상태 메소드
+    public void UpdateGuard()
+    {
+
+    }
+
+    public void UpdateDie()
+    {
+        
+    }
+
+    // TPS형 카메라 조작
+    private void CameraLookAround()
+    {
+        // if (TalkManager.instance.isDialouge == false && Managers.Game.isShop == false && Managers.Game.isUIMode == false)
+        //     return;
+
+        Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        Vector3 camAngle = cameraArm.rotation.eulerAngles;
+
+        float x = camAngle.x - mouseDelta.y;
+
+        if (x < 180f)
+            x = Mathf.Clamp(x, -1f, 70f);
+        else
+            x = Mathf.Clamp(x, 335f, 361f);
+
+        cameraArm.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
     }
 }

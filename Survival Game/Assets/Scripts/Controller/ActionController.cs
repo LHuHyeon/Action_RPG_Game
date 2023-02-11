@@ -19,7 +19,6 @@ public class ActionController : MonoBehaviour
         }
     }
     
-    PlayerAnimator playerAnim;
     List<UI_BaseSlot> slots;
 
     [SerializeField]
@@ -39,8 +38,6 @@ public class ActionController : MonoBehaviour
             SlotKeyInput();
             TargetCheck();
         };
-
-        playerAnim = GetComponent<PlayerAnimator>();
     }
 
     // Start 보다 늦게 Start 되는 오브젝트를 위해 딜레이를 준다.
@@ -48,13 +45,6 @@ public class ActionController : MonoBehaviour
     {
         slots = Managers.Game.playerInfo.slots; // 슬롯 UI 가져오기
     }
-
-    // TODO Remove
-    // 현재 슬롯 다시 들기 (더블 체크)
-    // public void TakeUpSlot()
-    // {
-    //     CurrentSlot = currentSlot;
-    // }
 
     // 주변 상호작용
     void Interaction()
@@ -76,16 +66,6 @@ public class ActionController : MonoBehaviour
             }
         }
     }
-
-    // TODO Remove
-    // void UsingSlot(Define.MouseEvent evt)
-    // {
-    //     if (currentSlot.item != null && evt == Define.MouseEvent.RightDown)
-    //     {
-    //         if (currentSlot.item.itemType == Item.ItemType.Used)
-    //             Managers.Game.baseInventory.UsingItem(currentSlot, null);
-    //     }
-    // }
 
     // TODO : 슬롯 줄이기
     // 슬롯 사용하기
