@@ -61,6 +61,7 @@ public class Define : MonoBehaviour
         Moving,
         Ready,
         Attack,
+        Hit,
         Die,
     }
 
@@ -121,10 +122,13 @@ public class Define : MonoBehaviour
     public enum MouseEvent
     {
         Press,      // 꾹 누를 때 상태
+        LeftPress,
+        RightPress,
         LeftDown,
         RightDown,
         PointDown,
         PointUp,
+        RightUp,
         Click,      // 클릭 상태 (Press 상태가 끝난 상태)
     }
 

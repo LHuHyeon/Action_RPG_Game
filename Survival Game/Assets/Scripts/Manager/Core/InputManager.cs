@@ -32,8 +32,10 @@ public class InputManager
         {
             if (Input.GetMouseButtonDown(0))
                 MouseAction.Invoke(Define.MouseEvent.LeftDown);
-            if (Input.GetMouseButtonDown(1))
-                MouseAction.Invoke(Define.MouseEvent.RightDown);
+            if (Input.GetMouseButton(1))
+                MouseAction.Invoke(Define.MouseEvent.RightPress);
+            if (Input.GetMouseButtonUp(1))
+                MouseAction.Invoke(Define.MouseEvent.RightUp);
         }
     }
 

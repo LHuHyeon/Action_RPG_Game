@@ -102,9 +102,9 @@ public class Stat : MonoBehaviour
             QuestManager.instance.KillCheck(GetComponent<ObjectData>().id);
 
             // 아이템 드랍
-            GetComponent<MonsterController>().DeadDropItem();
+            GetComponent<Monster>().DeadDropItem();
         }
 
-        Managers.Game.Despawn(gameObject);
+        Managers.Resource.Destroy(gameObject);
     }
 }
