@@ -6,7 +6,7 @@ using UnityEngine;
 // 컨텐츠에서 사용될 매니저 (플레이어, 몬스터 등..)
 public class GameManager
 {
-    public GameObject _player;              // 플레이어 관리 오브젝트
+    public PlayerController _player;              // 플레이어 관리 오브젝트
     public PlayerStat playerStat;           // 플레이어 스탯
     public UI_PlayerInfo playerInfo;        // 플레이어 UI 관리 (HP, 슬롯 등..)
     public ItemEffectDatabase itemDatabase; // 아이템 스탯 저장소
@@ -34,7 +34,7 @@ public class GameManager
                     OnSpawnEvent.Invoke(1);
                 break;
             case Define.WorldObject.Player:
-                _player = go;
+                _player = go.GetComponent<PlayerController>();
                 break;
             default:
                 Debug.Log("GameManager : Null Type");

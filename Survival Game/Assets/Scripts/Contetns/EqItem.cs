@@ -16,7 +16,6 @@ public class EqItem : Item
     public Define.EqType eqType;    // 장비 타입
     public int minLevel;            // 장착 레벨
     public EquipmentStat eqStat;    // 장비 스탯
-    public Gun gun;                 // 총일 경우 넣어주기
 
     // 스탯 호출
     public Dictionary<string, int> GetStat()

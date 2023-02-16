@@ -145,7 +145,7 @@ public class UI_EqSlot : UI_Base
         Managers.Stat.statUI.StatSetting();
     }
 
-    // 델리게이트 호출 받을 메소드
+    // 아이템 장착 스탯 증가 (Delegate 호출)
     void StatUp()
     {
         if (item != null)
@@ -178,20 +178,11 @@ public class UI_EqSlot : UI_Base
     // 장착 or 체인지
     public void EqInstall()
     {
-        PlayerAnimator playerAnim = Managers.Game._player.GetComponent<PlayerAnimator>();
+        PlayerAnimator playerAnim = Managers.Game._player.character.GetComponent<PlayerAnimator>();
 
         if (item != null)
             playerAnim.State = Managers.Weapon.EquipWeapon(item);
         else
             playerAnim.State = Managers.Weapon.NoneWeapon();
-
-        // 조준점 활성화 여부
-        if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
-        {
-            Managers.Weapon.crossHair.gameObject.SetActive(true);
-            Managers.Weapon.weaponActive.GetComponent<GunController>().SetGun(item.gun);
-        }
-        else
-            Managers.Weapon.crossHair.gameObject.SetActive(false);
     }
 }

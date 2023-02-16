@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         _stat = GetComponent<PlayerStat>();           // 스탯
         anim = character.GetComponent<Animator>();    // 애니메이션
         
-        Managers.Game._player = gameObject;
+        Managers.Game._player = this;
         Managers.Game.playerStat = _stat;
 
         baseSpeed = _stat.MoveSpeed;
@@ -148,10 +148,6 @@ public class PlayerController : MonoBehaviour
 
                 anim.SetTrigger("OnDiveRoll");
                 Invoke("DelayDive", 0.9f);
-
-                // 조준점 변화
-                if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
-                    Managers.Weapon.crossHair.DiveRollAnim(true);
             }
         }
     }
@@ -183,12 +179,6 @@ public class PlayerController : MonoBehaviour
             state = Define.PlayerState.Moving;
         else
             state = Define.PlayerState.Idle;
-
-        // 총을 들었을 때 움직임에 따른 조준점 변화
-        if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
-        {
-            Managers.Weapon.crossHair.MovingAnim(isMove);
-        }
     }
 
     // 달리기 or 걷기
@@ -321,15 +311,12 @@ public class PlayerController : MonoBehaviour
         // 데미지 감소 시키기
     }
 
-    public void UpdateDie()
-    {
-        
-    }
+    public void UpdateDie() {}
 
     // TPS형 카메라 조작
     private void CameraLookAround()
     {
-        if (TalkManager.instance.isDialouge == true && Managers.Game.isShop == true && Managers.Game.isUIMode == true)
+        if (TalkManager.instance.isDialouge == true || Managers.Game.isShop == true || Managers.Game.isUIMode == true)
             return;
 
         Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));

@@ -9,7 +9,6 @@ public class CameraController : MonoBehaviour
 
     Transform playerPos;    // 현재 플레이어 위치
 
-    Vector3 gunPos;
     Vector3 basePos;
     Vector3 currentPos;
 
@@ -17,7 +16,6 @@ public class CameraController : MonoBehaviour
     {
         playerPos = transform.root.GetChild(1);
 
-        gunPos = new Vector3(-0.04f, 1.2f ,-3f);
         basePos = new Vector3(-0.04f, 1f, -3.6f);
         currentPos = basePos;
     }
@@ -38,11 +36,6 @@ public class CameraController : MonoBehaviour
     // 카메라 위치
     private void CameraUpdate()
     {
-        if (Managers.Weapon.weaponState == Define.WeaponState.Gun)
-            currentPos = gunPos;    // 총을 들었을 때 시점
-        else
-            currentPos = basePos;   // 기본 시점
-
         // 0에 가까워지면
         if (Vector3.Distance(cameraPos.localPosition, currentPos) < 0.0003f)
             cameraPos.localPosition = currentPos;

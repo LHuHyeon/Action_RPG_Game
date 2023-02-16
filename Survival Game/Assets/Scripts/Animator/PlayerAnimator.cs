@@ -21,16 +21,25 @@ public class PlayerAnimator : MonoBehaviour
 
             anim.SetTrigger("OnChange");
 
+            // 이전 상태 비활성화
+            switch(checkWeapon)
+            {
+                case Define.WeaponState.Hand:
+                    anim.SetBool("IsHand", false);
+                    break;
+                case Define.WeaponState.Sword:
+                    anim.SetBool("IsSword", false);
+                    break;
+            }
+
+            // 바뀌는 상태 활성화
             switch(_state)
             {
                 case Define.WeaponState.Hand:
-                    anim.SetTrigger("OnHand");
+                    anim.SetBool("IsHand", true);
                     break;
                 case Define.WeaponState.Sword:
-                    anim.SetTrigger("OnSword");
-                    break;
-                case Define.WeaponState.Gun:
-                    anim.SetTrigger("OnGun");
+                    anim.SetBool("IsSword", true);
                     break;
             }
 
@@ -58,7 +67,7 @@ public class PlayerAnimator : MonoBehaviour
         //     Managers.Weapon.weaponActive.SetActive(false);     // 무기 비활성화
         //     Managers.Weapon.weaponActive = null;               // 들고 있는 무기 초기화
         // }
-        // else if (State == Define.WeaponState.Sword || State == Define.WeaponState.Gun)
+        // else if (State == Define.WeaponState.Sword)
         //     Managers.Weapon.weaponActive.SetActive(true);      // 무기 활성화
 
         StopCoroutine(DelayChange());
@@ -74,7 +83,7 @@ public class PlayerAnimator : MonoBehaviour
             Managers.Weapon.weaponActive.SetActive(false);     // 무기 비활성화
             Managers.Weapon.weaponActive = null;               // 들고 있는 무기 초기화
         }
-        else if (State == Define.WeaponState.Sword || State == Define.WeaponState.Gun)
+        else if (State == Define.WeaponState.Sword)
             Managers.Weapon.weaponActive.SetActive(true);      // 무기 활성화
     }
 

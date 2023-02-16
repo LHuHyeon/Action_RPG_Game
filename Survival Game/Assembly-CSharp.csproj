@@ -38,7 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Utils\Util.cs" />
      <Compile Include="Assets\Scripts\Controller\Npc\NpcController.cs" />
-     <Compile Include="Assets\Scripts\Controller\Monster.cs" />
+     <Compile Include="Assets\Scripts\Controller\Monster\Monster.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\TalkManager.cs" />
      <Compile Include="Assets\Scripts\Animator\PlayerAnimator.cs" />
      <Compile Include="Assets\Scripts\Controller\Npc\QuestNpc.cs" />
@@ -89,7 +89,7 @@
      <Compile Include="Assets\Scripts\Manager\Contents\StatManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Contents\GameManager.cs" />
      <Compile Include="Assets\Scripts\Contetns\Shop.cs" />
-     <Compile Include="Assets\Test Folder\Assets\Script\AxeMonster.cs" />
+     <Compile Include="Assets\Scripts\Controller\Monster\AxeMonster.cs" />
      <Compile Include="Assets\Scripts\Manager\Managers.cs" />
      <Compile Include="Assets\Scripts\UI\UI_Base.cs" />
      <Compile Include="Assets\Scripts\Data\Dialogue.cs" />

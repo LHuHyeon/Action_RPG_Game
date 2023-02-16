@@ -15,7 +15,7 @@ public class InputManager
         // 대화 중이거나 상점을 이용할 경우 움직이거나 공격 금지.
         if (TalkManager.instance.isDialouge || Managers.Game.isShop)
         {
-            Managers.Game._player.GetComponent<PlayerController>().StopMove();
+            Managers.Game._player.StopMove();
             return;
         }
 

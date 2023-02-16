@@ -40,19 +40,16 @@ public class WeaponManager
                 
                 if (weaponActive.CompareTag("Sword"))
                 {
-                    weaponEffect = weaponActive.GetComponentInChildren<TrailRenderer>();
+                    // weaponEffect = weaponActive.GetComponentInChildren<TrailRenderer>();
                     weaponState = Define.WeaponState.Sword;
-                    return weaponState;
-                }
-                else if (weaponActive.CompareTag("Gun"))
-                {
-                    weaponState = Define.WeaponState.Gun;
+                    weaponActive.SetActive(true);
                     return weaponState;
                 }
             }
         }
 
         weaponState = Define.WeaponState.Hand;
+        weaponActive.SetActive(false);
         return weaponState;
     }
 

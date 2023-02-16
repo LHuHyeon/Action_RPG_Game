@@ -65,7 +65,7 @@ public class MonsterController : BaseController
     // 주변 플레이어 탐색
     protected override void UpdateIdle()
     {
-        GameObject player = Managers.Game._player;
+        GameObject player = Managers.Game._player.gameObject;
 
         if (player.isValid()){
             distance = TargetDistance(player);
