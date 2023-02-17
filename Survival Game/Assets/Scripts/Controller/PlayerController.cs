@@ -95,6 +95,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        character.forward = new Vector3(cameraArm.forward.x, 0f, cameraArm.forward.z).normalized;
+
         DiveRoll();
         Moving();
     }
@@ -239,7 +241,7 @@ public class PlayerController : MonoBehaviour
         if (evt == Define.MouseEvent.RightUp)
         {
             anim.SetBool("IsGuard", false);
-            state = Define.PlayerState.Idle;
+            // state = Define.PlayerState.Idle;
         }
     }
 

@@ -12,8 +12,6 @@ public class WeaponManager
     public GameObject attackCollistion;    // 공격 시 충돌처리 해줄 객체
     public TrailRenderer weaponEffect;     // 무기 이팩트
 
-    public CrossHair crossHair;            // 크로스 헤어 애니메이션
-
     List<GameObject> weaponList;
 
     // 무기 오브젝트 장착
@@ -42,14 +40,12 @@ public class WeaponManager
                 {
                     // weaponEffect = weaponActive.GetComponentInChildren<TrailRenderer>();
                     weaponState = Define.WeaponState.Sword;
-                    weaponActive.SetActive(true);
                     return weaponState;
                 }
             }
         }
 
         weaponState = Define.WeaponState.Hand;
-        weaponActive.SetActive(false);
         return weaponState;
     }
 
@@ -60,18 +56,5 @@ public class WeaponManager
         {
             weaponEffect.enabled = has;  
         }
-    }
-
-    // 무기를 안들고 있을 시
-    public Define.WeaponState NoneWeapon()
-    {
-        if (weaponList != null)
-        {
-            for(int i=0; i<weaponList.Count; i++)
-                weaponList[i].SetActive(false); 
-        }
-
-        weaponState = Define.WeaponState.Hand;
-        return weaponState;
     }
 }

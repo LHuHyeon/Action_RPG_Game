@@ -183,6 +183,6 @@ public class UI_EqSlot : UI_Base
         if (item != null)
             playerAnim.State = Managers.Weapon.EquipWeapon(item);
         else
-            playerAnim.State = Managers.Weapon.NoneWeapon();
+            playerAnim.State = Define.WeaponState.Hand;
     }
 }

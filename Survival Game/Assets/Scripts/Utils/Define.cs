@@ -52,6 +52,7 @@ public class Define : MonoBehaviour
         Moving,
         Attack,
         Guard,
+        Hit,
         Die,
     }
 
@@ -70,7 +71,6 @@ public class Define : MonoBehaviour
     {
         Hand,
         Sword,
-        Gun,
     }
 
     public enum ShopState

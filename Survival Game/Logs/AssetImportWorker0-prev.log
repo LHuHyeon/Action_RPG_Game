@@ -15,11 +15,11 @@ C:/Users/82103/OneDrive/문서/Git_SourceTree/My_Survival/Survival Game
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55028
+49581
 Successfully changed project path to: C:/Users/82103/OneDrive/문서/Git_SourceTree/My_Survival/Survival Game
 C:/Users/82103/OneDrive/문서/Git_SourceTree/My_Survival/Survival Game
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 108.97 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 96.53 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.29f1 (2ff179115da0)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.29f1/Editor/Data/Resources/UnitySubsystems
@@ -35,89 +35,89 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.29f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.29f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.29f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56168
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56712
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.29f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.010187 seconds.
+Registered in 0.013866 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 91.25 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 109.15 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.262 seconds
+- Completed reload, in  1.571 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1262ms)
-		BeginReloadAssembly (223ms)
+	ReloadAssembly (1571ms)
+		BeginReloadAssembly (339ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (843ms)
-			LoadAssemblies (210ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (1042ms)
+			LoadAssemblies (328ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (271ms)
+			SetupTypeCache (296ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (47ms)
-			SetupLoadedEditorAssemblies (314ms)
+			RebuildScriptCaches (59ms)
+			SetupLoadedEditorAssemblies (419ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (11ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (91ms)
-				BeforeProcessingInitializeOnLoad (29ms)
-				ProcessInitializeOnLoadAttributes (129ms)
-				ProcessInitializeOnLoadMethodAttributes (56ms)
+				RefreshPlugins (109ms)
+				BeforeProcessingInitializeOnLoad (32ms)
+				ProcessInitializeOnLoadAttributes (194ms)
+				ProcessInitializeOnLoadMethodAttributes (71ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010734 seconds.
+Registered in 0.027624 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.22 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.052 seconds
+- Completed reload, in  2.224 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2053ms)
-		BeginReloadAssembly (376ms)
+	ReloadAssembly (2231ms)
+		BeginReloadAssembly (350ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (50ms)
-		EndReloadAssembly (1528ms)
-			LoadAssemblies (290ms)
+			CreateAndSetChildDomain (32ms)
+		EndReloadAssembly (1752ms)
+			LoadAssemblies (431ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (475ms)
+			SetupTypeCache (498ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (71ms)
-			SetupLoadedEditorAssemblies (657ms)
+			RebuildScriptCaches (82ms)
+			SetupLoadedEditorAssemblies (653ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
-				SetLoadedEditorAssemblies (1ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (2ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (205ms)
-				ProcessInitializeOnLoadAttributes (394ms)
-				ProcessInitializeOnLoadMethodAttributes (16ms)
-				AfterProcessingInitializeOnLoad (29ms)
+				BeforeProcessingInitializeOnLoad (218ms)
+				ProcessInitializeOnLoadAttributes (360ms)
+				ProcessInitializeOnLoadMethodAttributes (27ms)
+				AfterProcessingInitializeOnLoad (32ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (10ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
-Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1619 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 80.1 MB.
 System memory in use after: 80.2 MB.
 
 Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2061.
-Total: 4.322400 ms (FindLiveObjects: 0.269300 ms CreateObjectMapping: 0.109800 ms MarkObjects: 3.787400 ms  DeleteObjects: 0.154000 ms)
+Total: 5.306100 ms (FindLiveObjects: 0.216900 ms CreateObjectMapping: 0.072100 ms MarkObjects: 4.854500 ms  DeleteObjects: 0.160700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,128 +131,552 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/Controller/Monster
-  artifactKey: Guid(7de8b3a41d9a65d4cb803730e3bdd015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Controller/Monster using Guid(7de8b3a41d9a65d4cb803730e3bdd015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0baea73ad50aa14febaf534f8bf5e9e5') in 0.012445 seconds 
-  Import took 0.016068 seconds .
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword
+  artifactKey: Guid(bdf327bf53781ed45b373db9626970ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword using Guid(bdf327bf53781ed45b373db9626970ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1166160c7f1870d2909f82ebb75d60b2') in 0.017470 seconds 
+  Import took 0.024614 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.883544 seconds.
-  path: Assets/Scripts/Controller/Monster.cs
-  artifactKey: Guid(94420196cedfcbb4391cf95353870593) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Controller/Monster.cs using Guid(94420196cedfcbb4391cf95353870593) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47ac6e5b547aa81a4386b96678b0ee7e') in 0.134141 seconds 
-  Import took 0.138252 seconds .
+  Time since last request: 72.530799 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword blocking (2).fbx
+  artifactKey: Guid(fd63d8e93c255854da80b5c320f6644b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword blocking (2).fbx using Guid(fd63d8e93c255854da80b5c320f6644b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0b9a2c6385fc1add2a4b3423ac9df69') in 0.469093 seconds 
+  Import took 0.472993 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2257.567199 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword crouching (2).fbx
+  artifactKey: Guid(7f9295edeb2c2ff41b5e38a07ad7c077) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword crouching (2).fbx using Guid(7f9295edeb2c2ff41b5e38a07ad7c077) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d5f75c03cc72c8130959866d91c14e3') in 0.128117 seconds 
+  Import took 0.174122 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.997245 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword blocking (3).fbx
+  artifactKey: Guid(1d81950f3498e714780a60f9e030dd3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword blocking (3).fbx using Guid(1d81950f3498e714780a60f9e030dd3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c124c9a4a823bd25cd0c1e49fa7ea99f') in 0.087626 seconds 
+  Import took 0.094502 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.686073 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword attack.fbx
+  artifactKey: Guid(f38fd3b278385984ab43ee2fdd8bfd18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword/great sword attack.fbx using Guid(f38fd3b278385984ab43ee2fdd8bfd18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36d80ce76692cc55946f03993b5d7cd5') in 0.089964 seconds 
+  Import took 0.096358 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 97.806947 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim
+  artifactKey: Guid(368e1867a619ed642b31f389cd953b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim using Guid(368e1867a619ed642b31f389cd953b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '914a93e9978dfbdfb98e793a7040ece5') in 0.014049 seconds 
+  Import took 0.020190 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 27.936798 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword crouching (2).fbx
+  artifactKey: Guid(0bbf4881b968d594c830906f46289607) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword crouching (2).fbx using Guid(0bbf4881b968d594c830906f46289607) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f18f0b1fe5b9471aa37c32db607a5439') in 0.097325 seconds 
+  Import took 0.102129 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.060025 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking.fbx
+  artifactKey: Guid(c1e9f397ca9e64b489256cd21aee4376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking.fbx using Guid(c1e9f397ca9e64b489256cd21aee4376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a69ef69f884e4e954221b4da07b21fa1') in 0.094370 seconds 
+  Import took 0.100229 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.721354 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe (4).fbx
+  artifactKey: Guid(5c0ba427479987542872ef92916709a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe (4).fbx using Guid(5c0ba427479987542872ef92916709a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '809124077ede7be5affcaf19206d95cd') in 0.133121 seconds 
+  Import took 0.141008 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.128645 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn (2).fbx
+  artifactKey: Guid(aff0a5ef6f0e3144aaccc15ba18e7d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn (2).fbx using Guid(aff0a5ef6f0e3144aaccc15ba18e7d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a860304cd4331a31fbf63315072161b9') in 0.116279 seconds 
+  Import took 0.126073 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.618701 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword walk.fbx
+  artifactKey: Guid(4f20c83f60aec1147990893f7b9b4b26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword walk.fbx using Guid(4f20c83f60aec1147990893f7b9b4b26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '974f7cb06443313e7f6f97c111aa726d') in 0.122786 seconds 
+  Import took 0.131074 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.737222 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe.fbx
+  artifactKey: Guid(f66f4e78f87891d4a90fd5dbf6acc70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe.fbx using Guid(f66f4e78f87891d4a90fd5dbf6acc70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dab6178c480e3500b6b54f5482fa6324') in 0.110586 seconds 
+  Import took 0.119161 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.359977 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword walk (2).fbx
+  artifactKey: Guid(b868610efd44b284c92aa2692a146cb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword walk (2).fbx using Guid(b868610efd44b284c92aa2692a146cb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bdd4c3bac251d4f3e9e61821a3030e7') in 0.114363 seconds 
+  Import took 0.123324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.493006 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/spell cast.fbx
+  artifactKey: Guid(71817c6049a60f94aa25570620772554) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/spell cast.fbx using Guid(71817c6049a60f94aa25570620772554) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8843523825e1b2a534bcf772d6fd8c95') in 0.116014 seconds 
+  Import took 0.125296 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.053225 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/two handed sword death (2).fbx
+  artifactKey: Guid(1becac8215148a04d93cae641adf3571) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/two handed sword death (2).fbx using Guid(1becac8215148a04d93cae641adf3571) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31c4ac97889478d7a0c5d1a1da5beb59') in 0.124089 seconds 
+  Import took 0.130690 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.388955 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/two handed sword death.fbx
+  artifactKey: Guid(ddc6f310ef3a82948a0ac82faa080fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/two handed sword death.fbx using Guid(ddc6f310ef3a82948a0ac82faa080fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3154d187703de4ee2239e8ac44cc8074') in 0.127953 seconds 
+  Import took 0.133583 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.222907 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/skeletonLord.fbx
+  artifactKey: Guid(30893405b49424a469be7f519266a4f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/skeletonLord.fbx using Guid(30893405b49424a469be7f519266a4f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a614c4b4a6bc7518fedb2ea80cdf658') in 0.569682 seconds 
+  Import took 0.576210 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000484 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn (2).fbx
+  artifactKey: Guid(aff0a5ef6f0e3144aaccc15ba18e7d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn (2).fbx using Guid(aff0a5ef6f0e3144aaccc15ba18e7d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a622851ba17f57a67798925ff8b3859') in 0.097474 seconds 
+  Import took 0.105019 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000923 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe (3).fbx
+  artifactKey: Guid(21241cbccc52cf146a704352bcdf9cae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe (3).fbx using Guid(21241cbccc52cf146a704352bcdf9cae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e2bda3d80f9738610b6f2114065e027') in 0.080138 seconds 
+  Import took 0.088575 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000734 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe (2).fbx
+  artifactKey: Guid(c39ed9dd7e243fc4aada871cb6aea7e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword strafe (2).fbx using Guid(c39ed9dd7e243fc4aada871cb6aea7e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c2d8661ca99fe1cd0e8596971954def') in 0.107154 seconds 
+  Import took 0.115466 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000494 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slide attack.fbx
+  artifactKey: Guid(f5ae1deab5b87594a94feceb4d0ad274) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slide attack.fbx using Guid(f5ae1deab5b87594a94feceb4d0ad274) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0f3e0f02400dabeebe5102cec9b2f01') in 0.082127 seconds 
+  Import took 0.088740 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000729 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn.fbx
+  artifactKey: Guid(645f7e6ee829c624d90a30b90f1b48e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn.fbx using Guid(645f7e6ee829c624d90a30b90f1b48e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3f53dc566abfab0d4819a18ea8b021c') in 0.100817 seconds 
+  Import took 0.109576 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.582623 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn (2).fbx
+  artifactKey: Guid(aff0a5ef6f0e3144aaccc15ba18e7d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword turn (2).fbx using Guid(aff0a5ef6f0e3144aaccc15ba18e7d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79e64b69c82e78b4385cf9b3c28b1a49') in 0.082113 seconds 
+  Import took 0.088870 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.539785 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 2.fbx
+  artifactKey: Guid(af2633b2e6498a74fba87020578d331f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 2.fbx using Guid(af2633b2e6498a74fba87020578d331f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3a93c0a7e736318d631d0439369f88d') in 0.126587 seconds 
+  Import took 0.133702 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 62.965600 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/skeletonLord@Great Sword Impact.fbx
+  artifactKey: Guid(33d6f0be9df6a6048b00e641d0459c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/skeletonLord@Great Sword Impact.fbx using Guid(33d6f0be9df6a6048b00e641d0459c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40089deafe4ff190091d652366429bd8') in 0.093753 seconds 
+  Import took 0.099706 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 123.315268 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword 180 turn (2).fbx
+  artifactKey: Guid(fc065dc06978e9e458da548cc8b7721a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword 180 turn (2).fbx using Guid(fc065dc06978e9e458da548cc8b7721a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa38fbdee669142bdbb243dce3f0b57c') in 0.090778 seconds 
+  Import took 0.095775 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.490747 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 1.fbx
+  artifactKey: Guid(f361d043e9e24884e925448f96c30e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 1.fbx using Guid(f361d043e9e24884e925448f96c30e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53080621fbf7cccc9f6acb12007ac0c4') in 0.064563 seconds 
+  Import took 0.069076 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 29.948276 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash.fbx
+  artifactKey: Guid(4f648fa2b8ed22f4796f71dc6b699e45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash.fbx using Guid(4f648fa2b8ed22f4796f71dc6b699e45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e28adbb12f5fb6276119c68476106f41') in 0.061397 seconds 
+  Import took 0.068195 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.272967 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (2).fbx
+  artifactKey: Guid(52919c8fd946d3844a249d29a0fb08cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (2).fbx using Guid(52919c8fd946d3844a249d29a0fb08cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c8fba5fc846dd9549dda0f55bf917e6') in 0.070067 seconds 
+  Import took 0.076102 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.048789 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (3).fbx
+  artifactKey: Guid(c537ac0da6b19b54b9355894a9f9cd7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (3).fbx using Guid(c537ac0da6b19b54b9355894a9f9cd7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48b186fabb141f929b93b1f94652840c') in 0.071769 seconds 
+  Import took 0.077194 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.756392 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx
+  artifactKey: Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx using Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5403a64d2f98cc10e1e6dccf7784e555') in 0.078456 seconds 
+  Import took 0.083712 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.182273 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (5).fbx
+  artifactKey: Guid(b75f02fda27686b4f96a82762f23d6df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (5).fbx using Guid(b75f02fda27686b4f96a82762f23d6df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0fc5f7d211bb9f7bcff248041510fca') in 0.072156 seconds 
+  Import took 0.076536 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.336922 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword kick (2).fbx
+  artifactKey: Guid(ceb6aa1609a3f0143af3d4289fe2f810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword kick (2).fbx using Guid(ceb6aa1609a3f0143af3d4289fe2f810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25286ca8ec3dc7d897b78da458b7343b') in 0.091780 seconds 
+  Import took 0.097551 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.659818 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword kick.fbx
+  artifactKey: Guid(30e586c5995fab6449201ce291c69f51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword kick.fbx using Guid(30e586c5995fab6449201ce291c69f51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59dd14d20e4def4ca4ac892b519cb904') in 0.075486 seconds 
+  Import took 0.080388 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 68.248162 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash.fbx
+  artifactKey: Guid(4f648fa2b8ed22f4796f71dc6b699e45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash.fbx using Guid(4f648fa2b8ed22f4796f71dc6b699e45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87a2fbe338eaea86baae9e10a90137ee') in 0.064385 seconds 
+  Import took 0.072426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.229533 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash.fbx
+  artifactKey: Guid(4f648fa2b8ed22f4796f71dc6b699e45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash.fbx using Guid(4f648fa2b8ed22f4796f71dc6b699e45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f86585592428184670ecd6e505deb29') in 0.054845 seconds 
+  Import took 0.060737 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 111.856846 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (3).fbx
+  artifactKey: Guid(c537ac0da6b19b54b9355894a9f9cd7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (3).fbx using Guid(c537ac0da6b19b54b9355894a9f9cd7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7080b89d561b18f60d2c7eee09792da4') in 0.150596 seconds 
+  Import took 0.162657 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 224.928468 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/Slash 3.fbx
+  artifactKey: Guid(4e83909318c75ed4a82ebdb0159e4223) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/Slash 3.fbx using Guid(4e83909318c75ed4a82ebdb0159e4223) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af4369fbd9c42006aa30192f0e92300c') in 0.081014 seconds 
+  Import took 0.085720 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.681783 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/Slash 3.fbx
+  artifactKey: Guid(4e83909318c75ed4a82ebdb0159e4223) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/Slash 3.fbx using Guid(4e83909318c75ed4a82ebdb0159e4223) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f63f6981a350b6e50e7b7eea73cf3c8a') in 0.056202 seconds 
+  Import took 0.061047 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 49.290815 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx
+  artifactKey: Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx using Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20e927ac4deaa9fecf64f4b412ef42a2') in 0.083145 seconds 
+  Import took 0.088331 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.490481 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx
+  artifactKey: Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx using Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b37397a94ef69a2e22436e478aaa1955') in 0.086835 seconds 
+  Import took 0.091463 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.027707 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b2b677983a99aa07ff1d9c95bd5fed7') in 0.200767 seconds 
+  Import took 0.207553 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.689372 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '928c8536a2d71197210619c53977ae8c') in 0.084051 seconds 
+  Import took 0.089585 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 47.225170 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58381901963c010bc9c9c5445d0e4b7f') in 0.081107 seconds 
+  Import took 0.088297 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 57.046306 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4a284543b4d6da96e0132c58c828817') in 0.079966 seconds 
+  Import took 0.087543 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 71.512669 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 2.fbx
+  artifactKey: Guid(af2633b2e6498a74fba87020578d331f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 2.fbx using Guid(af2633b2e6498a74fba87020578d331f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc6e0d16e0b1a3f652c826f8b0f17b34') in 0.084687 seconds 
+  Import took 0.093872 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.916850 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 1.fbx
+  artifactKey: Guid(f361d043e9e24884e925448f96c30e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/draw a great sword 1.fbx using Guid(f361d043e9e24884e925448f96c30e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fde6337d267fc79d7d1606c9fa376481') in 0.057544 seconds 
+  Import took 0.063626 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.442508 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword attack.fbx
+  artifactKey: Guid(12ce4b6d646a7554a85bd46df401a604) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword attack.fbx using Guid(12ce4b6d646a7554a85bd46df401a604) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1905be42866a1195b936abe901f45c54') in 0.068395 seconds 
+  Import took 0.074741 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.047531 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (2).fbx
+  artifactKey: Guid(6d9b2311daa9764418973451588837d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (2).fbx using Guid(6d9b2311daa9764418973451588837d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2ac5b0b0ba167411a7461c5702e26c7') in 0.068830 seconds 
+  Import took 0.074475 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.842594 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (3).fbx
+  artifactKey: Guid(fc2765aa5b0c541439cbf805f22b019c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (3).fbx using Guid(fc2765aa5b0c541439cbf805f22b019c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '047980b5e8edf3214ac5136416d88e95') in 0.080476 seconds 
+  Import took 0.086138 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.498469 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword casting.fbx
+  artifactKey: Guid(5e9bfd93571e42b4a990c1203dbec75e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword casting.fbx using Guid(5e9bfd93571e42b4a990c1203dbec75e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40bb787a857616c6c0afb4d3ffb7bda4') in 0.081214 seconds 
+  Import took 0.087789 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.132861 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a5d789855f26b5a6211eaefabd66c0d') in 0.083009 seconds 
+  Import took 0.088558 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 123.799394 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c78c5f8a900b5d5f45e18414cec49d32') in 0.082687 seconds 
+  Import took 0.090387 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.221689 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da0ce7004c2d2b3957bdde2e7ea636f8') in 0.069414 seconds 
+  Import took 0.075232 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 48.569277 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking.fbx
+  artifactKey: Guid(c1e9f397ca9e64b489256cd21aee4376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking.fbx using Guid(c1e9f397ca9e64b489256cd21aee4376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60dc3e75a0a691c20e38a6d1763a0608') in 0.065595 seconds 
+  Import took 0.076194 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.802523 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (2).fbx
+  artifactKey: Guid(6d9b2311daa9764418973451588837d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (2).fbx using Guid(6d9b2311daa9764418973451588837d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '875220b30ddb6d34b39a323cc43a2d9c') in 0.054431 seconds 
+  Import took 0.060497 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.197861 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (3).fbx
+  artifactKey: Guid(fc2765aa5b0c541439cbf805f22b019c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (3).fbx using Guid(fc2765aa5b0c541439cbf805f22b019c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9f4521897ba0818e88cf202bb870bfb') in 0.049370 seconds 
+  Import took 0.055554 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.761748 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e0a7f6352259a755775a41162fa88ba') in 0.089631 seconds 
+  Import took 0.095286 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.458323 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b51929735cf43de9180d773b1591859') in 0.087827 seconds 
+  Import took 0.094448 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 52.656154 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02def2c35e215dd81720d0c3346b49e2') in 0.084795 seconds 
+  Import took 0.092888 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.577026 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (2).fbx
+  artifactKey: Guid(6d9b2311daa9764418973451588837d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword blocking (2).fbx using Guid(6d9b2311daa9764418973451588837d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '499a2034ad38db61a426ab0690d9b354') in 0.056296 seconds 
+  Import took 0.061680 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 234.119081 seconds.
+  path: Assets/Resources/Art/3DCharacter
+  artifactKey: Guid(84740f04ae191b145859580c0b51fa58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Art/3DCharacter using Guid(84740f04ae191b145859580c0b51fa58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab58b0a6bff821b660be1bdc3ca3554a') in 0.018081 seconds 
+  Import took 0.024850 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 177.067588 seconds.
+  path: Assets/Resources/Prefabs/WeaponObj/양손검.prefab
+  artifactKey: Guid(ef8cd1391bba04c449309fb316aa9eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/WeaponObj/양손검.prefab using Guid(ef8cd1391bba04c449309fb316aa9eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bbf1cfaeee6e23c6eaf7202cb690ea3') in 0.062157 seconds 
+  Import took 0.068117 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.010764 seconds.
+Registered in 0.011798 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.714 seconds
+- Completed reload, in  2.031 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1715ms)
-		BeginReloadAssembly (235ms)
+	ReloadAssembly (2035ms)
+		BeginReloadAssembly (428ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
+			DisableScriptedObjects (15ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (47ms)
-		EndReloadAssembly (1362ms)
-			LoadAssemblies (206ms)
+			CreateAndSetChildDomain (146ms)
+		EndReloadAssembly (1457ms)
+			LoadAssemblies (282ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (440ms)
+			SetupTypeCache (463ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (63ms)
-			SetupLoadedEditorAssemblies (541ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (191ms)
-				ProcessInitializeOnLoadAttributes (292ms)
-				ProcessInitializeOnLoadMethodAttributes (15ms)
-				AfterProcessingInitializeOnLoad (29ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.9 MB.
-System memory in use after: 79.0 MB.
-
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2063.
-Total: 5.661000 ms (FindLiveObjects: 0.279000 ms CreateObjectMapping: 0.096500 ms MarkObjects: 5.243800 ms  DeleteObjects: 0.039600 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 30.745803 seconds.
-  path: Assets/Scripts/Controller/PlayerController.cs
-  artifactKey: Guid(bd628d08ef9097544ac1e9485eb84c83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Controller/PlayerController.cs using Guid(bd628d08ef9097544ac1e9485eb84c83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11049e09e41215ca97c26eefdcbe2cdd') in 0.012704 seconds 
-  Import took 0.017455 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.012092 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.837 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1838ms)
-		BeginReloadAssembly (268ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (50ms)
-		EndReloadAssembly (1454ms)
-			LoadAssemblies (276ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (455ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (67ms)
-			SetupLoadedEditorAssemblies (559ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (602ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (9ms)
-				SetLoadedEditorAssemblies (1ms)
+				SetLoadedEditorAssemblies (5ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (197ms)
-				ProcessInitializeOnLoadAttributes (293ms)
-				ProcessInitializeOnLoadMethodAttributes (18ms)
-				AfterProcessingInitializeOnLoad (40ms)
+				BeforeProcessingInitializeOnLoad (233ms)
+				ProcessInitializeOnLoadAttributes (306ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (29ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (14ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.98 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.97 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.0 MB.
-System memory in use after: 79.1 MB.
+System memory in use before: 97.7 MB.
+System memory in use after: 97.8 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2065.
-Total: 4.489900 ms (FindLiveObjects: 0.204700 ms CreateObjectMapping: 0.071300 ms MarkObjects: 4.171900 ms  DeleteObjects: 0.040300 ms)
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2107.
+Total: 9.736400 ms (FindLiveObjects: 0.615900 ms CreateObjectMapping: 0.150200 ms MarkObjects: 8.786800 ms  DeleteObjects: 0.179200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -265,58 +689,218 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Import Request.
-  Time since last request: 978.928507 seconds.
-  path: Assets/Scripts/Controller/HandController.cs
-  artifactKey: Guid(18770f9cef142d748abfb139909e4d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Controller/HandController.cs using Guid(18770f9cef142d748abfb139909e4d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee25b8acaa812e25af3e52e01e2f0ba7') in 0.022128 seconds 
-  Import took 0.030024 seconds .
-
-========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.013348 seconds.
+Registered in 0.009905 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.029 seconds
+- Completed reload, in  1.873 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2029ms)
-		BeginReloadAssembly (258ms)
+	ReloadAssembly (1874ms)
+		BeginReloadAssembly (360ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (60ms)
+		EndReloadAssembly (1382ms)
+			LoadAssemblies (313ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (452ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (549ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (193ms)
+				ProcessInitializeOnLoadAttributes (291ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (35ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.7 MB.
+System memory in use after: 97.8 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2109.
+Total: 4.379900 ms (FindLiveObjects: 0.200100 ms CreateObjectMapping: 0.061500 ms MarkObjects: 4.021700 ms  DeleteObjects: 0.095100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010284 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.65 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.866 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1867ms)
+		BeginReloadAssembly (273ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (47ms)
-		EndReloadAssembly (1627ms)
-			LoadAssemblies (269ms)
+		EndReloadAssembly (1444ms)
+			LoadAssemblies (247ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (525ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (63ms)
-			SetupLoadedEditorAssemblies (565ms)
+			SetupTypeCache (505ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (71ms)
+			SetupLoadedEditorAssemblies (531ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (188ms)
-				ProcessInitializeOnLoadAttributes (315ms)
-				ProcessInitializeOnLoadMethodAttributes (16ms)
-				AfterProcessingInitializeOnLoad (35ms)
+				BeforeProcessingInitializeOnLoad (193ms)
+				ProcessInitializeOnLoadAttributes (282ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (29ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (11ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.71 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1604 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.0 MB.
-System memory in use after: 79.1 MB.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.7 MB.
+System memory in use after: 97.8 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2068.
-Total: 4.747400 ms (FindLiveObjects: 0.225500 ms CreateObjectMapping: 0.104500 ms MarkObjects: 4.382300 ms  DeleteObjects: 0.033600 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2111.
+Total: 6.478700 ms (FindLiveObjects: 0.250600 ms CreateObjectMapping: 0.096500 ms MarkObjects: 5.861800 ms  DeleteObjects: 0.267200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014160 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.23 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.857 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1858ms)
+		BeginReloadAssembly (274ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (49ms)
+		EndReloadAssembly (1447ms)
+			LoadAssemblies (268ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (416ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (579ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (180ms)
+				ProcessInitializeOnLoadAttributes (334ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
+				AfterProcessingInitializeOnLoad (32ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.7 MB.
+System memory in use after: 97.8 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2113.
+Total: 6.795500 ms (FindLiveObjects: 0.273200 ms CreateObjectMapping: 0.086500 ms MarkObjects: 6.391100 ms  DeleteObjects: 0.042600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016035 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.837 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1838ms)
+		BeginReloadAssembly (262ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (50ms)
+		EndReloadAssembly (1438ms)
+			LoadAssemblies (247ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (467ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (67ms)
+			SetupLoadedEditorAssemblies (553ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (204ms)
+				ProcessInitializeOnLoadAttributes (284ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (34ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (15ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.7 MB.
+System memory in use after: 97.8 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2115.
+Total: 5.960500 ms (FindLiveObjects: 0.300900 ms CreateObjectMapping: 0.106400 ms MarkObjects: 5.352400 ms  DeleteObjects: 0.198200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -330,113 +914,249 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 637.526098 seconds.
-  path: Assets/Scripts/Controller/CursorController.cs
-  artifactKey: Guid(5b197b25eab2c9045b5a19eab5f787f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Controller/CursorController.cs using Guid(5b197b25eab2c9045b5a19eab5f787f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '072f0adcf8e2e6f31d3a6523d776f674') in 0.021468 seconds 
-  Import took 0.027991 seconds .
+  Time since last request: 844.508891 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx
+  artifactKey: Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/Anim/2Hand Sword Anim/great sword slash (4).fbx using Guid(b4b2cfb8b2f815b43a741cf9dcdd96e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b930fdee809465437069cfb0f52839f') in 0.177508 seconds 
+  Import took 0.183905 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.011103 seconds.
+Registered in 0.015587 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.87 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.692 seconds
+- Completed reload, in  1.635 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1693ms)
-		BeginReloadAssembly (234ms)
+	ReloadAssembly (1636ms)
+		BeginReloadAssembly (256ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (7ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (48ms)
-		EndReloadAssembly (1321ms)
-			LoadAssemblies (221ms)
+			CreateAndSetChildDomain (44ms)
+		EndReloadAssembly (1271ms)
+			LoadAssemblies (243ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (428ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (57ms)
-			SetupLoadedEditorAssemblies (523ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (15ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (189ms)
-				ProcessInitializeOnLoadAttributes (269ms)
-				ProcessInitializeOnLoadMethodAttributes (16ms)
-				AfterProcessingInitializeOnLoad (30ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (12ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.91 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.0 MB.
-System memory in use after: 79.1 MB.
-
-Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2069.
-Total: 5.646100 ms (FindLiveObjects: 0.271000 ms CreateObjectMapping: 0.069200 ms MarkObjects: 5.257000 ms  DeleteObjects: 0.047100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014918 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.999 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2005ms)
-		BeginReloadAssembly (393ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (29ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (101ms)
-		EndReloadAssembly (1469ms)
-			LoadAssemblies (315ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (483ms)
+			SetupTypeCache (403ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (60ms)
-			SetupLoadedEditorAssemblies (567ms)
+			SetupLoadedEditorAssemblies (506ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (12ms)
+				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (212ms)
-				ProcessInitializeOnLoadAttributes (298ms)
-				ProcessInitializeOnLoadMethodAttributes (14ms)
-				AfterProcessingInitializeOnLoad (29ms)
+				BeforeProcessingInitializeOnLoad (188ms)
+				ProcessInitializeOnLoadAttributes (267ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (25ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (10ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.65 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.0 MB.
-System memory in use after: 79.1 MB.
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2071.
-Total: 5.356600 ms (FindLiveObjects: 0.212100 ms CreateObjectMapping: 0.065200 ms MarkObjects: 5.003700 ms  DeleteObjects: 0.073500 ms)
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2118.
+Total: 5.060400 ms (FindLiveObjects: 0.287900 ms CreateObjectMapping: 0.073300 ms MarkObjects: 4.656600 ms  DeleteObjects: 0.040600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 19.951794 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f6bb61c5bd6f38c6de4dc19e862965f') in 0.215718 seconds 
+  Import took 0.224263 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009695 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.785 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1786ms)
+		BeginReloadAssembly (280ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (77ms)
+		EndReloadAssembly (1377ms)
+			LoadAssemblies (231ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (433ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (69ms)
+			SetupLoadedEditorAssemblies (541ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (170ms)
+				ProcessInitializeOnLoadAttributes (311ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (34ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.95 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2120.
+Total: 6.792400 ms (FindLiveObjects: 0.235700 ms CreateObjectMapping: 0.089600 ms MarkObjects: 6.426100 ms  DeleteObjects: 0.039200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 99.899469 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13c4a5651d996596c4b0260e011356a9') in 0.115433 seconds 
+  Import took 0.122232 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009691 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.796 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1796ms)
+		BeginReloadAssembly (256ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (45ms)
+		EndReloadAssembly (1412ms)
+			LoadAssemblies (253ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (442ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (62ms)
+			SetupLoadedEditorAssemblies (540ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (186ms)
+				ProcessInitializeOnLoadAttributes (299ms)
+				ProcessInitializeOnLoadMethodAttributes (16ms)
+				AfterProcessingInitializeOnLoad (27ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.35 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2122.
+Total: 5.653300 ms (FindLiveObjects: 0.271700 ms CreateObjectMapping: 0.236600 ms MarkObjects: 5.101400 ms  DeleteObjects: 0.041400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 68.751564 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb48d3fd6328c548b40a4ae701049dc7') in 0.118193 seconds 
+  Import took 0.126209 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010706 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.842 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1843ms)
+		BeginReloadAssembly (237ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (43ms)
+		EndReloadAssembly (1473ms)
+			LoadAssemblies (244ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (521ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (61ms)
+			SetupLoadedEditorAssemblies (545ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (202ms)
+				ProcessInitializeOnLoadAttributes (283ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (31ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2124.
+Total: 4.288100 ms (FindLiveObjects: 0.205100 ms CreateObjectMapping: 0.059300 ms MarkObjects: 3.991300 ms  DeleteObjects: 0.030500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -451,48 +1171,224 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.012419 seconds.
+Registered in 0.013228 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.833 seconds
+- Completed reload, in  1.739 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1834ms)
-		BeginReloadAssembly (273ms)
+	ReloadAssembly (1740ms)
+		BeginReloadAssembly (231ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (48ms)
-		EndReloadAssembly (1431ms)
-			LoadAssemblies (259ms)
+			CreateAndSetChildDomain (42ms)
+		EndReloadAssembly (1361ms)
+			LoadAssemblies (225ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (424ms)
+			SetupTypeCache (436ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (62ms)
-			SetupLoadedEditorAssemblies (602ms)
+			RebuildScriptCaches (61ms)
+			SetupLoadedEditorAssemblies (539ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
+				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (202ms)
-				ProcessInitializeOnLoadAttributes (331ms)
-				ProcessInitializeOnLoadMethodAttributes (21ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (171ms)
+				ProcessInitializeOnLoadAttributes (306ms)
+				ProcessInitializeOnLoadMethodAttributes (18ms)
 				AfterProcessingInitializeOnLoad (34ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (13ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.78 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.0 MB.
-System memory in use after: 79.1 MB.
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2073.
-Total: 6.766900 ms (FindLiveObjects: 0.508500 ms CreateObjectMapping: 0.115800 ms MarkObjects: 6.033100 ms  DeleteObjects: 0.107200 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2126.
+Total: 4.913700 ms (FindLiveObjects: 0.202600 ms CreateObjectMapping: 0.080200 ms MarkObjects: 4.597800 ms  DeleteObjects: 0.031400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011626 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.84 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.846 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1847ms)
+		BeginReloadAssembly (263ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (45ms)
+		EndReloadAssembly (1452ms)
+			LoadAssemblies (250ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (460ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (583ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (203ms)
+				ProcessInitializeOnLoadAttributes (322ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (28ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (13ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.84 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2128.
+Total: 4.796400 ms (FindLiveObjects: 0.259400 ms CreateObjectMapping: 0.096000 ms MarkObjects: 4.404300 ms  DeleteObjects: 0.035000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 251.941901 seconds.
+  path: Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller
+  artifactKey: Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test Folder/Assets/Model/PlayerCharacter/source/KnightAnimController.controller using Guid(e9521b7dca7827143b787175a4489d18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8cd28700435d556746ce345e0d78a38') in 0.113880 seconds 
+  Import took 0.120937 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.013121 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.852 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1853ms)
+		BeginReloadAssembly (298ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (45ms)
+		EndReloadAssembly (1423ms)
+			LoadAssemblies (279ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (442ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (73ms)
+			SetupLoadedEditorAssemblies (563ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (204ms)
+				ProcessInitializeOnLoadAttributes (299ms)
+				ProcessInitializeOnLoadMethodAttributes (18ms)
+				AfterProcessingInitializeOnLoad (29ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.75 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2130.
+Total: 4.798100 ms (FindLiveObjects: 0.407300 ms CreateObjectMapping: 0.064000 ms MarkObjects: 4.295500 ms  DeleteObjects: 0.029600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010506 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.711 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1711ms)
+		BeginReloadAssembly (248ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (47ms)
+		EndReloadAssembly (1333ms)
+			LoadAssemblies (228ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (424ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (63ms)
+			SetupLoadedEditorAssemblies (535ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (208ms)
+				ProcessInitializeOnLoadAttributes (271ms)
+				ProcessInitializeOnLoadMethodAttributes (18ms)
+				AfterProcessingInitializeOnLoad (26ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1603 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.9 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2132.
+Total: 4.018100 ms (FindLiveObjects: 0.220600 ms CreateObjectMapping: 0.068600 ms MarkObjects: 3.686700 ms  DeleteObjects: 0.040200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 

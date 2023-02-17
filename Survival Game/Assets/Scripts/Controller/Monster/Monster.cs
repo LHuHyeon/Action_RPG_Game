@@ -7,17 +7,20 @@ public abstract class Monster : MonoBehaviour
 {
     public Define.MonsterState state = Define.MonsterState.Idle;
 
-    [SerializeField] protected GameObject lockTarget;     // 발견된 타겟
-    [SerializeField] protected float scanRange;           // 타겟 감지 거리
-    [SerializeField] protected float attackRange;         // 공격 거리
+    [SerializeField] protected GameObject lockTarget;       // 발견된 타겟
+    [SerializeField] protected float scanRange;             // 타겟 감지 거리
+    [SerializeField] protected float attackRange;           // 공격 거리
 
-    [SerializeField] ItemPickUp[] dropItem;
-    [SerializeField] int randomNumber=2;
+    [SerializeField] ItemPickUp[] dropItem;                 // 드랍 아이템
+    [SerializeField] int randomNumber=2;                    // 랜덤 개수
 
-    protected float distance;     // 타겟과의 사이 거리
-    protected float rValue=0;     // 준비 시간 랜덤 값
+    [SerializeField] protected float rMinValue = 0.15f;     // 준비 최소 시간
+    [SerializeField] protected float rMaxValue = 0.3f;      // 준비 최대 시간
 
-    protected bool isAttack = false;
+    protected float distance;           // 타겟과의 사이 거리
+    protected float rValue=0;           // 준비 시간 랜덤 값
+
+    protected bool isAttack = false;    // 공격 시 true
 
     protected Stat _stat;
     protected Animator anim;
@@ -107,7 +110,7 @@ public abstract class Monster : MonoBehaviour
         {
             if (rValue == 0)
             {
-                rValue = Random.Range(0.15f, 0.3f);
+                rValue = Random.Range(rMinValue, rMaxValue);
                 StartCoroutine(AttackReady());
             }
         }
@@ -180,7 +183,8 @@ public abstract class Monster : MonoBehaviour
     public void TakeDamage(Stat attacker, int addDamage=0, bool isStat=true)
     {
         state = Define.MonsterState.Hit;
-        anim.SetTrigger("OnHit");
+        
+        HitAnim();
 
         // 스탯에 영향 주기
         _stat.OnAttacked(attacker, addDamage, isStat);
@@ -191,6 +195,12 @@ public abstract class Monster : MonoBehaviour
         // 뒤로 밀리는 코루틴
         StopCoroutine(PushedBack());
         StartCoroutine(PushedBack());
+    }
+
+    // 피격 이팩트가 여러개면 상속받아 사용하기
+    protected virtual void HitAnim()
+    {
+        anim.SetTrigger("OnHit");
     }
 
     // 뒤로 밀리기
